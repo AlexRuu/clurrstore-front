@@ -1,28 +1,24 @@
-import { GeistSans } from 'geist/font'
-import './globals.css'
+import Navbar from "@/components/ui/navbar/navbar";
+import "./globals.css";
+import type { Metadata } from "next";
+import { Urbanist } from "next/font/google";
 
-const defaultUrl = process.env.VERCEL_URL
-  ? `https://${process.env.VERCEL_URL}`
-  : 'http://localhost:3000'
-
-export const metadata = {
-  metadataBase: new URL(defaultUrl),
-  title: 'Next.js and Supabase Starter Kit',
-  description: 'The fastest way to build apps with Next.js and Supabase',
-}
+export const metadata: Metadata = {
+  title: "Clurr's Studio",
+  description: "All things aesthetic and cute",
+};
 
 export default function RootLayout({
   children,
 }: {
-  children: React.ReactNode
+  children: React.ReactNode;
 }) {
   return (
-    <html lang="en" className={GeistSans.className}>
-      <body className="bg-background text-foreground">
-        <main className="min-h-screen flex flex-col items-center">
-          {children}
-        </main>
+    <html lang="en">
+      <body>
+        <Navbar />
+        {children}
       </body>
     </html>
-  )
+  );
 }
