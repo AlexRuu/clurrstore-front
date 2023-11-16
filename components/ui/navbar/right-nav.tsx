@@ -1,5 +1,5 @@
 const RightNav = () => {
-  return <div>right nav</div>;
+  return <div className="">right nav</div>;
 };
 
 export default RightNav;

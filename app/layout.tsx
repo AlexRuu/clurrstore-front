@@ -1,7 +1,6 @@
 import Navbar from "@/components/ui/navbar/navbar";
 import "./globals.css";
 import type { Metadata } from "next";
-import { Urbanist } from "next/font/google";
 
 export const metadata: Metadata = {
   title: "Clurr's Studio",
