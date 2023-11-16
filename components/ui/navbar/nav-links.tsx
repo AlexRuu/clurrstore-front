@@ -135,7 +135,7 @@ const NavLinks: React.FC<MainNavProps> = ({ data }) => {
                       onMouseEnter={() => useHover && onMouseEnter(!open)}
                       onMouseLeave={() => useHover && onMouseLeave(open)}
                       static
-                      className="absolute mt-2 w-56 origin-top-right divide-gray-100 rounded-md bg-white shadow-lg ring-1 ring-black/5 focus:outline-none"
+                      className="absolute top-10 mt-2 w-56 origin-top-right divide-gray-100 rounded-md bg-white shadow-lg ring-1 ring-black/5 focus:outline-none"
                     >
                       {route.submenu.map((link) => (
                         <Menu.Item
