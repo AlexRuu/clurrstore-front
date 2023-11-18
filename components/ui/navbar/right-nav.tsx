@@ -49,7 +49,7 @@ const RightNav = () => {
             cartAmount > 9 ? "ml-2.5" : "ml-3.5"
           )}
         >
-          {cartAmount}
+          {cartAmount !== 0 ? cartAmount : ""}
         </span>
       </Button>
     </div>
