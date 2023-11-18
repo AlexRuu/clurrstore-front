@@ -1,48 +1,51 @@
 import { create } from "zustand";
 import { persist, createJSONStorage } from "zustand/middleware";
 
-import { Product } from "@/types";
+// What do I need for product details
+// I need the following and not the entire product detail
+// id, price, quantity, style, design, first image
 
-interface Cart {
-  item: Product;
+interface cartItem {
+  id: string;
+  price: number;
   quantity: number;
+  style?: string;
+  design?: string;
+  image: string;
 }
 
 interface CartStore {
-  items: Cart[];
-  addItem: (data: Product, amount: number) => void;
-  removeItem: (id: string, amount: number) => void;
-  removeAll: () => void;
+  items: cartItem[];
+  addItem: (data: cartItem) => void;
+  removeItem: (id: string) => void;
 }
 
 const useCart = create(
   persist<CartStore>(
     (set, get) => ({
       items: [],
-      addItem: (data: Product, amount: number) => {
+      addItem: (data: cartItem) => {
         const currentItems = get().items;
-        const existingItem = currentItems.find(
-          (current) => current.item.id === data.id
-        );
+        const existingItem = currentItems.find((item) => item.id === data.id);
         if (existingItem) {
-          existingItem.quantity += amount;
+          const itemIndex = currentItems.findIndex(
+            (item) => item.id === data.id
+          );
+          currentItems[itemIndex].quantity += data.quantity;
+          set({ items: currentItems });
+        } else {
+          set({ items: [...currentItems, data] });
         }
-
-        set({ items: [...get().items, { item: data, quantity: amount }] });
       },
       removeItem: (id: string) => {
         const currentItems = get().items;
-        const existingItem = currentItems.find(
-          (current) => current.item.id === id
-        );
-        if (existingItem) {
-          if (existingItem.quantity > 1) {
-            set({ items: [...get().items] });
-          }
+        const itemIndex = currentItems.findIndex((item) => item.id === id);
+        currentItems[itemIndex].quantity -= 1;
+        if (currentItems[itemIndex].quantity < 1) {
+          set({ items: [...currentItems.filter((item) => item.id !== id)] });
+        } else {
+          set({ items: currentItems });
         }
-      },
-      removeAll: () => {
-        set({ items: [] });
       },
     }),
     {
