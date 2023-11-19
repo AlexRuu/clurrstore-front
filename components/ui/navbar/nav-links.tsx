@@ -35,9 +35,9 @@ const NavLinks: React.FC<MainNavProps> = ({ data }) => {
       active: pathname === "/about",
     },
     {
-      href: "/categories",
+      href: "/products",
       label: "Items",
-      active: pathname === "/categories",
+      active: pathname === "/products",
       submenu: routes,
     },
     {
