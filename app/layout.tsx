@@ -1,6 +1,7 @@
 import Navbar from "@/components/ui/navbar/navbar";
 import "./globals.css";
 import type { Metadata } from "next";
+import PreviewModalProvider from "@/providers/preview-modal-provider";
 
 export const metadata: Metadata = {
   title: "Clurr's Studio",
@@ -13,8 +14,9 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en">
+    <html lang="en-us">
       <body>
+        <PreviewModalProvider />
         <Navbar />
         {children}
       </body>

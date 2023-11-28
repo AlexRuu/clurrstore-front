@@ -91,7 +91,7 @@ const NavLinks: React.FC<MainNavProps> = ({ data }) => {
   }, [isOpen]);
 
   return (
-    <div className="mx-6 flex justify-between overflow-hidden mr-auto w-3/4 font-medium">
+    <div className="mx-6 flex justify-between overflow-hidden mr-auto w-3/4 font-medium z-10">
       <nav className="inline-flex items-center space-x-4 lg:space-x-16 w-full">
         {navRoutes.map((route) =>
           route.submenu ? (

@@ -6,7 +6,9 @@ export interface Product {
   description: string;
   category: Category;
   detail: Detail[];
+  styleId: string;
   style: Style[];
+  designId: string;
   design: Design[];
   image: Image[];
   isFeatured: boolean;
