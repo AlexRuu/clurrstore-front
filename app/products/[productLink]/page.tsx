@@ -1,6 +1,6 @@
 import getProduct from "@/actions/get-product";
+import Breadcrumb from "@/components/breadcrumbs";
 import ProductGallery from "@/components/product/product-gallery";
-
 interface ItemPageProps {
   params: {
     productLink: string;
@@ -14,17 +14,18 @@ const ItemPage: React.FC<ItemPageProps> = async ({ params }) => {
   const product = await getProduct(productId![0]);
 
   return (
-    <div>
-      <div className="grid w-full grid-cols-1 items-start gap-x-6 gap-y-8 sm:grid-cols-12 lg:gap-x-8">
-        <div className="sm:col-span-6 lg:col-span-6">
+    <main className="min-h-[500px]">
+      <section>
+        <Breadcrumb title={product.title} url={product.title} />
+        <div className="flex items-start md:flex-row md:flex-nowrap md:justify-center md:pt-2 md:px-4 md:pb-10 justify-start flex-col flex-nowrap pt-0 px-0 pb-10 w-full">
           <ProductGallery images={product.image} />
+          <div className="md:max-w-[400px] md:pt-0 flex flex-col flex-nowrap flex-shrink px-4 py-0 w-full">
+            hi
+          </div>
         </div>
-        <div className="sm:col-span-6 lg:col-span-6">hi</div>
-      </div>
-    </div>
+      </section>
+    </main>
   );
 };
-
-// className="grid w-full grid-cols-1 items-start gap-x-6 gap-y-8 sm:grid-cols-12 lg:gap-x-8"
 
 export default ItemPage;

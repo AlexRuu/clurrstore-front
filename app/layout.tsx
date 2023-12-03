@@ -16,9 +16,11 @@ export default function RootLayout({
   return (
     <html lang="en-us">
       <body>
-        <PreviewModalProvider />
-        <Navbar />
-        {children}
+        <div className="max-w-[100vw] overflow-x-hidden w-full">
+          <PreviewModalProvider />
+          <Navbar />
+          {children}
+        </div>
       </body>
     </html>
   );
