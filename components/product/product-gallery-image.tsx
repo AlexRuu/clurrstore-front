@@ -5,6 +5,7 @@ import { Image as ImageType } from "@/types";
 import Image from "next/image";
 
 import { wrap } from "popmotion";
+import { useState } from "react";
 
 interface PreviewGalleryProps {
   images: ImageType[];
@@ -15,6 +16,33 @@ const ProductGalleryImage: React.FC<PreviewGalleryProps> = ({
   images,
   selectedIndex,
 }) => {
+  const [x, setX] = useState(0);
+  const [y, setY] = useState(0);
+
+  const handleMouseMove = (e: React.MouseEvent<HTMLElement, MouseEvent>) => {
+    const image = e.currentTarget.getBoundingClientRect();
+    const width = e.currentTarget.offsetWidth;
+    const height = e.currentTarget.offsetHeight;
+    console.log(image.left, image.right, e.clientX, e.clientY);
+    const xLocation = e.clientX - image.left;
+    const yLocation = e.clientY - image.top;
+
+    setX(-((xLocation - width) / width / 4) * 100);
+    setY(-((yLocation - height) / height / 4) * 100);
+  };
+
+  const handleMouseLeave = () => {
+    setX(0);
+    setY(0);
+  };
+
+  const translateStyle: React.CSSProperties = {
+    zIndex: "2",
+    transform: `translate(${x}%, ${y}%)`,
+    scale: "2",
+    transition: "opacity 0.2s ease",
+  };
+
   return (
     <div className="h-full left-0 overflow-hidden relative top-0 w-full">
       <Image
@@ -37,7 +65,19 @@ const ProductGalleryImage: React.FC<PreviewGalleryProps> = ({
           <Image
             height={500}
             width={500}
-            className="relative flex justify-center z-0"
+            onMouseMove={handleMouseMove}
+            onMouseLeave={handleMouseLeave}
+            className={`absolute left-0 opacity-0 top-0 hover:opacity-100`}
+            style={translateStyle}
+            src={img.url}
+            sizes="(max-width: 500px) 100vw, (max-width: 1200px) 50vw, 33vw"
+            loading="lazy"
+            alt={`${index} out of ${images.length} images`}
+          />
+          <Image
+            height={500}
+            width={500}
+            className="m-0 p-0 relative flex justify-center z-0 hover:opacity-0"
             src={img.url}
             sizes="(max-width: 500px) 100vw, (max-width: 1200px) 50vw, 33vw"
             loading="lazy"
