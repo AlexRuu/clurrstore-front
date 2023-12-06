@@ -23,7 +23,7 @@ const ProductGalleryImage: React.FC<PreviewGalleryProps> = ({
     const image = e.currentTarget.getBoundingClientRect();
     const width = e.currentTarget.offsetWidth;
     const height = e.currentTarget.offsetHeight;
-    console.log(image.left, image.right, e.clientX, e.clientY);
+
     const xLocation = e.clientX - image.left;
     const yLocation = e.clientY - image.top;
 
