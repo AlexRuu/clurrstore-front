@@ -69,7 +69,7 @@ const ProductImageSlide: React.FC<ProductImageSlideProps> = ({
               width={80}
               onClick={() => setSelectedIndex(index)}
               className={cn(
-                "mt-0 mx-0 mb-1 select-none w-full",
+                "mt-0 mx-0 mb-1 select-none w-full cursor-pointer",
                 index == selectedIndex ? "border-black border-solid border" : ""
               )}
               sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"

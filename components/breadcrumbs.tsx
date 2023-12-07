@@ -25,7 +25,7 @@ const Breadcrumb: React.FC<BreadcrumbProps> = ({ url, title }) => {
     },
   ];
   return (
-    <div>
+    <div className="">
       {links.map((link, index) => (
         <Link
           href={link.href}
@@ -42,7 +42,7 @@ const Breadcrumb: React.FC<BreadcrumbProps> = ({ url, title }) => {
       {url && (
         <>
           <span className="ml-2 mr-2">/</span>
-          <Link href={url}>{title}</Link>
+          <p className="inline">{title}</p>
         </>
       )}
     </div>
