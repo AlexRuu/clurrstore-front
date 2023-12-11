@@ -24,7 +24,7 @@ const ProductGallery: React.FC<ProductGalleryProps> = ({ images }) => {
         setTranslateAmount={setTranslateAmount}
       />
 
-      <div className="md:flex-shrink md:h-full left-0 py-0 px-5 relative w-full top-0">
+      <div className="md:flex-shrink md:h-full left-0 py-0 px-5 relative w-full top-0 z-0">
         <ProductGalleryImage images={images} selectedIndex={selectedIndex} />
       </div>
     </div>

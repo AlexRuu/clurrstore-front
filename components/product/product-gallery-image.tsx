@@ -4,7 +4,6 @@ import { cn } from "@/lib/utils";
 import { Image as ImageType } from "@/types";
 import Image from "next/image";
 
-import { wrap } from "popmotion";
 import { useState } from "react";
 
 interface PreviewGalleryProps {
@@ -57,7 +56,7 @@ const ProductGalleryImage: React.FC<PreviewGalleryProps> = ({
         <div
           key={img.id}
           className={cn(
-            "h-full left-0 absolute top-0 w-full opacity-0 z-0 overflow-hidden [transition:transform_0.5s,opacity_0.1s] ease-[ease]",
+            "h-full left-0 absolute top-0 w-full opacity-0 z-0 overflow-hidden [transition:transform_0.5s,opacity_0.1s] ease-in",
             index > selectedIndex ? "translate-x-full" : "-translate-x-full",
             index === selectedIndex ? "opacity-100 z-[5] translate-x-0" : ""
           )}

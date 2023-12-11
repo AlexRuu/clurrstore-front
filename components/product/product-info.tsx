@@ -14,7 +14,7 @@ const ProductInfo: React.FC<ProductInfoProps> = ({ product }) => {
     <div className="overflow-y-hidden w-full">
       <div>
         <h1 className="text-3xl font-semibold">{product.title}</h1>
-        <Breadcrumb title={product.title} url={product.title} />
+        <Breadcrumb title={product.title} />
         <p className="text-xl">${product.price.toFixed(2)}</p>
         <br />
       </div>

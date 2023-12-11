@@ -8,7 +8,7 @@ export const metadata: Metadata = {
   description: "All things aesthetic and cute",
 };
 
-export default function RootLayout({
+export default async function RootLayout({
   children,
 }: {
   children: React.ReactNode;
@@ -17,9 +17,9 @@ export default function RootLayout({
     <html lang="en-us">
       <body>
         <div className="max-w-[100vw] overflow-x-hidden w-full">
-          <PreviewModalProvider />
           <Navbar />
-          {children}
+          <PreviewModalProvider />
+          <main className="min-h-[500px] mt-24">{children}</main>
         </div>
       </body>
     </html>

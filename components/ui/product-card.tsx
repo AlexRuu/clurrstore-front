@@ -29,7 +29,7 @@ const ProductCard: React.FC<ProductCardProps> = ({ data }) => {
 
   return (
     <div
-      className="bg-white group cursor-pointer rounded-md border p-3 space-y-4 flex flex-col justify-between group"
+      className="bg-white group cursor-pointer rounded-md p-3 space-y-4 flex flex-col justify-between group"
       onClick={handleClick}
     >
       <div className="aspect-square rounded-sm bg-gray-100 relative overflow-hidden">

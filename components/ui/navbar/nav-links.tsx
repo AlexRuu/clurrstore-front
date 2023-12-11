@@ -13,19 +13,20 @@ import { Category } from "@/types";
 
 import { ChevronDown } from "lucide-react";
 
-interface MainNavProps {
+interface NavLinksProps {
   data: Category[];
 }
 
-const NavLinks: React.FC<MainNavProps> = ({ data }) => {
+const NavLinks: React.FC<NavLinksProps> = ({ data }) => {
   const pathname = usePathname();
   const [scope, animate] = useAnimate();
   const [isOpen, setIsOpen] = useState(false);
 
   const routes = data.map((route) => ({
-    href: `/category/${route.id}`,
+    href: `/categories/${route.title.replaceAll(/.\&.|\W/g, "-")}`,
     label: route.title,
-    active: pathname === `/category/${route.id}`,
+    active:
+      pathname === `/categories/${route.title.replaceAll(/.\&.|\W/g, "-")}`,
   }));
 
   const navRoutes = [
@@ -91,7 +92,7 @@ const NavLinks: React.FC<MainNavProps> = ({ data }) => {
   }, [isOpen]);
 
   return (
-    <div className="mx-6 flex justify-between overflow-hidden mr-auto w-3/4 font-medium z-10">
+    <div className="flex w-full">
       <nav className="inline-flex items-center space-x-4 lg:space-x-16 w-full">
         {navRoutes.map((route) =>
           route.submenu ? (
@@ -135,16 +136,16 @@ const NavLinks: React.FC<MainNavProps> = ({ data }) => {
                       onMouseEnter={() => useHover && onMouseEnter(!open)}
                       onMouseLeave={() => useHover && onMouseLeave(open)}
                       static
-                      className="absolute top-10 mt-2 w-56 origin-top-right divide-gray-100 rounded-md bg-white shadow-lg ring-1 ring-black/5 focus:outline-none"
+                      className="absolute top-10 mt-5 w-56 origin-top-right divide-gray-100 rounded-md bg-white shadow-lg ring-1 ring-black/5 focus:outline-none"
                     >
                       {route.submenu.map((link) => (
                         <Menu.Item
+                          onClick={closeMenu}
                           as={Link}
                           href={link.href}
                           key={link.href}
                           className={cn(
-                            "flex flex-col text-lg font-medium transition-colors hover:text-black w-full rounded-md px-2 py-3",
-                            link.active ? "text-black" : "text-neutral-500"
+                            "flex flex-col text-lg font-medium transition-colors hover:text-black w-full rounded-md px-2 py-3 text-neutral-500"
                           )}
                         >
                           {link.label}

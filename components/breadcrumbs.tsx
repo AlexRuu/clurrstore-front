@@ -5,11 +5,10 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 
 interface BreadcrumbProps {
-  url?: string;
   title?: string;
 }
 
-const Breadcrumb: React.FC<BreadcrumbProps> = ({ url, title }) => {
+const Breadcrumb: React.FC<BreadcrumbProps> = ({ title }) => {
   const pathname = usePathname();
 
   const links = [
@@ -39,12 +38,10 @@ const Breadcrumb: React.FC<BreadcrumbProps> = ({ url, title }) => {
           {index == 0 && <span className="mr-2 ml-2">/</span>}
         </Link>
       ))}
-      {url && (
-        <>
-          <span className="ml-2 mr-2">/</span>
-          <p className="inline">{title}</p>
-        </>
-      )}
+      <>
+        <span className="ml-2 mr-2">/</span>
+        <p className="inline">{title}</p>
+      </>
     </div>
   );
 };

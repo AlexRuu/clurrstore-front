@@ -1,16 +1,15 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import { useRouter } from "next/navigation";
 import useCart from "@/hooks/use-cart";
 
-import Button from "@/components/ui/button";
 import { ShoppingCart } from "lucide-react";
 import { cn } from "@/libs/utlils";
+import Link from "next/link";
 
 const RightNav = () => {
   const cart = useCart();
-  const router = useRouter();
+
   const [isMounted, setIsMounted] = useState(false);
   const [cartAmount, setCartAmount] = useState(0);
 
@@ -32,16 +31,12 @@ const RightNav = () => {
 
   return (
     <div className="ml-auto flex items-center gap-x-4">
-      <Button
-        className="flex items-center rounded-full px-4 py-2 "
-        onClick={() => router.push("/cart")}
-      >
+      <Link href={"/cart"}>
         <ShoppingCart
           color="#f199b3"
-          fill="#f199b3"
           strokeWidth={2}
           size={30}
-          className="z-0"
+          className="z-0 hover:fill-[#f199b3] transition-[fill] ease-in"
         />
         <span
           className={cn(
@@ -51,7 +46,7 @@ const RightNav = () => {
         >
           {cartAmount !== 0 ? cartAmount : ""}
         </span>
-      </Button>
+      </Link>
     </div>
   );
 };
