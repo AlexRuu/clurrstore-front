@@ -19,7 +19,7 @@ const RightNav = () => {
       0
     );
     setCartAmount(cartQuantity);
-  }, [cart.items]);
+  }, [cart]);
 
   useEffect(() => {
     setIsMounted(true);

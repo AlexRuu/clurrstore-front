@@ -1,7 +1,5 @@
 import { Product } from "@/types";
 import Currency from "./ui/currency";
-import Button from "./ui/button";
-import { ShoppingCart } from "lucide-react";
 import ProductForm from "./forms/product-form";
 
 interface PreviewInfoProps {
@@ -21,6 +19,9 @@ const PreviewInfo: React.FC<PreviewInfoProps> = ({ product }) => {
       <div className="flex flex-col h-full">
         <ProductForm
           id={product.id}
+          title={product.title}
+          price={product.price}
+          image={product.image[0]}
           styleId={product.styleId}
           designId={product.designId}
           design={product.design}

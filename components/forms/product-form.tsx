@@ -22,9 +22,14 @@ import {
 } from "../ui/select";
 import Button from "../ui/button";
 import useCart from "@/hooks/use-cart";
+import getDesign from "@/actions/get-design";
+import getStyle from "@/actions/get-style";
 
 interface initialData {
   id: Product["id"];
+  title: Product["title"];
+  price: Product["price"];
+  image: Product["image"][0];
   designId: Product["designId"];
   styleId: Product["styleId"];
 }
@@ -36,6 +41,9 @@ interface ProductFormProps extends initialData {
 
 const ProductForm: React.FC<ProductFormProps> = ({
   id,
+  title,
+  price,
+  image,
   designId,
   styleId,
   design,
@@ -77,9 +85,26 @@ const ProductForm: React.FC<ProductFormProps> = ({
         },
   });
 
-  const onSubmit = (data: ProductFormValues) => {
-    // cart.addItem(Product.);
-    console.log(data, id);
+  const onSubmit = async (data: ProductFormValues) => {
+    let designName;
+    let styleName;
+    if (data.designId) {
+      designName = await getDesign(data.designId);
+    }
+    if (data.styleId) {
+      styleName = await getStyle(data.styleId);
+    }
+
+    cart.addItem(
+      id,
+      title,
+      image.url,
+      price,
+      data.designId,
+      designName?.title,
+      data.styleId,
+      styleName?.title
+    );
   };
 
   return (

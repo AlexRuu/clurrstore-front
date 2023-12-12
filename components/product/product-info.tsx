@@ -2,7 +2,6 @@
 
 import { Product } from "@/types";
 import ProductForm from "../forms/product-form";
-import { useState } from "react";
 import Breadcrumb from "../breadcrumbs";
 
 interface ProductInfoProps {
@@ -21,10 +20,13 @@ const ProductInfo: React.FC<ProductInfoProps> = ({ product }) => {
       <div>
         <ProductForm
           id={product.id}
-          design={product.design}
-          style={product.style}
+          title={product.title}
+          price={product.price}
+          image={product.image[0]}
           styleId={product.styleId}
           designId={product.designId}
+          design={product.design}
+          style={product.style}
         />
       </div>
       <div>

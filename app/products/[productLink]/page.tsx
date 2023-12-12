@@ -1,3 +1,4 @@
+import getDesign from "@/actions/get-design";
 import getProduct from "@/actions/get-product";
 import ProductGallery from "@/components/product/product-gallery";
 import ProductInfo from "@/components/product/product-info";

@@ -2,8 +2,37 @@
 
 import { useRouter, useSearchParams } from "next/navigation";
 import qs from "query-string";
+import { useState } from "react";
+
+const mostFilters = [
+  {
+    name: "Price: Low to High",
+    sort: "price-asc",
+  },
+  {
+    name: "Price: High to Low",
+    sort: "price-desc",
+  },
+  {
+    name: "Name: A to Z",
+    sort: "title-asc",
+  },
+  {
+    name: "Name: Z to A",
+    sort: "title-desc",
+  },
+  {
+    name: "Date: Old to New",
+    sort: "createdAt-asc",
+  },
+  {
+    name: "Date: New to Old",
+    sort: "createdAt-desc",
+  },
+];
 
 const Filter = () => {
+  const [selectedQuery, setSelectedQuery] = useState(null);
   const router = useRouter();
   const searchParams = useSearchParams();
 
@@ -31,6 +60,7 @@ const Filter = () => {
       { skipNull: true }
     );
 
+    setSelectedQuery(query["featured"]);
     router.push(url);
   };
 
@@ -60,6 +90,7 @@ const Filter = () => {
       }
     );
 
+    setSelectedQuery(query[sortBy]);
     router.push(url);
   };
 
@@ -67,20 +98,11 @@ const Filter = () => {
     <div className="flex flex-col flex-nowrap justify-start items-start w-1/5">
       <h1>Sort by</h1>
       <button onClick={() => handleFeatured()}>Featured</button>
-      <button onClick={() => handleClick("price-asc")}>
-        Price: Low to High
-      </button>
-      <button onClick={() => handleClick("price-desc")}>
-        Price: High to Low
-      </button>
-      <button onClick={() => handleClick("title-asc")}>Name: A to Z</button>
-      <button onClick={() => handleClick("title-desc")}>Name: Z to A</button>
-      <button onClick={() => handleClick("createdAt-asc")}>
-        Date: Old to New
-      </button>
-      <button onClick={() => handleClick("createdAt-desc")}>
-        Date: New to Old
-      </button>
+      {mostFilters.map((filter, index) => (
+        <button key={index} onClick={() => handleClick(filter.sort)}>
+          {filter.name}
+        </button>
+      ))}
     </div>
   );
 };

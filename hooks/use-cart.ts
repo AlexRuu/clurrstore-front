@@ -1,48 +1,110 @@
 import { create } from "zustand";
 import { persist, createJSONStorage } from "zustand/middleware";
 
-// What do I need for product details
-// I need the following and not the entire product detail
-// id, price, quantity, style, design, first image
-
-interface cartItem {
+interface CartItem {
   id: string;
+  name: string;
+  image: string;
   price: number;
   quantity: number;
-  style?: string;
-  design?: string;
-  image: string;
+  selectedStyle?: string;
+  styleName?: string;
+  selectedDesign?: string;
+  designName?: string;
 }
 
 interface CartStore {
-  items: cartItem[];
-  addItem: (data: cartItem) => void;
-  removeItem: (id: string) => void;
+  items: CartItem[];
+  addItem: (
+    id: string,
+    name: string,
+    image: string,
+    price: number,
+    selectedDesign?: string | undefined,
+    designName?: string | undefined,
+    selectedStyle?: string | undefined,
+    styleName?: string | undefined
+  ) => void;
+  removeItem: (
+    id: string,
+    selectedDesign: string,
+    selectedStyle: string
+  ) => void;
 }
 
 const useCart = create(
   persist<CartStore>(
     (set, get) => ({
       items: [],
-      addItem: (data: cartItem) => {
+      addItem: (
+        id: string,
+        name: string,
+        image: string,
+        price: number,
+        selectedDesign?: string,
+        designName?: string,
+        selectedStyle?: string,
+        styleName?: string
+      ) => {
         const currentItems = get().items;
-        const existingItem = currentItems.find((item) => item.id === data.id);
+        const existingItem = currentItems.find(
+          (item) =>
+            item.id === id &&
+            item.selectedDesign == selectedDesign &&
+            item.selectedStyle == selectedStyle
+        );
         if (existingItem) {
           const itemIndex = currentItems.findIndex(
-            (item) => item.id === data.id
+            (item) =>
+              item.id === id &&
+              item.selectedDesign == selectedDesign &&
+              item.selectedStyle == selectedStyle
           );
-          currentItems[itemIndex].quantity += data.quantity;
+          currentItems[itemIndex].quantity += 1;
           set({ items: currentItems });
         } else {
-          set({ items: [...currentItems, data] });
+          set({
+            items: [
+              ...currentItems,
+              {
+                id,
+                name,
+                image,
+                price,
+                quantity: 1,
+                selectedDesign,
+                designName,
+                selectedStyle,
+                styleName,
+              },
+            ],
+          });
         }
       },
-      removeItem: (id: string) => {
+      removeItem: (
+        id: string,
+        selectedDesign?: string,
+        selectedStyle?: string
+      ) => {
         const currentItems = get().items;
-        const itemIndex = currentItems.findIndex((item) => item.id === id);
+        const itemIndex = currentItems.findIndex(
+          (item) =>
+            item.id === id &&
+            item.selectedDesign == selectedDesign &&
+            item.selectedStyle == selectedStyle
+        );
         currentItems[itemIndex].quantity -= 1;
         if (currentItems[itemIndex].quantity < 1) {
-          set({ items: [...currentItems.filter((item) => item.id !== id)] });
+          set({
+            items: [
+              ...currentItems.filter(
+                (item) =>
+                  item.id !== id &&
+                  item.selectedDesign == selectedDesign &&
+                  item.selectedStyle == selectedStyle
+              ),
+            ],
+          });
         } else {
           set({ items: currentItems });
         }
