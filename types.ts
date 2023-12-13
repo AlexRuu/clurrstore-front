@@ -38,3 +38,8 @@ export interface Image {
   id: string;
   url: string;
 }
+
+export interface HomeImage {
+  id: string;
+  url: string;
+}
