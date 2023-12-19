@@ -16,6 +16,9 @@ module.exports = {
       },
     },
     extend: {
+      screens: {
+        'small': {"max": '767px'} 
+      },
       colors: {
         border: "hsl(var(--border))",
         input: "hsl(var(--input))",
@@ -70,10 +73,15 @@ module.exports = {
           from: { height: "var(--radix-accordion-content-height)" },
           to: { height: 0 },
         },
+        "zoom-out": {
+          "0%": {scale: '1.07'},
+          '100%': {scale: '1'}
+        }
       },
       animation: {
         "accordion-down": "accordion-down 0.2s ease-out",
         "accordion-up": "accordion-up 0.2s ease-out",
+        "zoom-out": "calc(0.6s, 1s) * 1.2) cubic-bezier(.25,.46,.45,.94) both"
       },
     },
   },
