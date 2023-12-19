@@ -17,7 +17,8 @@ module.exports = {
     },
     extend: {
       screens: {
-        'small': {"max": '767px'} 
+        'small': {"max": '767px'},
+        'large': {"min": '1400px'}
       },
       colors: {
         border: "hsl(var(--border))",

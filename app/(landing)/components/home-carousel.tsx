@@ -76,7 +76,7 @@ const HomeCarousel: React.FC<HomeCarouselProps> = ({ homeImages }) => {
   }, [carouselIndex]);
 
   return (
-    <div className="relative md:m-[30px_0px] md:px-16 sm:my-5 sm:px-5 mt-0 mb-5 pt-0 h-full">
+    <div className="relative md:m-[30px_0px] md:px-16 sm:my-5 sm:px-5 mt-0 mb-5 pt-0 h-full large:px-[60px]">
       <div className="relative max-w-[1600px] m-[0px_auto]">
         <div className="relative min-w-full block box-border h-full select-none">
           <div
