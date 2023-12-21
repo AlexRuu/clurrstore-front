@@ -3,10 +3,22 @@ import { HomeImage } from "@/types";
 import { useEffect, useRef, useState } from "react";
 import { cn } from "@/lib/utils";
 import { ArrowBigLeft, ArrowBigRight } from "lucide-react";
+import Link from "next/link";
 
 interface HomeCarouselProps {
   homeImages: HomeImage[];
 }
+
+const centerButtons = [
+  {
+    title: "About Me",
+    url: "/about",
+  },
+  {
+    title: "Shop Now",
+    url: "/products",
+  },
+];
 
 const HomeCarousel: React.FC<HomeCarouselProps> = ({ homeImages }) => {
   const [carouselIndex, setCarouselIndex] = useState<number>(0);
@@ -71,7 +83,7 @@ const HomeCarousel: React.FC<HomeCarouselProps> = ({ homeImages }) => {
   useEffect(() => {
     const interval = setInterval(() => {
       paginateNext();
-    }, 5000);
+    }, 10000);
     return () => clearInterval(interval);
   }, [carouselIndex]);
 
@@ -112,27 +124,56 @@ const HomeCarousel: React.FC<HomeCarouselProps> = ({ homeImages }) => {
                   )}
                 >
                   <div className="will-change-transform scale-[1.07] opacity-100 animation-zoom-out small:relative">
-                    <a href="#" className="touch-manipulation">
+                    <Link href="#" className="touch-manipulation">
                       <div
-                        className="md:h-[520px] h-[180px] min-w-full bg-cover bg-center"
+                        className="md:h-[520px] h-[180px] min-w-full bg-cover bg-center opacity-100 mx-auto"
                         style={{
                           backgroundImage: `url(${img.url})`,
                           transition: "all .25s",
                         }}
                       >
                         <div
-                          className="p-[31.73828125%] relative "
+                          className="pt-[31.73828125%] relative"
                           style={{ transition: "background .5s" }}
                         ></div>
                       </div>
-                    </a>
+                    </Link>
                   </div>
                   <div
                     className={cn(
-                      "bg-white top-1/2 left-1/2 text-center",
+                      "top-1/2 left-1/2 text-center absolute w-[calc(50%-120px)] pointer-events-none p-[30px_30px_35px] overflow-hidden z-10",
                       index === carouselIndex ? "opacity-100" : "opacity-0"
                     )}
-                  ></div>
+                    style={{
+                      transition: "opacity 0.7s 0.6s",
+                      marginLeft: "-20%",
+                      marginTop: "-10%",
+                    }}
+                  >
+                    <div className="bg-white absolute top-0 left-0 w-full h-full opacity-50" />
+                    <div className="text-[#333333] relative z-10 text-center">
+                      <h2
+                        className="mb-4 w-full text-center text-3xl font-bold uppercase"
+                        style={{
+                          marginInlineStart: "auto",
+                          marginInlineEnd: "auto",
+                        }}
+                      >
+                        {img.title}
+                      </h2>
+                      <div className="mx-0 my-4 text-center text-[#333333]">
+                        {img.description}
+                      </div>
+                      <div className="text-[#333333] text-center">
+                        <Link
+                          href={centerButtons[index].url}
+                          className="md:py-2 md:px-[22px] pointer-events-auto m-[15px_7.5px_px0] touch-manipulation small:text-[1rem]"
+                        >
+                          {centerButtons[index].title}
+                        </Link>
+                      </div>
+                    </div>
+                  </div>
                 </div>
               ))}
             </div>
@@ -147,6 +188,7 @@ const HomeCarousel: React.FC<HomeCarouselProps> = ({ homeImages }) => {
                   role="button"
                   type="button"
                   tabIndex={index}
+                  onClick={() => setCarouselIndex(index)}
                   className={cn(
                     "text-transparent transition-all border-solid border-2 h-[6px] w-[6px] min-w-0 shadow-none rounded-md text-[0px] outline-none cursor-pointer",
                     index == carouselIndex

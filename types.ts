@@ -41,5 +41,7 @@ export interface Image {
 
 export interface HomeImage {
   id: string;
+  title: string;
+  description: string;
   url: string;
 }
