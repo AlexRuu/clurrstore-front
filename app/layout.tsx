@@ -19,7 +19,7 @@ export default async function RootLayout({
         <div className="max-w-[100vw] overflow-x-hidden w-full">
           <Navbar />
           <PreviewModalProvider />
-          <main className="min-h-[500px] mt-24">{children}</main>
+          {children}
         </div>
       </body>
     </html>

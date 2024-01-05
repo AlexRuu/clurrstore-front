@@ -20,14 +20,16 @@ const ItemPage: React.FC<ItemPageProps> = async ({ params }) => {
   const product = await getProduct(productId![0]);
 
   return (
-    <section className="mt-10">
-      <div className="lg:pt-2 lg:px-14 lg:pb-10 flex items-start md:flex-row md:flex-nowrap md:justify-center md:pt-2 md:px-4 md:pb-10 justify-start flex-col flex-nowrap pt-0 px-0 pb-10 w-full gap-10">
-        <ProductGallery images={product.image} />
-        <div className="md:max-w-[500px] md:pt-0 flex flex-col flex-nowrap flex-shrink px-4 py-0 w-full">
-          <ProductInfo product={product} />
+    <main className="min-h-[500px] mt-24">
+      <section className="mt-10">
+        <div className="lg:pt-2 lg:px-14 lg:pb-10 flex items-start md:flex-row md:flex-nowrap md:justify-center md:pt-2 md:px-4 md:pb-10 justify-start flex-col flex-nowrap pt-0 px-0 pb-10 w-full gap-10">
+          <ProductGallery images={product.image} />
+          <div className="md:max-w-[500px] md:pt-0 flex flex-col flex-nowrap flex-shrink px-4 py-0 w-full">
+            <ProductInfo product={product} />
+          </div>
         </div>
-      </div>
-    </section>
+      </section>
+    </main>
   );
 };
 

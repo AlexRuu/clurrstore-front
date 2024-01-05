@@ -2,8 +2,11 @@
 import { HomeImage } from "@/types";
 import { useEffect, useRef, useState } from "react";
 import { cn } from "@/lib/utils";
-import { ArrowBigLeft, ArrowBigRight } from "lucide-react";
+import { ChevronLeft, ChevronRight } from "lucide-react";
 import Link from "next/link";
+import Button from "@/components/ui/button";
+import Image from "next/image";
+import { InView } from "react-intersection-observer";
 
 interface HomeCarouselProps {
   homeImages: HomeImage[];
@@ -11,16 +14,17 @@ interface HomeCarouselProps {
 
 const centerButtons = [
   {
-    title: "About Me",
-    url: "/about",
-  },
-  {
     title: "Shop Now",
     url: "/products",
+  },
+  {
+    title: "About Me",
+    url: "/about",
   },
 ];
 
 const HomeCarousel: React.FC<HomeCarouselProps> = ({ homeImages }) => {
+  const ref = useRef<HTMLDivElement>(null);
   const [carouselIndex, setCarouselIndex] = useState<number>(0);
   const [pressed, setPressed] = useState<boolean>(false);
   const [xDirection, setXDirection] = useState<number>(0);
@@ -123,25 +127,34 @@ const HomeCarousel: React.FC<HomeCarouselProps> = ({ homeImages }) => {
                     index == 1 && "-left-[50%]"
                   )}
                 >
-                  <div className="will-change-transform scale-[1.07] opacity-100 animation-zoom-out small:relative">
-                    <Link href="#" className="touch-manipulation">
+                  <InView>
+                    {({ inView, ref, entry }) => (
                       <div
-                        className="md:h-[520px] h-[180px] min-w-full bg-cover bg-center opacity-100 mx-auto"
-                        style={{
-                          backgroundImage: `url(${img.url})`,
-                          transition: "all .25s",
-                        }}
+                        ref={ref}
+                        className={cn(
+                          "relative will-change-transform opacity-100 small:relative",
+                          inView && "animate-zoom-out"
+                        )}
+                        style={{ transform: "scale(1.07)" }}
                       >
+                        <Image
+                          src={img.url}
+                          alt=""
+                          className="md:h-[520px] h-[180px] min-w-full bg-cover bg-center opacity-100 mx-auto"
+                          fill
+                          style={{ objectFit: "cover", transition: "all .25s" }}
+                          loading="lazy"
+                        ></Image>
                         <div
                           className="pt-[31.73828125%] relative"
-                          style={{ transition: "background .5s" }}
-                        ></div>
+                          style={{ transition: "opacity .5s" }}
+                        />
                       </div>
-                    </Link>
-                  </div>
+                    )}
+                  </InView>
                   <div
                     className={cn(
-                      "top-1/2 left-1/2 text-center absolute w-[calc(50%-120px)] pointer-events-none p-[30px_30px_35px] overflow-hidden z-10",
+                      "small:bottom-[30px] small:!left-1/2 small:min-w-[auto] small:relative small:!top-auto small:-translate-x-1/2 small:w-[calc(100%-40px)] small:p-[45px_30px] small:!m-0 medium-max:p-[20px_20px_24px] medium-max:min-w-0 medium-max:w-[calc(50%-40px)] top-1/2 left-1/2 text-center absolute w-[calc(50%-120px)] pointer-events-none p-[30px_30px_35px] overflow-hidden z-10",
                       index === carouselIndex ? "opacity-100" : "opacity-0"
                     )}
                     style={{
@@ -150,10 +163,10 @@ const HomeCarousel: React.FC<HomeCarouselProps> = ({ homeImages }) => {
                       marginTop: "-10%",
                     }}
                   >
-                    <div className="bg-white absolute top-0 left-0 w-full h-full opacity-50" />
+                    <div className="bg-[#FFFFF0] absolute top-0 left-0 w-full h-full opacity-50 rounded-xl small:!opacity-100" />
                     <div className="text-[#333333] relative z-10 text-center">
                       <h2
-                        className="mb-4 w-full text-center text-3xl font-bold uppercase"
+                        className="mb-4 w-full text-center text-[28px] small:text-[calc(28px*0.825)] font-bold uppercase"
                         style={{
                           marginInlineStart: "auto",
                           marginInlineEnd: "auto",
@@ -161,15 +174,17 @@ const HomeCarousel: React.FC<HomeCarouselProps> = ({ homeImages }) => {
                       >
                         {img.title}
                       </h2>
-                      <div className="mx-0 my-4 text-center text-[#333333]">
+                      <div className="mx-0 my-[15px] box-border text-center text-[#333333]">
                         {img.description}
                       </div>
                       <div className="text-[#333333] text-center">
                         <Link
                           href={centerButtons[index].url}
-                          className="md:py-2 md:px-[22px] pointer-events-auto m-[15px_7.5px_px0] touch-manipulation small:text-[1rem]"
+                          className="md:py-2 md:px-[22px] md:min-w-[118px] pointer-events-auto m-[15px_7.5px_px0] touch-manipulation small:text-[1rem] rounded-2xl"
                         >
-                          {centerButtons[index].title}
+                          <Button className="duration-[0.1s] text-black bg-[#e2ecf2] hover:shadow-home-button hover:-translate-y-[3px] hover:brightness-95 transition ease-in-out">
+                            {centerButtons[index].title}
+                          </Button>
                         </Link>
                       </div>
                     </div>
@@ -203,10 +218,10 @@ const HomeCarousel: React.FC<HomeCarouselProps> = ({ homeImages }) => {
           </ul>
         </div>
         <div className="small:left-5 absolute left-0 -bottom-1 cursor-pointer">
-          <ArrowBigLeft onClick={paginateLast} />
+          <ChevronLeft onClick={paginateLast} />
         </div>
         <div className="small:right-5 absolute right-0 -bottom-1 cursor-pointer">
-          <ArrowBigRight onClick={paginateNext} />
+          <ChevronRight onClick={paginateNext} />
         </div>
       </div>
     </div>

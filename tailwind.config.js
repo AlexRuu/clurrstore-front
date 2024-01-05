@@ -17,8 +17,13 @@ module.exports = {
     },
     extend: {
       screens: {
-        'small': {"max": '767px'},
+        'medium-max': {"max": '1080px'},
+        'xsmall': {"max": "480px"},
+        'small': {"max": '767.98px'},
         'large': {"min": '1400px'}
+      },
+      boxShadow: {
+        "home-button": "0 0 0 1px #e2ecf2,0 4px 10px -4px #e2ecf2,0 2px 6px #0000007f"
       },
       colors: {
         border: "hsl(var(--border))",
@@ -75,14 +80,14 @@ module.exports = {
           to: { height: 0 },
         },
         "zoom-out": {
-          "0%": {scale: '1.07'},
-          '100%': {scale: '1'}
+          "0%": {transform: 'scale(1.07)'},
+          "100%": {transform: 'scale(1)'}
         }
       },
       animation: {
         "accordion-down": "accordion-down 0.2s ease-out",
         "accordion-up": "accordion-up 0.2s ease-out",
-        "zoom-out": "calc(0.6s, 1s) * 1.2) cubic-bezier(.25,.46,.45,.94) both"
+        "zoom-out": "zoom-out calc(0.6s * 1.2) cubic-bezier(.65,.05,.36,1) both"
       },
     },
   },
