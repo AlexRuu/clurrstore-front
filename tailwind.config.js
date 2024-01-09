@@ -18,6 +18,7 @@ module.exports = {
     extend: {
       screens: {
         'medium-max': {"max": '1080px'},
+        'medium-min': {"min": "900"},
         'xsmall': {"max": "480px"},
         'small': {"max": '767.98px'},
         'large': {"min": '1400px'}
@@ -82,12 +83,22 @@ module.exports = {
         "zoom-out": {
           "0%": {transform: 'scale(1.07)'},
           "100%": {transform: 'scale(1)'}
+        },
+        "zoom-out-fade-in": {
+          "0%": {transform: "scale(1.07)", opacity: "0"},
+          "100%": {transform: "scale(1)", opacity: "100"}
+        },
+        "fade-in": {
+          "0%": {opacity: "0"},
+          '100%': {opacity: "100"}
         }
       },
       animation: {
         "accordion-down": "accordion-down 0.2s ease-out",
         "accordion-up": "accordion-up 0.2s ease-out",
-        "zoom-out": "zoom-out calc(0.6s * 1.2) cubic-bezier(.65,.05,.36,1) both"
+        "zoom-out": "zoom-out calc(0.6s * 1.2) cubic-bezier(.65,.05,.36,1) both",
+        "zoom-out-fade-in": "zoom-out-fade-in calc(0.6s * 1.3) cubic-bezier(.25,.46,.45,.94) both",
+        "fade-in": "fade-in calc(0.6s * 0.8) cubic-bezier(.39,.575,.565,1) both"
       },
     },
   },

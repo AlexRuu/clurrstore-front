@@ -24,7 +24,6 @@ const centerButtons = [
 ];
 
 const HomeCarousel: React.FC<HomeCarouselProps> = ({ homeImages }) => {
-  const ref = useRef<HTMLDivElement>(null);
   const [carouselIndex, setCarouselIndex] = useState<number>(0);
   const [pressed, setPressed] = useState<boolean>(false);
   const [xDirection, setXDirection] = useState<number>(0);
@@ -92,7 +91,7 @@ const HomeCarousel: React.FC<HomeCarouselProps> = ({ homeImages }) => {
   }, [carouselIndex]);
 
   return (
-    <div className="relative md:m-[30px_0px] md:px-16 sm:my-5 sm:px-5 mt-0 mb-5 pt-0 h-full large:px-[60px]">
+    <div className="relative xsmall:px-0 small:mt-5 small:px-5 my-[30px] m-[0_auto] px-[30px] w-full">
       <div className="relative max-w-[1600px] m-[0px_auto]">
         <div className="relative min-w-full block box-border h-full select-none">
           <div
@@ -120,19 +119,19 @@ const HomeCarousel: React.FC<HomeCarouselProps> = ({ homeImages }) => {
                       index == carouselIndex ? "opacity 500ms ease 0s" : "",
                   }}
                   className={cn(
-                    "relative left-0 top-0 block h-full overflow-hidden float-left min-h-[1px] w-1/2 rounded-[30px]",
+                    "small:h-[433.117px] relative left-0 top-0 block h-full overflow-hidden float-left min-h-[1px] w-1/2 rounded-[30px] xsmall:rounded-none",
                     carouselIndex == index
                       ? "z-400 opacity-100"
                       : `z-299 opacity-0`,
                     index == 1 && "-left-[50%]"
                   )}
                 >
-                  <InView>
+                  <InView triggerOnce>
                     {({ inView, ref, entry }) => (
                       <div
                         ref={ref}
                         className={cn(
-                          "relative will-change-transform opacity-100 small:relative",
+                          "small:relative will-change-transform opacity-100",
                           inView && "animate-zoom-out"
                         )}
                         style={{ transform: "scale(1.07)" }}
@@ -140,27 +139,23 @@ const HomeCarousel: React.FC<HomeCarouselProps> = ({ homeImages }) => {
                         <Image
                           src={img.url}
                           alt=""
-                          className="md:h-[520px] h-[180px] min-w-full bg-cover bg-center opacity-100 mx-auto"
+                          className="relative min-w-full opacity-100 mx-auto md:!h-[520px] !h-[180px] small:overflow-hidden rounded-[30px] xsmall:rounded-none"
                           fill
+                          sizes="100vw"
                           style={{ objectFit: "cover", transition: "all .25s" }}
                           loading="lazy"
                         ></Image>
-                        <div
-                          className="pt-[31.73828125%] relative"
-                          style={{ transition: "opacity .5s" }}
-                        />
+                        <div className="pt-[31.73828125%] relative md:h-[520px] h-[180px] transition-opacity duration-500" />
                       </div>
                     )}
                   </InView>
                   <div
                     className={cn(
-                      "small:bottom-[30px] small:!left-1/2 small:min-w-[auto] small:relative small:!top-auto small:-translate-x-1/2 small:w-[calc(100%-40px)] small:p-[45px_30px] small:!m-0 medium-max:p-[20px_20px_24px] medium-max:min-w-0 medium-max:w-[calc(50%-40px)] top-1/2 left-1/2 text-center absolute w-[calc(50%-120px)] pointer-events-none p-[30px_30px_35px] overflow-hidden z-10",
+                      "top-1/2 left-1/2 text-center absolute w-[calc(50%-120px)] pointer-events-none p-[30px_30px_35px] overflow-hidden z-10 -mt-[35%] md:-mt-[18%] medium-min:-mt-[17%] lg:-mt-[10%] xl:-mt-[10%] -ml-[20%] small:bottom-[30px] small:!left-1/2 small:min-w-[auto] small:!top-auto small:-translate-x-1/2 small:w-[calc(100%-40px)] small:p-[45px_30px] small:!m-0 medium-max:p-[20px_20px_24px] medium-max:min-w-0 medium-max:w-[calc(50%-40px)]",
                       index === carouselIndex ? "opacity-100" : "opacity-0"
                     )}
                     style={{
                       transition: "opacity 0.7s 0.6s",
-                      marginLeft: "-20%",
-                      marginTop: "-10%",
                     }}
                   >
                     <div className="bg-[#FFFFF0] absolute top-0 left-0 w-full h-full opacity-50 rounded-xl small:!opacity-100" />
@@ -182,7 +177,10 @@ const HomeCarousel: React.FC<HomeCarouselProps> = ({ homeImages }) => {
                           href={centerButtons[index].url}
                           className="md:py-2 md:px-[22px] md:min-w-[118px] pointer-events-auto m-[15px_7.5px_px0] touch-manipulation small:text-[1rem] rounded-2xl"
                         >
-                          <Button className="duration-[0.1s] text-black bg-[#e2ecf2] hover:shadow-home-button hover:-translate-y-[3px] hover:brightness-95 transition ease-in-out">
+                          <Button
+                            className="text-black bg-[#e2ecf2] hover:shadow-home-button hover:-translate-y-[3px] hover:brightness-95"
+                            style={{ transition: "all 0.1s ease-in-out" }}
+                          >
                             {centerButtons[index].title}
                           </Button>
                         </Link>
