@@ -16,6 +16,9 @@ module.exports = {
       },
     },
     extend: {
+      transitionTimingFunction: {
+        "opacity-fade-in": "cubic-bezier(.25,.46,.45,.94)"
+      },
       screens: {
         'medium-max': {"max": '1080px'},
         'medium-min': {"min": "900"},
@@ -91,6 +94,10 @@ module.exports = {
         "fade-in": {
           "0%": {opacity: "0"},
           '100%': {opacity: "100"}
+        },
+        "fade-in-up": {
+          "0%": {transform: "translateY(20px)", opacity: "0"},
+          "100%": {transform: "translateY(0)", opacity: "100"}
         }
       },
       animation: {
@@ -98,7 +105,8 @@ module.exports = {
         "accordion-up": "accordion-up 0.2s ease-out",
         "zoom-out": "zoom-out calc(0.6s * 1.2) cubic-bezier(.65,.05,.36,1) both",
         "zoom-out-fade-in": "zoom-out-fade-in calc(0.6s * 1.3) cubic-bezier(.25,.46,.45,.94) both",
-        "fade-in": "fade-in calc(0.6s * 0.8) cubic-bezier(.39,.575,.565,1) both"
+        "fade-in": "fade-in calc(0.6s * 0.8) cubic-bezier(.39,.575,.565,1) both",
+        "fade-in-up": "fade-in-up calc(0.6s * 0.6) cubic-bezier(.39,.575,.565,1) both"
       },
     },
   },
