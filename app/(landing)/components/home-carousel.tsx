@@ -131,7 +131,7 @@ const HomeCarousel: React.FC<HomeCarouselProps> = ({ homeImages }) => {
                       <div
                         ref={ref}
                         className={cn(
-                          "small:relative will-change-transform opacity-100",
+                          "small:relative will-change-transform opacity-100 relative",
                           inView && "animate-zoom-out"
                         )}
                         style={{ transform: "scale(1.07)" }}
@@ -141,7 +141,7 @@ const HomeCarousel: React.FC<HomeCarouselProps> = ({ homeImages }) => {
                           alt=""
                           className="relative min-w-full opacity-100 mx-auto md:!h-[520px] !h-[180px] small:overflow-hidden rounded-[30px] xsmall:rounded-none"
                           fill
-                          sizes="100vw"
+                          sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
                           style={{ objectFit: "cover", transition: "all .25s" }}
                           loading="lazy"
                         ></Image>

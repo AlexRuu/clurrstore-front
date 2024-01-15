@@ -1,28 +1,17 @@
 "use client";
 
 import { Product } from "@/types";
+import { InView } from "react-intersection-observer";
+import FeaturedTitle from "./featured-title";
+import { cn } from "@/lib/utils";
 import Link from "next/link";
 import Image from "next/image";
-import { InView } from "react-intersection-observer";
-import { cn } from "@/lib/utils";
-import FeaturedTitle from "./featured-title";
 
-interface FeaturedCategoriesProps {
-  categories: Product[];
+interface featuredItemProps {
+  items: Product[];
 }
 
-const FeaturedCategories: React.FC<FeaturedCategoriesProps> = ({
-  categories,
-}) => {
-  const pins = categories.filter((item) => item.category.title === "Pins");
-
-  const jewelry = categories.filter(
-    (item) => item.category.title === "Jewelry"
-  );
-
-  const stickersWashi = categories.filter(
-    (item) => item.category.title === "Stickers & Washi Tape"
-  );
+const FeaturedItems: React.FC<featuredItemProps> = ({ items }) => {
   return (
     <div className="small:my-5 small:px-5 relative my-[30px] m-[0_auto] px-[30px] w-full">
       <InView triggerOnce>
@@ -34,7 +23,7 @@ const FeaturedCategories: React.FC<FeaturedCategoriesProps> = ({
             )}
             ref={ref}
           >
-            <FeaturedTitle title="Featured Categories" />
+            <FeaturedTitle title="Featured Items" />
           </div>
         )}
       </InView>
@@ -54,7 +43,9 @@ const FeaturedCategories: React.FC<FeaturedCategoriesProps> = ({
                   <div className="text-center">
                     <div className="relative rounded-[30px] overflow-hidden z-[1]">
                       <Link
-                        href={"/categories/Pins"}
+                        href={
+                          "/products/Red-String-of-Fate-Matching-Necklaces-517f6b8e-c6e7-4142-ab83-32b33120f5c0"
+                        }
                         className="block relative overflow-hidden touch-manipulation"
                       >
                         <div
@@ -64,7 +55,7 @@ const FeaturedCategories: React.FC<FeaturedCategoriesProps> = ({
                           <div className="max-w-[1236px] max-h-[1236px] mx-auto">
                             <div className="pt-[100%] relative transition-[background] duration-500">
                               <Image
-                                src={pins[0].image[0].url}
+                                src={items[0].image[0].url}
                                 fill
                                 alt=""
                                 sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
@@ -81,7 +72,7 @@ const FeaturedCategories: React.FC<FeaturedCategoriesProps> = ({
                           <div className="max-w-[1236px] max-h-[1236px] mx-auto">
                             <div className="pt-[100%] relative transition-[background] duration-500">
                               <Image
-                                src={pins[1].image[0].url}
+                                src={items[0].image[1].url}
                                 alt=""
                                 fill
                                 sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
@@ -90,7 +81,7 @@ const FeaturedCategories: React.FC<FeaturedCategoriesProps> = ({
                                   objectFit: "cover",
                                   objectPosition: "center",
                                 }}
-                              ></Image>
+                              />
                             </div>
                           </div>
                         </div>
@@ -99,10 +90,12 @@ const FeaturedCategories: React.FC<FeaturedCategoriesProps> = ({
                   </div>
                   <div className="mt-[.5em] uppercase">
                     <Link
-                      href={"/categories/Pins"}
+                      href={
+                        "/products/Red-String-of-Fate-Matching-Necklaces-517f6b8e-c6e7-4142-ab83-32b33120f5c0"
+                      }
                       className="no-underline touch-manipulation bg-transparent"
                     >
-                      Pins
+                      {items[0].title}
                     </Link>
                   </div>
                 </div>
@@ -121,7 +114,9 @@ const FeaturedCategories: React.FC<FeaturedCategoriesProps> = ({
                   <div className="text-center">
                     <div className="relative rounded-[30px] overflow-hidden z-[1]">
                       <Link
-                        href={"/categories/Jewelry"}
+                        href={
+                          "/products/Red-String-of-Fate-Matching-Pins-266969d8-cf47-4567-8a31-4407745976cc"
+                        }
                         className="block relative overflow-hidden touch-manipulation "
                       >
                         <div
@@ -131,7 +126,7 @@ const FeaturedCategories: React.FC<FeaturedCategoriesProps> = ({
                           <div className="max-w-[1236px] max-h-[1236px] mx-auto">
                             <div className="pt-[100%] relative transition-[background] duration-500">
                               <Image
-                                src={jewelry[0].image[0].url}
+                                src={items[1].image[0].url}
                                 fill
                                 alt=""
                                 sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
@@ -148,7 +143,7 @@ const FeaturedCategories: React.FC<FeaturedCategoriesProps> = ({
                           <div className="max-w-[1236px] max-h-[1236px] mx-auto">
                             <div className="pt-[100%] relative transition-[background] duration-500">
                               <Image
-                                src={jewelry[1].image[0].url}
+                                src={items[1].image[1].url}
                                 alt=""
                                 fill
                                 sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
@@ -166,10 +161,12 @@ const FeaturedCategories: React.FC<FeaturedCategoriesProps> = ({
                   </div>
                   <div className="mt-[.5em] uppercase">
                     <Link
-                      href={"/categories/Jewelry"}
+                      href={
+                        "/products/Red-String-of-Fate-Matching-Pins-266969d8-cf47-4567-8a31-4407745976cc"
+                      }
                       className="no-underline touch-manipulation bg-transparent"
                     >
-                      Jewelry
+                      {items[1].title}
                     </Link>
                   </div>
                 </div>
@@ -188,7 +185,9 @@ const FeaturedCategories: React.FC<FeaturedCategoriesProps> = ({
                   <div className="text-center">
                     <div className="relative rounded-[30px] overflow-hidden z-[1]">
                       <Link
-                        href={"/categories/Stickers-Washi-Tape"}
+                        href={
+                          "/products/Poker-of-Life-1592c7ac-2a82-4597-bd23-1729330a3896"
+                        }
                         className="block relative overflow-hidden touch-manipulation "
                       >
                         <div
@@ -198,7 +197,7 @@ const FeaturedCategories: React.FC<FeaturedCategoriesProps> = ({
                           <div className="max-w-[1236px] max-h-[1236px] mx-auto">
                             <div className="pt-[100%] relative transition-[background] duration-500">
                               <Image
-                                src={stickersWashi[0].image[0].url}
+                                src={items[2].image[0].url}
                                 fill
                                 alt=""
                                 sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
@@ -215,7 +214,7 @@ const FeaturedCategories: React.FC<FeaturedCategoriesProps> = ({
                           <div className="max-w-[1236px] max-h-[1236px] mx-auto">
                             <div className="pt-[100%] relative transition-[background] duration-500">
                               <Image
-                                src={stickersWashi[1].image[0].url}
+                                src={items[2].image[1].url}
                                 alt=""
                                 fill
                                 sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
@@ -233,10 +232,12 @@ const FeaturedCategories: React.FC<FeaturedCategoriesProps> = ({
                   </div>
                   <div className="mt-[.5em] uppercase">
                     <Link
-                      href={"/categories/Stickers-Washi-Tape"}
+                      href={
+                        "/products/Poker-of-Life-1592c7ac-2a82-4597-bd23-1729330a3896"
+                      }
                       className="no-underline touch-manipulation bg-transparent"
                     >
-                      Stickers & Washi Tape
+                      {items[2].title}
                     </Link>
                   </div>
                 </div>
@@ -249,4 +250,4 @@ const FeaturedCategories: React.FC<FeaturedCategoriesProps> = ({
   );
 };
 
-export default FeaturedCategories;
+export default FeaturedItems;

@@ -18,7 +18,7 @@ const FeaturedItem: React.FC<FeaturedSectionProps> = ({ featured }) => {
     <div className="relative xsmall:px-0 small:mt-5 small:px-5 my-[30px] m-[0_auto] px-[30px] w-full">
       <div className="bg-[#cee5c3] xsmall:rounded-none rounded-[30px] items-center flex justify-between flex-wrap overflow-hidden relative z-[1] max-w-[1600px] m-[0px_auto]">
         <div className="relative small:w-full w-1/2 overflow-hidden">
-          <InView triggerOnce onChange={(InView) => console.log(InView)}>
+          <InView triggerOnce>
             {({ inView, ref }) => (
               <div
                 ref={ref}
@@ -44,7 +44,7 @@ const FeaturedItem: React.FC<FeaturedSectionProps> = ({ featured }) => {
                           src={featured.image[0].url}
                           fill
                           alt=""
-                          sizes=""
+                          sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
                           loading="lazy"
                           style={{ objectFit: "cover" }}
                           className="object-[50%_50%] opacity-100 transition-[opacity_transform] duration-500 absolute top-0 left-0 max-w-full border-none hover:scale-105"
