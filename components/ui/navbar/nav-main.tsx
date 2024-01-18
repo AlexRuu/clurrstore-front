@@ -7,6 +7,7 @@ import NavLinks from "./nav-links";
 import RightNav from "./right-nav";
 import { Category } from "@/types";
 import { useState, useEffect } from "react";
+import Image from "next/image";
 
 const logoFont = Yeseva_One({ weight: ["400"], subsets: ["latin"] });
 
@@ -31,7 +32,7 @@ const NavMain: React.FC<NavMainProps> = ({ data }) => {
   return (
     <header
       className={cn(
-        "z-[101] flex flex-col flex-nowrap w-full fixed top-0",
+        "z-[101] flex flex-col flex-nowrap w-full fixed top-0 ",
         scrollY >= 20 && "shadow-[0_2px_6px_rgba(0,0,0,0.08)]"
       )}
     >
@@ -50,10 +51,16 @@ const NavMain: React.FC<NavMainProps> = ({ data }) => {
               >
                 <div
                   className={cn(
-                    "text-2xl text-logo tracking-[2px]",
+                    "text-2xl text-logo tracking-[2px] flex justify-center items-center",
                     logoFont.className
                   )}
                 >
+                  <Image
+                    src="/images/logo.png"
+                    width={50}
+                    height={50}
+                    alt=""
+                  ></Image>
                   <p>clurr's.studio</p>
                 </div>
               </Link>

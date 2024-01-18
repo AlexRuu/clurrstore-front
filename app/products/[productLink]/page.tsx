@@ -1,8 +1,20 @@
-import getDesign from "@/actions/get-design";
 import getProduct from "@/actions/get-product";
 import ProductGallery from "@/components/product/product-gallery";
 import ProductInfo from "@/components/product/product-info";
 import { notFound } from "next/navigation";
+import { Metadata } from "next";
+
+type Props = {
+  params: { productLink: string };
+};
+
+export const generateMetadata = ({ params }: Props): Metadata => {
+  const productReg = params.productLink.match(/([A-Z])\w+/g);
+  const productName = productReg?.join(" ");
+  return {
+    title: `${productName}`,
+  };
+};
 interface ItemPageProps {
   params: {
     productLink: string;

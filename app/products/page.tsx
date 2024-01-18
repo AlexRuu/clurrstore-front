@@ -1,6 +1,13 @@
 import getProducts from "@/actions/get-products";
 import Filter from "@/components/ui/filter";
 import ProductCard from "@/components/ui/product-card";
+import { Metadata } from "next";
+
+export const generateMetadata = (): Metadata => {
+  return {
+    title: `Products`,
+  };
+};
 
 interface ProductPageProps {
   searchParams: {

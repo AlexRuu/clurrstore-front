@@ -3,6 +3,18 @@ import getProducts from "@/actions/get-products";
 import Breadcrumb from "@/components/breadcrumbs";
 import Filter from "@/components/ui/filter";
 import ProductCard from "@/components/ui/product-card";
+import { Metadata } from "next";
+
+type Props = {
+  params: { categoryName: string };
+};
+
+export const generateMetadata = ({ params }: Props): Metadata => {
+  const category = params.categoryName.replaceAll("-", " ");
+  return {
+    title: `${category}`,
+  };
+};
 
 interface CategoryPageProps {
   params: {
