@@ -43,17 +43,19 @@ const CategoryPage: React.FC<CategoryPageProps> = async ({
   });
 
   return (
-    <main className="min-h-[500px] mt-24">
+    <main className="min-h-[500px] mt-5">
       <section className="xl:!p-[0px_85px] md:p-[0px_55px]">
-        <div className="w-full mb-10 flex flex-col flex-nowrap">
+        <Breadcrumb title={category?.title} />
+        <div className="w-full mb-10 flex justify-center flex-nowrap">
           <h1 className="font-medium text-2xl flex mb-4">{category?.title}</h1>
-          <Breadcrumb title={category?.title} />
+        </div>
+        <div className="flex flex-shrink-0 justify-end w-full pr-3">
+          <Filter />
         </div>
         <div className="flex w-full">
-          <Filter />
-          <div>
+          <div className="w-full">
             {products.length > 0 ? (
-              <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 box-border">
+              <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-3 box-border w-full">
                 {products.map((product) => (
                   <ProductCard data={product} key={product.id} />
                 ))}

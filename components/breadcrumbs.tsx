@@ -39,8 +39,12 @@ const Breadcrumb: React.FC<BreadcrumbProps> = ({ title }) => {
         </Link>
       ))}
       <>
-        <span className="ml-2 mr-2">/</span>
-        <p className="inline">{title}</p>
+        {title && (
+          <>
+            <span className="ml-2 mr-2">/</span>
+            <p className="inline">{title}</p>
+          </>
+        )}
       </>
     </div>
   );

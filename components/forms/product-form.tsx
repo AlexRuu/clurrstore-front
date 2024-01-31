@@ -119,7 +119,7 @@ const ProductForm: React.FC<ProductFormProps> = ({
                 <FormLabel>Design: </FormLabel>
                 <Select onValueChange={field.onChange} value={field.value}>
                   <FormControl>
-                    <SelectTrigger>
+                    <SelectTrigger className="focus:ring-0 focus-visible:ring-0">
                       <SelectValue placeholder="Choose a Design" />
                     </SelectTrigger>
                   </FormControl>
@@ -145,7 +145,7 @@ const ProductForm: React.FC<ProductFormProps> = ({
                 <FormLabel>Style: </FormLabel>
                 <Select onValueChange={field.onChange} value={field.value}>
                   <FormControl>
-                    <SelectTrigger>
+                    <SelectTrigger className="focus:ring-0 focus-visible:ring-0">
                       <SelectValue placeholder="Choose a Style" />
                     </SelectTrigger>
                   </FormControl>

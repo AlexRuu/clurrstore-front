@@ -3,38 +3,47 @@
 import { useRouter, useSearchParams } from "next/navigation";
 import qs from "query-string";
 import { useState } from "react";
-
-const mostFilters = [
-  {
-    name: "Price: Low to High",
-    sort: "price-asc",
-  },
-  {
-    name: "Price: High to Low",
-    sort: "price-desc",
-  },
-  {
-    name: "Name: A to Z",
-    sort: "title-asc",
-  },
-  {
-    name: "Name: Z to A",
-    sort: "title-desc",
-  },
-  {
-    name: "Date: Old to New",
-    sort: "createdAt-asc",
-  },
-  {
-    name: "Date: New to Old",
-    sort: "createdAt-desc",
-  },
-];
+import {
+  Select,
+  SelectContent,
+  SelectGroup,
+  SelectTrigger,
+  SelectValue,
+  SelectItem,
+  SelectLabel,
+} from "./select";
 
 const Filter = () => {
   const [selectedQuery, setSelectedQuery] = useState(null);
   const router = useRouter();
   const searchParams = useSearchParams();
+
+  const mostFilters = [
+    {
+      name: "Price: Low to High",
+      sort: "price-asc",
+    },
+    {
+      name: "Price: High to Low",
+      sort: "price-desc",
+    },
+    {
+      name: "Name: A to Z",
+      sort: "title-asc",
+    },
+    {
+      name: "Name: Z to A",
+      sort: "title-desc",
+    },
+    {
+      name: "Date: Old to New",
+      sort: "createdAt-asc",
+    },
+    {
+      name: "Date: New to Old",
+      sort: "createdAt-desc",
+    },
+  ];
 
   const handleFeatured = () => {
     const current = qs.parse(searchParams.toString());
@@ -95,14 +104,37 @@ const Filter = () => {
   };
 
   return (
-    <div className="flex flex-col flex-nowrap justify-start items-start w-1/5">
-      <h1>Sort by</h1>
-      <button onClick={() => handleFeatured()}>Featured</button>
+    <div className="flex flex-col flex-nowrap w-1/5">
+      <Select
+        onValueChange={(value) => {
+          if (value == "featured") {
+            handleFeatured();
+          } else {
+            handleClick(value);
+          }
+        }}
+      >
+        <SelectTrigger className="focus-visible:ring-0">
+          <SelectValue placeholder="Sort By" />
+        </SelectTrigger>
+        <SelectContent>
+          <SelectGroup>
+            <SelectLabel>Sort By</SelectLabel>
+            <SelectItem value="featured">Featured</SelectItem>
+            {mostFilters.map((filter) => (
+              <SelectItem value={filter.sort} key={filter.name}>
+                {filter.name}
+              </SelectItem>
+            ))}
+          </SelectGroup>
+        </SelectContent>
+      </Select>
+      {/* <button onClick={() => handleFeatured()}>Featured</button>
       {mostFilters.map((filter, index) => (
         <button key={index} onClick={() => handleClick(filter.sort)}>
           {filter.name}
         </button>
-      ))}
+      ))} */}
     </div>
   );
 };

@@ -27,7 +27,7 @@ const HomePage = async () => {
   });
 
   return (
-    <main className="min-h-[500px] mt-32 pb-[30px] small:mt-28 xsmall:mt-0">
+    <main className="min-h-[500px] mt-10 pb-[30px] small:mt-4 xsmall:mt-0">
       <span
         className="h-[251px] small:max-h-[25vh] absolute w-full left-0 top-0 xsmall:hidden md:h-[330px] content-none"
         style={{

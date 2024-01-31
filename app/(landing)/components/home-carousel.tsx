@@ -127,7 +127,7 @@ const HomeCarousel: React.FC<HomeCarouselProps> = ({ homeImages }) => {
                   )}
                 >
                   <InView triggerOnce>
-                    {({ inView, ref, entry }) => (
+                    {({ inView, ref }) => (
                       <div
                         ref={ref}
                         className={cn(
@@ -144,14 +144,14 @@ const HomeCarousel: React.FC<HomeCarouselProps> = ({ homeImages }) => {
                           sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
                           style={{ objectFit: "cover", transition: "all .25s" }}
                           loading="lazy"
-                        ></Image>
+                        />
                         <div className="pt-[31.73828125%] relative md:h-[520px] h-[180px] transition-opacity duration-500" />
                       </div>
                     )}
                   </InView>
                   <div
                     className={cn(
-                      "top-1/2 left-1/2 text-center absolute w-[calc(50%-120px)] pointer-events-none p-[30px_30px_35px] overflow-hidden z-10 -mt-[35%] md:-mt-[18%] medium-min:-mt-[17%] lg:-mt-[10%] xl:-mt-[10%] -ml-[20%] small:bottom-[30px] small:!left-1/2 small:min-w-[auto] small:!top-auto small:-translate-x-1/2 small:w-[calc(100%-40px)] small:p-[45px_30px] small:!m-0 medium-max:p-[20px_20px_24px] medium-max:min-w-0 medium-max:w-[calc(50%-40px)]",
+                      "top-1/2 left-1/2 text-center absolute w-[calc(50%-120px)] pointer-events-none p-[30px_30px_35px] overflow-hidden z-10 -mt-[35%] md:-mt-[18%] medium-min:-mt-[17%] lg:-mt-[10%] xl:-mt-[10%] -ml-[20%] small:bottom-[10px] small:!left-1/2 small:min-w-[auto] small:!top-auto small:-translate-x-1/2 small:w-[calc(100%-40px)] small:p-[45px_30px] small:!m-0 medium-max:p-[20px_20px_24px] medium-max:min-w-0 medium-max:w-[calc(50%-40px)]",
                       index === carouselIndex ? "opacity-100" : "opacity-0"
                     )}
                     style={{

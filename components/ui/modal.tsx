@@ -1,10 +1,6 @@
 "use client";
 
-import IconButton from "./icon-button";
-import { X } from "lucide-react";
-
 import { Dialog, DialogContent } from "./dialog";
-import { DialogClose } from "@radix-ui/react-dialog";
 
 interface ModalProps {
   open: boolean;
