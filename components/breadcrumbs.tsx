@@ -30,8 +30,8 @@ const Breadcrumb: React.FC<BreadcrumbProps> = ({ title }) => {
           href={link.href}
           key={index}
           className={cn(
-            " text-[#4a4a4a] transition ease-out duration-150 hover:text-neutral-400",
-            link.active ? "text-gray-950" : ""
+            " text-gray-500 transition ease-out duration-150 hover:text-neutral-400 uppercase",
+            link.active ? "text-black" : ""
           )}
         >
           {link.label}
@@ -42,7 +42,7 @@ const Breadcrumb: React.FC<BreadcrumbProps> = ({ title }) => {
         {title && (
           <>
             <span className="ml-2 mr-2">/</span>
-            <p className="inline">{title}</p>
+            <p className="inline uppercase">{title}</p>
           </>
         )}
       </>

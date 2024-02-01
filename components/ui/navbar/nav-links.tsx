@@ -25,6 +25,7 @@ import {
   AccordionItem,
   AccordionTrigger,
 } from "../accordion";
+import RightNav from "./right-nav";
 
 interface NavLinksProps {
   data: Category[];
@@ -276,6 +277,9 @@ const NavLinks: React.FC<NavLinksProps> = ({
                 )
               )}
             </div>
+            {scrollY >= 160 && (
+              <RightNav scrollY={scrollY} mobileOpen={mobileOpen} />
+            )}
           </nav>
         </section>
       </div>

@@ -7,7 +7,12 @@ import { ShoppingCart } from "lucide-react";
 import { cn } from "@/libs/utlils";
 import Link from "next/link";
 
-const RightNav = () => {
+interface RightNavProps {
+  scrollY?: number;
+  mobileOpen?: boolean;
+}
+
+const RightNav: React.FC<RightNavProps> = ({ scrollY, mobileOpen }) => {
   const cart = useCart();
 
   const [isMounted, setIsMounted] = useState(false);
@@ -30,7 +35,13 @@ const RightNav = () => {
   }
 
   return (
-    <div className="ml-auto flex items-center gap-x-4">
+    <div
+      className={cn(
+        "absolute justify-end flex items-center med-small:right-10 med-small:top-5 right-10 top-16 lg:right-16 xl:right-18",
+        scrollY! >= 160 && "top-2 lg:right-24",
+        mobileOpen && "hidden"
+      )}
+    >
       <Link href={"/cart"}>
         <ShoppingCart
           color="#f199b3"

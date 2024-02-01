@@ -60,8 +60,8 @@ const NavMain: React.FC<NavMainProps> = ({ data }) => {
         <div className="relative">
           <header className="small:transition-[z-index] small:duration-0 small:delay-300 small:px-5 med-small:p-0 px-[30px] z-[105] w-full block bg-white">
             <div className="med-small:block med-small:p-0 items-center flex justify-between relative p-[15px_0px] max-w-[1600px] m-[0px_auto] ">
-              <div className="flex-grow">
-                <div className="bg-white">
+              <div className="flex-grow w-full">
+                <div className="bg-white flex">
                   <div className="med-small:justify-between med-small:relative med-small: w-full med-small:p-[10px_20px] justify-center med-small:items-center flex flex-grow relative">
                     {/* <div></div> search icon? */}
                     {/* <div></div> search bar goes here */}
@@ -72,11 +72,11 @@ const NavMain: React.FC<NavMainProps> = ({ data }) => {
                         mobileOpen && "!hidden"
                       )}
                     >
-                      <Menu />
+                      <Menu size={30} />
                     </button>
                     <h1
                       className={cn(
-                        "med-small:block med-small:ml-[10px] med-small:p-0 med-small:mr-auto med-small:flex-grow med-small:text-left text-logo max-w-[180px]",
+                        "med-small:block med-small:ml-[10px] med-small:p-0 med-small:mr-auto med-small:flex-grow med-small:text-left text-logo max-w-[280px]",
                         logoFont.className
                       )}
                     >
@@ -90,12 +90,14 @@ const NavMain: React.FC<NavMainProps> = ({ data }) => {
                           height={0}
                           width={0}
                           sizes="100vw"
-                          className="med-small:h-10 med-small:w-10 w-24 h-24"
+                          priority
+                          className="med-small:h-14 med-small:w-14 w-24 h-24 med-small:mr-2"
                         />
                         Clurr's Studio
                       </Link>
                     </h1>
                   </div>
+                  <RightNav />
                 </div>
               </div>
             </div>

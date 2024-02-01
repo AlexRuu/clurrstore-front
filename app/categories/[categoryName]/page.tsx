@@ -43,9 +43,11 @@ const CategoryPage: React.FC<CategoryPageProps> = async ({
   });
 
   return (
-    <main className="min-h-[500px] mt-5">
-      <section className="xl:!p-[0px_85px] md:p-[0px_55px]">
-        <Breadcrumb title={category?.title} />
+    <main className="min-h-[500px] mt-10 med-small:mx-5">
+      <section className="xl:!p-[0px_85px] p-[0px_55px] med-small:p-0">
+        <div className="med-small:ml-[9px] ml-3 text-xs">
+          <Breadcrumb title={category?.title} />
+        </div>
         <div className="w-full mb-10 flex justify-center flex-nowrap">
           <h1 className="font-medium text-2xl flex mb-4">{category?.title}</h1>
         </div>
