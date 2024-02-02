@@ -6,8 +6,13 @@ import { Form, FormControl, FormField, FormItem } from "../ui/form";
 import { Input } from "../ui/input";
 import { Search } from "lucide-react";
 import { useRouter } from "next/navigation";
+import { cn } from "@/lib/utils";
 
-const SearchForm = () => {
+interface SearchFormProps {
+  className?: string;
+}
+
+const SearchForm: React.FC<SearchFormProps> = ({ className }) => {
   const router = useRouter();
   const formSchema = z.object({
     searchQuery: z.string().optional(),
@@ -30,7 +35,12 @@ const SearchForm = () => {
   return (
     <Form {...form}>
       <form onSubmit={form.handleSubmit(onSubmit)}>
-        <div className="w-full flex items-center bg-gray-300 justify-between rounded-md">
+        <div
+          className={cn(
+            "w-full flex items-center justify-between rounded-md",
+            className
+          )}
+        >
           <FormField
             control={form.control}
             name="searchQuery"
@@ -41,7 +51,10 @@ const SearchForm = () => {
                     type="text"
                     autoComplete="off"
                     autoCorrect="off"
-                    className="focus:ring-0 focus-within:ring-0 border-none text-lg py-6 bg-gray-300 placeholder:text-black"
+                    className={cn(
+                      "focus:ring-0 focus-within:ring-0 border-none text-lg py-6 placeholder:text-black",
+                      className
+                    )}
                     placeholder="Search the store"
                     {...field}
                     value={field.value}

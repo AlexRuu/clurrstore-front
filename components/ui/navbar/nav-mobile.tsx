@@ -74,7 +74,7 @@ const NavMobile: React.FC<NavMobileProps> = ({ data }) => {
               onOpenAutoFocus={(e) => e.preventDefault()}
             >
               <SheetHeader className="mt-10 mb-2">
-                <SearchForm />
+                <SearchForm className="bg-gray-300" />
               </SheetHeader>
               <div>
                 <ul>
