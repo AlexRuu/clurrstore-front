@@ -5,8 +5,10 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { Form, FormControl, FormField, FormItem } from "../ui/form";
 import { Input } from "../ui/input";
 import { Search } from "lucide-react";
+import { useRouter } from "next/navigation";
 
 const SearchForm = () => {
+  const router = useRouter();
   const formSchema = z.object({
     searchQuery: z.string().optional(),
   });
@@ -17,9 +19,17 @@ const SearchForm = () => {
     defaultValues: { searchQuery: "" },
   });
 
+  const onSubmit = (data: ProductFormValues) => {
+    if (!data.searchQuery) {
+      router.push("/search");
+    } else {
+      router.push(`/search?=${data.searchQuery}`);
+    }
+  };
+
   return (
     <Form {...form}>
-      <form>
+      <form onSubmit={form.handleSubmit(onSubmit)}>
         <div className="w-full flex items-center bg-gray-300 justify-between rounded-md">
           <FormField
             control={form.control}
@@ -40,7 +50,7 @@ const SearchForm = () => {
               </FormItem>
             )}
           />
-          <button>
+          <button type="submit">
             <Search className="mr-4 hover:text-gray-600" />
           </button>
         </div>
