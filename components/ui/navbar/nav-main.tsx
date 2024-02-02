@@ -8,7 +8,7 @@ import RightNav from "./right-nav";
 import { Category } from "@/types";
 import { useState, useEffect } from "react";
 import Image from "next/image";
-import { Menu } from "lucide-react";
+import NavMobile from "./nav-mobile";
 
 const logoFont = Yeseva_One({ weight: ["400"], subsets: ["latin"] });
 
@@ -18,11 +18,6 @@ interface NavMainProps {
 
 const NavMain: React.FC<NavMainProps> = ({ data }) => {
   const [scrollY, setScrollY] = useState(0);
-  const [mobileOpen, setMobileOpen] = useState(false);
-
-  const openMobileMenu = () => {
-    setMobileOpen(true);
-  };
 
   const handleScroll = () => {
     setScrollY(window.scrollY);
@@ -32,20 +27,6 @@ const NavMain: React.FC<NavMainProps> = ({ data }) => {
     window.addEventListener("scroll", handleScroll);
     return () => {
       window.removeEventListener("scroll", handleScroll);
-    };
-  }, []);
-
-  useEffect(() => {
-    const closeMobileMenu = () => {
-      setMobileOpen(false);
-    };
-    window.addEventListener("resize", () => {
-      if (window.innerWidth > 939.98) {
-        closeMobileMenu;
-      }
-    });
-    return () => {
-      window.removeEventListener("resize", closeMobileMenu);
     };
   }, []);
 
@@ -65,15 +46,7 @@ const NavMain: React.FC<NavMainProps> = ({ data }) => {
                   <div className="med-small:justify-between med-small:relative med-small: w-full med-small:p-[10px_20px] justify-center med-small:items-center flex flex-grow relative">
                     {/* <div></div> search icon? */}
                     {/* <div></div> search bar goes here */}
-                    <button
-                      onClick={openMobileMenu}
-                      className={cn(
-                        "med-small:block med-small:z-[2] med-small:-mr-2 p-2 hidden z-[1] small:text-[1rem] m-0 bg-transparent min-w-0 shadow-none",
-                        mobileOpen && "!hidden"
-                      )}
-                    >
-                      <Menu size={30} />
-                    </button>
+                    <NavMobile data={data} />
                     <h1
                       className={cn(
                         "med-small:block med-small:ml-[10px] med-small:p-0 med-small:mr-auto med-small:flex-grow med-small:text-left text-logo max-w-[280px]",
@@ -102,12 +75,7 @@ const NavMain: React.FC<NavMainProps> = ({ data }) => {
               </div>
             </div>
           </header>
-          <NavLinks
-            data={data}
-            scrollY={scrollY}
-            mobileOpen={mobileOpen}
-            setMobileOpen={setMobileOpen}
-          />
+          <NavLinks data={data} scrollY={scrollY} />
         </div>
       </div>
     </div>

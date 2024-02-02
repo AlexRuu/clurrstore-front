@@ -1,13 +1,6 @@
 "use client";
 
-import {
-  Dispatch,
-  SetStateAction,
-  Fragment,
-  useEffect,
-  useRef,
-  useState,
-} from "react";
+import { Fragment, useEffect, useRef, useState } from "react";
 
 import { usePathname } from "next/navigation";
 import Link from "next/link";
@@ -19,30 +12,17 @@ import { cn } from "@/libs/utlils";
 import { Category } from "@/types";
 
 import { ChevronDown, Search, X } from "lucide-react";
-import {
-  Accordion,
-  AccordionContent,
-  AccordionItem,
-  AccordionTrigger,
-} from "../accordion";
 import RightNav from "./right-nav";
 
 interface NavLinksProps {
   data: Category[];
   scrollY: number;
-  mobileOpen: boolean;
-  setMobileOpen: Dispatch<SetStateAction<boolean>>;
 }
 
-const NavLinks: React.FC<NavLinksProps> = ({
-  data,
-  scrollY,
-  mobileOpen,
-  setMobileOpen,
-}) => {
-  const pathname = usePathname();
+const NavLinks: React.FC<NavLinksProps> = ({ data, scrollY }) => {
   const [scope, animate] = useAnimate();
   const [isOpen, setIsOpen] = useState(false);
+  const pathname = usePathname();
 
   const routes = data.map((route) => ({
     href: `/categories/${route.title.replaceAll(/.\&.|\W/g, "-")}`,
@@ -98,10 +78,6 @@ const NavLinks: React.FC<NavLinksProps> = ({
       );
   };
 
-  const closeMobileMenu = () => {
-    setMobileOpen(false);
-  };
-
   const onMouseEnter = (closed: boolean) => {
     setIsOpen(true);
     clearTimeout(timeout);
@@ -128,78 +104,9 @@ const NavLinks: React.FC<NavLinksProps> = ({
         <section className="bg-white">
           <nav
             className={cn(
-              "med-small:opacity-0 med-small:block med-small:fixed med-small:top-0 med-small:left-0 med-small:w-full med-small:bg-white",
-              mobileOpen && "med-small:opacity-100 med-small:h-full"
+              "med-small:opacity-0 med-small:block med-small:fixed med-small:top-0 med-small:left-0 med-small:w-full med-small:bg-white"
             )}
           >
-            <div
-              className={cn(
-                "hidden opacity-0",
-                mobileOpen && "block opacity-100"
-              )}
-            >
-              <button onClick={closeMobileMenu}>
-                <X />
-              </button>
-            </div>
-            <div
-              className={cn(
-                "hidden opacity-0",
-                mobileOpen && "block opacity-100"
-              )}
-            >
-              <div>
-                <div>
-                  {/* form */}
-                  <button>
-                    <Search />
-                  </button>
-                </div>
-              </div>
-            </div>
-            <div
-              className={cn(
-                "hidden opacity-0",
-                mobileOpen && "block opacity-100"
-              )}
-            >
-              <ul>
-                {navRoutes.map((route, index) =>
-                  route.submenu ? (
-                    <li key={index}>
-                      <Accordion type="single" collapsible>
-                        <AccordionItem value="item-1">
-                          <AccordionTrigger>
-                            <Link href={route.href}>{route.label}</Link>
-                          </AccordionTrigger>
-                          <ul>
-                            {route.submenu.map((individual) => (
-                              <li key={individual.label}>
-                                <AccordionContent>
-                                  <Link
-                                    href={individual.href}
-                                    onClick={closeMobileMenu}
-                                  >
-                                    {individual.label}
-                                  </Link>
-                                </AccordionContent>
-                              </li>
-                            ))}
-                          </ul>
-                        </AccordionItem>
-                      </Accordion>
-                    </li>
-                  ) : (
-                    <li
-                      key={index}
-                      className="flex flex-1 items-center justify-between py-4 font-medium hover:underline border-b"
-                    >
-                      <Link href={route.href}>{route.label}</Link>
-                    </li>
-                  )
-                )}
-              </ul>
-            </div>
             <div className="inline-flex items-center justify-center w-full med-small:hidden">
               {navRoutes.map((route) =>
                 route.submenu ? (
@@ -277,9 +184,7 @@ const NavLinks: React.FC<NavLinksProps> = ({
                 )
               )}
             </div>
-            {scrollY >= 160 && (
-              <RightNav scrollY={scrollY} mobileOpen={mobileOpen} />
-            )}
+            {scrollY >= 160 && <RightNav scrollY={scrollY} />}
           </nav>
         </section>
       </div>
