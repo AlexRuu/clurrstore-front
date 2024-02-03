@@ -27,7 +27,7 @@ const ProductPage: React.FC<ProductPageProps> = async ({ searchParams }) => {
   return (
     <main className="min-h-[500px] mt-10 med-small:mx-5">
       <section className="xl:!p-[0px_85px] p-[0px_55px] med-small:p-0">
-        <PageHeader second="products" />
+        <PageHeader second="products" headerTitle="Products" />
         <div className="flex flex-shrink-0 justify-end w-full pr-3">
           <Filter />
         </div>

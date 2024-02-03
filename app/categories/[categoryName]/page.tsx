@@ -46,7 +46,11 @@ const CategoryPage: React.FC<CategoryPageProps> = async ({
   return (
     <main className="min-h-[500px] mt-10 med-small:mx-5">
       <section className="xl:!p-[0px_85px] p-[0px_55px] med-small:p-0">
-        <PageHeader second="products" title={category?.title} />
+        <PageHeader
+          second="products"
+          title={category?.title}
+          headerTitle={category?.title}
+        />
         <div className="flex flex-shrink-0 justify-end w-full pr-3">
           <Filter />
         </div>
