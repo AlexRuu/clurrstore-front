@@ -5,10 +5,11 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 
 interface BreadcrumbProps {
+  second?: string;
   title?: string;
 }
 
-const Breadcrumb: React.FC<BreadcrumbProps> = ({ title }) => {
+const Breadcrumb: React.FC<BreadcrumbProps> = ({ second, title }) => {
   const pathname = usePathname();
 
   const links = [
@@ -18,9 +19,9 @@ const Breadcrumb: React.FC<BreadcrumbProps> = ({ title }) => {
       active: pathname === "/",
     },
     {
-      href: "/products",
-      label: "Products",
-      active: pathname === "/products",
+      href: `/${second}`,
+      label: `${second}`,
+      active: pathname === `${second}`,
     },
   ];
   return (
