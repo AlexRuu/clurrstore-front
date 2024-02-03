@@ -7,12 +7,14 @@ import { Input } from "../ui/input";
 import { Search } from "lucide-react";
 import { useRouter } from "next/navigation";
 import { cn } from "@/lib/utils";
+import Button from "../ui/button";
 
 interface SearchFormProps {
   className?: string;
+  page?: boolean;
 }
 
-const SearchForm: React.FC<SearchFormProps> = ({ className }) => {
+const SearchForm: React.FC<SearchFormProps> = ({ className, page }) => {
   const router = useRouter();
   const formSchema = z.object({
     searchQuery: z.string().optional(),
@@ -34,7 +36,7 @@ const SearchForm: React.FC<SearchFormProps> = ({ className }) => {
 
   return (
     <Form {...form}>
-      <form onSubmit={form.handleSubmit(onSubmit)}>
+      <form onSubmit={form.handleSubmit(onSubmit)} className="flex">
         <div
           className={cn(
             "w-full flex items-center justify-between rounded-md",
@@ -63,10 +65,20 @@ const SearchForm: React.FC<SearchFormProps> = ({ className }) => {
               </FormItem>
             )}
           />
-          <button type="submit">
-            <Search className="mr-4 hover:text-gray-600" />
-          </button>
+          {!page && (
+            <button type="submit">
+              <Search className="mr-4 hover:text-gray-600" />
+            </button>
+          )}
         </div>
+        {page && (
+          <button
+            type="submit"
+            className="bg-logo py-2 px-5 ml-4 rounded-full bg-opacity-70 hover:bg-opacity-50"
+          >
+            Search
+          </button>
+        )}
       </form>
     </Form>
   );
