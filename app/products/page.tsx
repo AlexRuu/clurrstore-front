@@ -1,6 +1,7 @@
 import getProducts from "@/actions/get-products";
 import Breadcrumb from "@/components/breadcrumbs";
 import Filter from "@/components/ui/filter";
+import PageHeader from "@/components/ui/header";
 import ProductCard from "@/components/ui/product-card";
 import { Metadata } from "next";
 
@@ -26,12 +27,7 @@ const ProductPage: React.FC<ProductPageProps> = async ({ searchParams }) => {
   return (
     <main className="min-h-[500px] mt-10 med-small:mx-5">
       <section className="xl:!p-[0px_85px] p-[0px_55px] med-small:p-0">
-        <div className="med-small:ml-[9px] ml-3 text-xs">
-          <Breadcrumb />
-        </div>
-        <div className="w-full mb-10 flex justify-center flex-nowrap">
-          <h1 className="font-medium text-2xl flex mb-4">Products</h1>
-        </div>
+        <PageHeader second="products" />
         <div className="flex flex-shrink-0 justify-end w-full pr-3">
           <Filter />
         </div>
