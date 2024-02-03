@@ -1,6 +1,7 @@
 import { Instagram, Menu, Search } from "lucide-react";
 import {
   Sheet,
+  SheetClose,
   SheetContent,
   SheetFooter,
   SheetHeader,
@@ -84,7 +85,9 @@ const NavMobile: React.FC<NavMobileProps> = ({ data }) => {
                         <Accordion type="single" collapsible>
                           <AccordionItem value={route.label}>
                             <AccordionTrigger>
-                              <Link href={route.href}>{route.label}</Link>
+                              <SheetClose asChild>
+                                <Link href={route.href}>{route.label}</Link>
+                              </SheetClose>
                             </AccordionTrigger>
                             <AccordionContent>
                               <ul>
@@ -93,9 +96,11 @@ const NavMobile: React.FC<NavMobileProps> = ({ data }) => {
                                     key={category.label}
                                     className="px-5 py-2 font-medium text-sm hover:text-neutral-400"
                                   >
-                                    <Link href={category.href}>
-                                      {category.label}
-                                    </Link>
+                                    <SheetClose asChild>
+                                      <Link href={category.href}>
+                                        {category.label}
+                                      </Link>
+                                    </SheetClose>
                                   </li>
                                 ))}
                               </ul>
@@ -108,9 +113,11 @@ const NavMobile: React.FC<NavMobileProps> = ({ data }) => {
                         key={route.label}
                         className="flex flex-1 items-center justify-between py-4 font-medium border-b"
                       >
-                        <Link href={route.href} className="hover:underline">
-                          {route.label}
-                        </Link>
+                        <SheetClose asChild>
+                          <Link href={route.href} className="hover:underline">
+                            {route.label}
+                          </Link>
+                        </SheetClose>
                       </li>
                     )
                   )}
