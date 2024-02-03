@@ -181,9 +181,6 @@ const Filter = () => {
                     <Button className="text-black max-w-full bg-[#F8C8DC] w-1/2">
                       Apply
                     </Button>
-                    <Button className="text-black max-w-full border w-1/2">
-                      Close
-                    </Button>
                   </div>
                 </DrawerClose>
               </DrawerFooter>
