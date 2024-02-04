@@ -1,6 +1,5 @@
 import getCategories from "@/actions/get-categories";
 import getProducts from "@/actions/get-products";
-import Breadcrumb from "@/components/ui/breadcrumbs";
 import Filter from "@/components/ui/filter";
 import PageHeader from "@/components/ui/header";
 import ProductCard from "@/components/ui/product-card";
@@ -34,7 +33,9 @@ const CategoryPage: React.FC<CategoryPageProps> = async ({
   const categories = await getCategories();
 
   const category = categories.find((category) =>
-    category.title.includes(params.categoryName.split("-", 1)[0])
+    category.title
+      .toLowerCase()
+      .includes(params.categoryName.toLowerCase().split("-", 1)[0])
   );
 
   const products = await getProducts({
