@@ -31,10 +31,13 @@ const NavMobile: React.FC<NavMobileProps> = ({ data }) => {
   const isDesktop = useMediaQuery("(min-width: 939.98px)");
 
   const routes = data.map((route) => ({
-    href: `/categories/${route.title.replaceAll(/.\&.|\W/g, "-")}`,
+    href: `/categories/${route.title
+      .toLowerCase()
+      .replaceAll(/.\&.|\W/g, "-")}`,
     label: route.title,
     active:
-      pathname === `/categories/${route.title.replaceAll(/.\&.|\W/g, "-")}`,
+      pathname ===
+      `/categories/${route.title.toLowerCase().replaceAll(/.\&.|\W/g, "-")}`,
   }));
 
   const navRoutes = [

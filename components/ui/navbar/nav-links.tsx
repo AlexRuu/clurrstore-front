@@ -25,10 +25,13 @@ const NavLinks: React.FC<NavLinksProps> = ({ data, scrollY }) => {
   const pathname = usePathname();
 
   const routes = data.map((route) => ({
-    href: `/categories/${route.title.replaceAll(/.\&.|\W/g, "-")}`,
+    href: `/categories/${route.title
+      .toLowerCase()
+      .replaceAll(/.\&.|\W/g, "-")}`,
     label: route.title,
     active:
-      pathname === `/categories/${route.title.replaceAll(/.\&.|\W/g, "-")}`,
+      pathname ===
+      `/categories/${route.title.toLowerCase().replaceAll(/.\&.|\W/g, "-")}`,
   }));
 
   const navRoutes = [
@@ -156,7 +159,7 @@ const NavLinks: React.FC<NavLinksProps> = ({ data, scrollY }) => {
                               <Menu.Item
                                 onClick={closeMenu}
                                 as={Link}
-                                href={link.href.toLowerCase()}
+                                href={link.href}
                                 key={link.href}
                                 className={cn(
                                   "flex flex-col text-lg font-medium transition-colors hover:text-black hover:underline w-full rounded-md px-2 py-3 text-neutral-500"
