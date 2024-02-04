@@ -1,4 +1,4 @@
-import Breadcrumb from "../breadcrumbs";
+import Breadcrumb from "./breadcrumbs";
 
 interface PageHeaderProps {
   second?: string;

@@ -2,7 +2,7 @@
 
 import { Product } from "@/types";
 import ProductForm from "../forms/product-form";
-import Breadcrumb from "../breadcrumbs";
+import Breadcrumb from "../ui/breadcrumbs";
 
 interface ProductInfoProps {
   product: Product;

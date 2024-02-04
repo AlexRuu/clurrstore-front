@@ -1,16 +1,33 @@
-import Breadcrumb from "@/components/breadcrumbs";
+import getSearchProducts from "@/actions/get-search";
 import SearchPageBar from "./components/searchBar";
+import PageHeader from "@/components/ui/header";
+import ProductCard from "@/components/ui/product-card";
 
-const searchPage = () => {
+const searchPage = async ({
+  searchParams,
+}: {
+  searchParams: { [searchQuery: string]: string };
+}) => {
+  const searchProducts = await getSearchProducts({
+    searchQuery: searchParams["q"],
+  });
+
+  console.log(searchProducts);
   return (
     <div>
-      <div className="med-small:ml-[9px] ml-3 text-xs">
-        <Breadcrumb />
-      </div>
-      <div className="w-full mb-10 flex justify-center flex-nowrap">
-        <h1 className="font-medium text-2xl flex mb-4">Products</h1>
-      </div>
+      <PageHeader second="search" headerTitle="Search" />
       <SearchPageBar />
+      {searchProducts.length > 0 ? (
+        <div>
+          {searchProducts.map((product) => (
+            <ProductCard data={product} />
+          ))}
+        </div>
+      ) : (
+        <div>
+          <h1>No results found...</h1>
+        </div>
+      )}
     </div>
   );
 };

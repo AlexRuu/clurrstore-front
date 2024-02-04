@@ -30,7 +30,8 @@ const SearchForm: React.FC<SearchFormProps> = ({ className, page }) => {
     if (!data.searchQuery) {
       router.push("/search");
     } else {
-      router.push(`/search?=${data.searchQuery}`);
+      const searchKeywords = data.searchQuery.replace(/ /g, "-");
+      router.push(`/search/?q=${searchKeywords}`);
     }
   };
 

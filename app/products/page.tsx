@@ -1,5 +1,5 @@
 import getProducts from "@/actions/get-products";
-import Breadcrumb from "@/components/breadcrumbs";
+import Breadcrumb from "@/components/ui/breadcrumbs";
 import Filter from "@/components/ui/filter";
 import PageHeader from "@/components/ui/header";
 import ProductCard from "@/components/ui/product-card";
