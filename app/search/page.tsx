@@ -2,6 +2,13 @@ import getSearchProducts from "@/actions/get-search";
 import SearchPageBar from "./components/searchBar";
 import PageHeader from "@/components/ui/header";
 import ProductCard from "@/components/ui/product-card";
+import { Metadata } from "next";
+
+export const generateMetadata = (): Metadata => {
+  return {
+    title: `Search`,
+  };
+};
 
 const searchPage = async ({
   searchParams,
@@ -21,7 +28,16 @@ const searchPage = async ({
         <PageHeader second="search" headerTitle="Search" />
         <SearchPageBar />
         {searchProducts!.length > 0 ? (
-          <div className="flex w-full">
+          <div className="flex w-full flex-col flex-nowrap">
+            <div className="w-full text-center mb-7 items-center">
+              {searchProducts!.length > 1 ? (
+                <h2 className="uppercase text-sm">
+                  {searchProducts!.length} results found
+                </h2>
+              ) : (
+                <h2 className="uppercase text-sm">1 result found</h2>
+              )}
+            </div>
             <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-3 box-border w-full">
               {searchProducts!.map((product) => (
                 <ProductCard data={product} key={product.id} />
