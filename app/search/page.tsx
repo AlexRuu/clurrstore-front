@@ -8,21 +8,23 @@ const searchPage = async ({
 }: {
   searchParams: { [searchQuery: string]: string };
 }) => {
-  const searchProducts = await getSearchProducts({
-    searchQuery: searchParams["q"],
-  });
+  let searchProducts;
+  if (searchParams["q"]) {
+    searchProducts = await getSearchProducts({
+      searchQuery: searchParams["q"],
+    });
+  }
 
-  console.log(searchProducts);
   return (
     <main className="min-h-[500px] mt-10 med-small:mx-5">
       <section className="xl:!p-[0px_85px] p-[0px_55px] med-small:p-0">
         <PageHeader second="search" headerTitle="Search" />
         <SearchPageBar />
-        {searchProducts.length > 0 ? (
+        {searchProducts ? (
           <div className="flex w-full">
             <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-3 box-border w-full">
               {searchProducts.map((product) => (
-                <ProductCard data={product} />
+                <ProductCard data={product} key={product.id} />
               ))}
             </div>
           </div>
