@@ -156,7 +156,7 @@ const NavLinks: React.FC<NavLinksProps> = ({ data, scrollY }) => {
                               <Menu.Item
                                 onClick={closeMenu}
                                 as={Link}
-                                href={link.href}
+                                href={link.href.toLowerCase()}
                                 key={link.href}
                                 className={cn(
                                   "flex flex-col text-lg font-medium transition-colors hover:text-black hover:underline w-full rounded-md px-2 py-3 text-neutral-500"
