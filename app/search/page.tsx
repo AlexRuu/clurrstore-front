@@ -20,10 +20,10 @@ const searchPage = async ({
       <section className="xl:!p-[0px_85px] p-[0px_55px] med-small:p-0">
         <PageHeader second="search" headerTitle="Search" />
         <SearchPageBar />
-        {searchProducts ? (
+        {searchProducts!.length > 0 ? (
           <div className="flex w-full">
             <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-3 box-border w-full">
-              {searchProducts.map((product) => (
+              {searchProducts!.map((product) => (
                 <ProductCard data={product} key={product.id} />
               ))}
             </div>
