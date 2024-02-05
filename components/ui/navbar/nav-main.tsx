@@ -9,6 +9,8 @@ import { Category } from "@/types";
 import { useState, useEffect } from "react";
 import Image from "next/image";
 import NavMobile from "./nav-mobile";
+import SearchForm from "@/components/forms/search-form";
+import useNavSearch from "@/hooks/use-nav-search";
 
 const logoFont = Yeseva_One({ weight: ["400"], subsets: ["latin"] });
 
@@ -18,17 +20,23 @@ interface NavMainProps {
 
 const NavMain: React.FC<NavMainProps> = ({ data }) => {
   const [scrollY, setScrollY] = useState(0);
+  const navSearch = useNavSearch();
 
   const handleScroll = () => {
     setScrollY(window.scrollY);
   };
 
   useEffect(() => {
+    handleScroll();
     window.addEventListener("scroll", handleScroll);
     return () => {
       window.removeEventListener("scroll", handleScroll);
     };
   }, []);
+
+  useEffect(() => {
+    console.log(navSearch.isOpen);
+  }, [navSearch.isOpen]);
 
   return (
     <div className="z-10 relative flow-root">
@@ -39,13 +47,24 @@ const NavMain: React.FC<NavMainProps> = ({ data }) => {
         )}
       >
         <div className="relative">
+          <section className="text-white bg-[#219190]">
+            <div className="text-center py-1">
+              Delivery fee will be calculated at checkout
+            </div>
+          </section>
           <header className="small:transition-[z-index] small:duration-0 small:delay-300 small:px-5 med-small:p-0 px-[30px] z-[105] w-full block bg-white">
             <div className="med-small:block med-small:p-0 items-center flex justify-between relative p-[15px_0px] max-w-[1600px] m-[0px_auto] ">
               <div className="flex-grow w-full">
                 <div className="bg-white flex">
+                  <div
+                    className={cn(
+                      "medium-min:absolute medium-min:block medium-min:z-0 opacity-0 hidden medium-min:left-[15%]",
+                      navSearch.isOpen && "opacity-100"
+                    )}
+                  >
+                    <SearchForm />
+                  </div>
                   <div className="med-small:justify-between med-small:relative med-small: w-full med-small:p-[10px_20px] justify-center med-small:items-center flex flex-grow relative">
-                    {/* <div></div> search icon? */}
-                    {/* <div></div> search bar goes here */}
                     <NavMobile data={data} />
                     <h1
                       className={cn(
@@ -64,7 +83,7 @@ const NavMain: React.FC<NavMainProps> = ({ data }) => {
                           width={0}
                           sizes="100vw"
                           priority
-                          className="med-small:h-14 med-small:w-14 w-24 h-24 med-small:mr-2"
+                          className="med-small:h-14 med-small:w-14 w-20 h-20 med-small:mr-2"
                         />
                         Clurr's Studio
                       </Link>
@@ -79,47 +98,6 @@ const NavMain: React.FC<NavMainProps> = ({ data }) => {
         </div>
       </div>
     </div>
-    //   <header
-    //     className={cn(
-    //       "z-[101] flex flex-col flex-nowrap w-full fixed top-0 ",
-    //       scrollY >= 20 && "shadow-[0_2px_6px_rgba(0,0,0,0.08)]"
-    //     )}
-    //   >
-    //     <div
-    //       className={cn(
-    //         "bg-white",
-    //         scrollY >= 20 && "shadow-[0_2px_6px_rgba(0,0,0,0.08)]"
-    //       )}
-    //     >
-    //       <section className="xl:!p-[0px_85px] md:p-[0px_55px] flex flex-row flex-nowrap justify-between">
-    //         <div className="relative z-[1] w-full flex flex-row flex-nowrap justify-start">
-    //           <div className="mr-12">
-    //             <Link
-    //               href="/"
-    //               className="md:p-[20px_4px_20px_0] items-center box-content flex flex-nowrap flex-row flex-shrink-0 h-10 justify-start m-[0_10px_0_0] p-[12px_4px_12px_0]"
-    //             >
-    //               <div
-    //                 className={cn(
-    //                   "text-2xl text-logo tracking-[2px] flex justify-center items-center",
-    //                   logoFont.className
-    //                 )}
-    //               >
-    //                 <Image
-    //                   src="/images/logo.png"
-    //                   width={50}
-    //                   height={50}
-    //                   alt=""
-    //                 ></Image>
-    //                 <p>clurr's.studio</p>
-    //               </div>
-    //             </Link>
-    //           </div>
-    //           <NavLinks data={data} />
-    //         </div>
-    //         <RightNav />
-    //       </section>
-    //     </div>
-    //   </header>
   );
 };
 

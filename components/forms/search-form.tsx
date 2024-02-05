@@ -7,7 +7,6 @@ import { Input } from "../ui/input";
 import { Search } from "lucide-react";
 import { useRouter } from "next/navigation";
 import { cn } from "@/lib/utils";
-import Button from "../ui/button";
 
 interface SearchFormProps {
   className?: string;

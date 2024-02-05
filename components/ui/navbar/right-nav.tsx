@@ -3,17 +3,18 @@
 import { useEffect, useState } from "react";
 import useCart from "@/hooks/use-cart";
 
-import { ShoppingCart } from "lucide-react";
+import { Search, ShoppingCart } from "lucide-react";
 import { cn } from "@/libs/utlils";
 import Link from "next/link";
+import useNavSearch from "@/hooks/use-nav-search";
 
 interface RightNavProps {
-  scrollY?: number;
   mobileOpen?: boolean;
 }
 
-const RightNav: React.FC<RightNavProps> = ({ scrollY, mobileOpen }) => {
+const RightNav: React.FC<RightNavProps> = ({ mobileOpen }) => {
   const cart = useCart();
+  const navSearch = useNavSearch();
 
   const [isMounted, setIsMounted] = useState(false);
   const [cartAmount, setCartAmount] = useState(0);
@@ -42,6 +43,9 @@ const RightNav: React.FC<RightNavProps> = ({ scrollY, mobileOpen }) => {
         mobileOpen && "hidden"
       )}
     >
+      <button onClick={navSearch.onOpen}>
+        <Search />
+      </button>
       <Link href={"/cart"}>
         <ShoppingCart
           color="#f199b3"
