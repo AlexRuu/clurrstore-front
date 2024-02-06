@@ -38,8 +38,8 @@ const RightNav: React.FC<RightNavProps> = ({ mobileOpen }) => {
   return (
     <div
       className={cn(
-        "absolute justify-end flex items-center med-small:right-10 med-small:top-5 right-10 top-16 lg:right-16 xl:right-18",
-        scrollY! >= 160 && "top-2 lg:right-24",
+        "absolute justify-end flex items-center med-small:right-10 med-small:top-5 right-10 top-16 lg:right-16 xl:right-18 mr-10",
+        scrollY! >= 160 && "top-2 lg:right-24 mr-0",
         mobileOpen && "hidden"
       )}
     >
