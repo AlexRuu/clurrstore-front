@@ -11,8 +11,11 @@ import { useAnimate } from "framer-motion";
 import { cn } from "@/libs/utlils";
 import { Category } from "@/types";
 
-import { ChevronDown, Search, X } from "lucide-react";
+import { ChevronDown } from "lucide-react";
 import RightNav from "./right-nav";
+import useMobileNavSearch from "@/hooks/use-mobile-nav-search";
+import useNavSearch from "@/hooks/use-nav-search";
+import SearchForm from "@/components/forms/search-form";
 
 interface NavLinksProps {
   data: Category[];
@@ -22,7 +25,14 @@ interface NavLinksProps {
 const NavLinks: React.FC<NavLinksProps> = ({ data, scrollY }) => {
   const [scope, animate] = useAnimate();
   const [isOpen, setIsOpen] = useState(false);
+  const navSearch = useNavSearch();
   const pathname = usePathname();
+  const useHover = true;
+  const buttonRef = useRef<HTMLButtonElement>(null);
+  const dropdownRef = useRef<HTMLDivElement>(null);
+  const timeoutDuration = 0;
+  let timeout: any;
+  const ref = useRef<HTMLDivElement>(null);
 
   const routes = data.map((route) => ({
     href: `/categories/${route.title
@@ -57,12 +67,6 @@ const NavLinks: React.FC<NavLinksProps> = ({ data, scrollY }) => {
       active: pathname === "FAQ",
     },
   ];
-
-  const useHover = true;
-  const buttonRef = useRef<HTMLButtonElement>(null);
-  const dropdownRef = useRef<HTMLDivElement>(null);
-  const timeoutDuration = 0;
-  let timeout: any;
 
   const openMenu = () => {
     setIsOpen(true);
@@ -101,10 +105,12 @@ const NavLinks: React.FC<NavLinksProps> = ({ data, scrollY }) => {
       <div
         className={cn(
           scrollY >= 160 &&
-            "fixed top-0 left-0 w-full shadow-[0_-2px_10px_#000000bf]"
+            "fixed top-0 left-0 w-full shadow-[0_-2px_10px_#000000bf]",
+          navSearch.isOpen && "z-[101]"
         )}
       >
-        <section className="bg-white">
+        <section className={cn("bg-white")}>
+          <div ref={ref}></div>
           <nav
             className={cn(
               "med-small:opacity-0 med-small:block med-small:fixed med-small:top-0 med-small:left-0 med-small:w-full med-small:bg-white"
@@ -186,6 +192,20 @@ const NavLinks: React.FC<NavLinksProps> = ({ data, scrollY }) => {
                   </Link>
                 )
               )}
+            </div>
+            <div
+              className={cn(
+                "medium-min:h-[90%] medium-min:top-0 medium-min:absolute medium-min:opacity-0 hidden medium-min:left-[0%] medium-min:m-[0_auto] medium-min:w-full medium-min:justify-center medium-min:bg-white",
+                navSearch.isOpen
+                  ? "medium-min:opacity-100 z-[102] flex bg-white pointer-events-auto"
+                  : "medium-min:z-0",
+                scrollY <= 160 && "hidden"
+              )}
+            >
+              <SearchForm
+                className="w-[400px] max-w-[400px]"
+                formClass="w-full justify-center"
+              />
             </div>
             {scrollY >= 160 && <RightNav />}
           </nav>
