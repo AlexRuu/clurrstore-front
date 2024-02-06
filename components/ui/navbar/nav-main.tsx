@@ -11,6 +11,7 @@ import Image from "next/image";
 import NavMobile from "./nav-mobile";
 import SearchForm from "@/components/forms/search-form";
 import useNavSearch from "@/hooks/use-nav-search";
+import { Input } from "../input";
 
 const logoFont = Yeseva_One({ weight: ["400"], subsets: ["latin"] });
 
@@ -48,12 +49,7 @@ const NavMain: React.FC<NavMainProps> = ({ data }) => {
   }, [navSearch.isOpen]);
   return (
     <div className="z-10 relative flow-root">
-      <div
-        className={cn(
-          scrollY >= 10 &&
-            "med-small:fixed med-small:top-0 med-small:left-0 med-small:w-full med-small:shadow-[0_-2px_10px_#000000bf]"
-        )}
-      >
+      <div>
         <div className="relative">
           <section className="text-white bg-[#219190]">
             <div className="text-center py-1">
@@ -67,9 +63,9 @@ const NavMain: React.FC<NavMainProps> = ({ data }) => {
                   <div
                     ref={ref}
                     className={cn(
-                      "h-full absolute opacity-0 hidden medium-min:left-[0%] m-[0_auto] w-full justify-center bg-white",
+                      "medium-min:h-full medium-min:absolute medium-min:opacity-0 hidden medium-min:left-[0%] medium-min:m-[0_auto] medium-min:w-full medium-min:justify-center medium-min:bg-white",
                       navSearch.isOpen
-                        ? "opacity-100 flex z-10 bg-white pointer-events-auto"
+                        ? "medium-min:opacity-100 flex z-10 bg-white pointer-events-auto"
                         : "medium-min:z-0"
                     )}
                   >
@@ -80,7 +76,7 @@ const NavMain: React.FC<NavMainProps> = ({ data }) => {
                   </div>
                   <div
                     className={cn(
-                      "med-small:justify-between med-small:relative med-small: w-full med-small:p-[10px_20px] justify-center med-small:items-center flex flex-grow relative",
+                      "med-small:justify-between med-small:relative med-small:w-full med-small:p-[10px_20px] justify-center med-small:items-center flex flex-grow relative",
                       navSearch.isOpen && "z-0"
                     )}
                   >

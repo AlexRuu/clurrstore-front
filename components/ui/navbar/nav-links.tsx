@@ -187,6 +187,7 @@ const NavLinks: React.FC<NavLinksProps> = ({ data, scrollY }) => {
                 )
               )}
             </div>
+            {scrollY >= 160 && <RightNav />}
           </nav>
         </section>
       </div>
