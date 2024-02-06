@@ -15,31 +15,28 @@ const searchPage = async ({
 }: {
   searchParams: { [searchQuery: string]: string };
 }) => {
-  let searchProducts;
-  if (searchParams["q"]) {
-    searchProducts = await getSearchProducts({
-      searchQuery: searchParams["q"],
-    });
-  }
+  const searchProducts = await getSearchProducts({
+    searchQuery: searchParams["q"],
+  });
 
   return (
     <main className="min-h-[500px] mt-10 med-small:mx-5">
       <section className="xl:!p-[0px_85px] p-[0px_55px] med-small:p-0">
         <PageHeader second="search" headerTitle="Search" />
         <SearchPageBar />
-        {searchProducts!.length > 0 ? (
+        {searchProducts.length > 0 ? (
           <div className="flex w-full flex-col flex-nowrap">
             <div className="w-full text-center mb-7 items-center">
-              {searchProducts!.length > 1 ? (
+              {searchProducts.length > 1 ? (
                 <h2 className="uppercase text-sm">
-                  {searchProducts!.length} results found
+                  {searchProducts.length} results found
                 </h2>
               ) : (
                 <h2 className="uppercase text-sm">1 result found</h2>
               )}
             </div>
             <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-3 box-border w-full">
-              {searchProducts!.map((product) => (
+              {searchProducts.map((product) => (
                 <ProductCard data={product} key={product.id} />
               ))}
             </div>
