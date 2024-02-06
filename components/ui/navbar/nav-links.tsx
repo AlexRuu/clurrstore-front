@@ -13,7 +13,6 @@ import { Category } from "@/types";
 
 import { ChevronDown } from "lucide-react";
 import RightNav from "./right-nav";
-import useMobileNavSearch from "@/hooks/use-mobile-nav-search";
 import useNavSearch from "@/hooks/use-nav-search";
 import SearchForm from "@/components/forms/search-form";
 
