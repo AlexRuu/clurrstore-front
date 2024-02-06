@@ -6,7 +6,7 @@ import { Yeseva_One } from "next/font/google";
 import NavLinks from "./nav-links";
 import RightNav from "./right-nav";
 import { Category } from "@/types";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import Image from "next/image";
 import NavMobile from "./nav-mobile";
 import SearchForm from "@/components/forms/search-form";
@@ -21,6 +21,7 @@ interface NavMainProps {
 const NavMain: React.FC<NavMainProps> = ({ data }) => {
   const [scrollY, setScrollY] = useState(0);
   const navSearch = useNavSearch();
+  const ref = useRef<HTMLDivElement | null>(null);
 
   const handleScroll = () => {
     setScrollY(window.scrollY);
@@ -35,9 +36,16 @@ const NavMain: React.FC<NavMainProps> = ({ data }) => {
   }, []);
 
   useEffect(() => {
-    console.log(navSearch.isOpen);
+    const clickedOutside = (e: any) => {
+      if (navSearch.isOpen && !ref.current?.contains(e.target)) {
+        navSearch.onClose();
+      }
+    };
+    document.addEventListener("mousedown", clickedOutside);
+    return () => {
+      document.removeEventListener("mousedown", clickedOutside);
+    };
   }, [navSearch.isOpen]);
-
   return (
     <div className="z-10 relative flow-root">
       <div
@@ -52,19 +60,30 @@ const NavMain: React.FC<NavMainProps> = ({ data }) => {
               Delivery fee will be calculated at checkout
             </div>
           </section>
-          <header className="small:transition-[z-index] small:duration-0 small:delay-300 small:px-5 med-small:p-0 px-[30px] z-[105] w-full block bg-white">
-            <div className="med-small:block med-small:p-0 items-center flex justify-between relative p-[15px_0px] max-w-[1600px] m-[0px_auto] ">
+          <header className="small:transition-[z-index] small:duration-0 small:delay-300 small:px-5 med-small:p-0  z-[105] w-full block bg-white">
+            <div className="med-small:block med-small:p-0 items-center flex justify-between relative max-w-[1600px] m-[0px_auto] ">
               <div className="flex-grow w-full">
                 <div className="bg-white flex">
                   <div
+                    ref={ref}
                     className={cn(
-                      "medium-min:absolute medium-min:block medium-min:z-0 opacity-0 hidden medium-min:left-[15%]",
-                      navSearch.isOpen && "opacity-100"
+                      "h-full absolute opacity-0 hidden medium-min:left-[0%] m-[0_auto] w-full justify-center bg-white",
+                      navSearch.isOpen
+                        ? "opacity-100 flex z-10 bg-white pointer-events-auto"
+                        : "medium-min:z-0"
                     )}
                   >
-                    <SearchForm />
+                    <SearchForm
+                      className="w-[400px] max-w-[400px]"
+                      formClass="w-full justify-center"
+                    />
                   </div>
-                  <div className="med-small:justify-between med-small:relative med-small: w-full med-small:p-[10px_20px] justify-center med-small:items-center flex flex-grow relative">
+                  <div
+                    className={cn(
+                      "med-small:justify-between med-small:relative med-small: w-full med-small:p-[10px_20px] justify-center med-small:items-center flex flex-grow relative",
+                      navSearch.isOpen && "z-0"
+                    )}
+                  >
                     <NavMobile data={data} />
                     <h1
                       className={cn(
@@ -74,7 +93,7 @@ const NavMain: React.FC<NavMainProps> = ({ data }) => {
                     >
                       <Link
                         href={"/"}
-                        className="flex items-center med-small:flex-row flex-col med-small:text-xl text-2xl"
+                        className="flex items-center med-small:flex-row flex-col med-small:text-xl text-2xl pt-[15px]"
                       >
                         <Image
                           src={"/images/logo.png"}
@@ -97,6 +116,15 @@ const NavMain: React.FC<NavMainProps> = ({ data }) => {
           <NavLinks data={data} scrollY={scrollY} />
         </div>
       </div>
+      <a
+        href="#"
+        aria-hidden={navSearch.isOpen}
+        aria-label="Close"
+        className={cn(
+          "content-none fixed top-0 left-0 w-full h-full bg-[rgba(0,0,0,0.3)] opacity-0 pointer-events-none invisible transition-[opacity_0.35s,visibility_0.35s]",
+          navSearch.isOpen && "opacity-100 pointer-events-auto visible"
+        )}
+      ></a>
     </div>
   );
 };
