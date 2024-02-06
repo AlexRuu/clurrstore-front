@@ -70,7 +70,7 @@ const NavMobile: React.FC<NavMobileProps> = ({ data }) => {
         <div className="med-small:flex hidden">
           <Sheet open={mobileNavOpen} onOpenChange={setMobileNavOpen}>
             <SheetTrigger>
-              <Menu size={30} className="mt-2" />
+              <Menu size={30} className="mt-3" />
             </SheetTrigger>
             <SheetContent
               side="top"

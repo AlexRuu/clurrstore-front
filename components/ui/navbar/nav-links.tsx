@@ -99,6 +99,20 @@ const NavLinks: React.FC<NavLinksProps> = ({ data, scrollY }) => {
     animate(scope.current, { rotate: isOpen ? -180 : 0 }, { duration: 0.2 });
   }, [isOpen]);
 
+  useEffect(() => {
+    const clickedOutside = (e: any) => {
+      if (scrollY > 160) {
+        if (navSearch.isOpen && !ref.current?.contains(e.target)) {
+          navSearch.onClose();
+        }
+      }
+    };
+    document.addEventListener("mousedown", clickedOutside);
+    return () => {
+      document.removeEventListener("mousedown", clickedOutside);
+    };
+  }, [navSearch.isOpen]);
+
   return (
     <div className={cn(scrollY >= 160 && "med-small:h-0 h-[46.5px]")}>
       <div
@@ -109,7 +123,6 @@ const NavLinks: React.FC<NavLinksProps> = ({ data, scrollY }) => {
         )}
       >
         <section className={cn("bg-white")}>
-          <div ref={ref}></div>
           <nav
             className={cn(
               "med-small:opacity-0 med-small:block med-small:fixed med-small:top-0 med-small:left-0 med-small:w-full med-small:bg-white"
@@ -193,6 +206,7 @@ const NavLinks: React.FC<NavLinksProps> = ({ data, scrollY }) => {
               )}
             </div>
             <div
+              ref={ref}
               className={cn(
                 "medium-min:h-[90%] medium-min:top-0 medium-min:absolute medium-min:opacity-0 hidden medium-min:left-[0%] medium-min:m-[0_auto] medium-min:w-full medium-min:justify-center medium-min:bg-white",
                 navSearch.isOpen

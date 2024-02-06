@@ -37,8 +37,10 @@ const NavMain: React.FC<NavMainProps> = ({ data }) => {
 
   useEffect(() => {
     const clickedOutside = (e: any) => {
-      if (navSearch.isOpen && !ref.current?.contains(e.target)) {
-        navSearch.onClose();
+      if (scrollY <= 160) {
+        if (navSearch.isOpen && !ref.current?.contains(e.target)) {
+          navSearch.onClose();
+        }
       }
     };
     document.addEventListener("mousedown", clickedOutside);
@@ -100,7 +102,7 @@ const NavMain: React.FC<NavMainProps> = ({ data }) => {
                         width={0}
                         sizes="100vw"
                         priority
-                        className="med-small:h-14 med-small:w-14 w-20 h-20 med-small:mr-2"
+                        className="med-small:h-14 med-small:w-14 w-20 h-20 med-small:mr-2 mb-2"
                       />
                       Clurr's Studio
                     </Link>
