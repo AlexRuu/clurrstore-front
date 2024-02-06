@@ -15,6 +15,7 @@ import { ChevronDown } from "lucide-react";
 import RightNav from "./right-nav";
 import useNavSearch from "@/hooks/use-nav-search";
 import SearchForm from "@/components/forms/search-form";
+import LeftNav from "./left-nav";
 
 interface NavLinksProps {
   data: Category[];
@@ -129,6 +130,7 @@ const NavLinks: React.FC<NavLinksProps> = ({ data, scrollY }) => {
             )}
           >
             <div className="inline-flex items-center justify-center w-full med-small:hidden">
+              {scrollY >= 160 && <LeftNav />}
               {navRoutes.map((route) =>
                 route.submenu ? (
                   <Menu as="div" key={route.href}>
@@ -144,7 +146,7 @@ const NavLinks: React.FC<NavLinksProps> = ({ data, scrollY }) => {
                             as={Link}
                             href={route.href}
                             className={cn(
-                              "inline-flex py-2 text-lg transition-colors hover:text-black focus:outline-none focus-visible:ring-2 focus-visible:ring-white/75 px-[50px]",
+                              "inline-flex py-2 text-lg transition-colors hover:text-black focus:outline-none focus-visible:ring-2 focus-visible:ring-white/75 px-[40px]",
                               route.active ? "text-black" : "text-neutral-500"
                             )}
                           >
@@ -196,7 +198,7 @@ const NavLinks: React.FC<NavLinksProps> = ({ data, scrollY }) => {
                     href={route.href}
                     key={route.href}
                     className={cn(
-                      "text-lg transition-colors hover:text-black py-2 px-[50px]",
+                      "text-lg transition-colors hover:text-black py-2 px-[40px]",
                       route.active ? "text-black" : "text-neutral-500"
                     )}
                   >

@@ -58,7 +58,13 @@ const NavMain: React.FC<NavMainProps> = ({ data }) => {
           </div>
         </section>
       </div>
-      <div className="relative">
+      <div
+        className={cn(
+          "relative",
+          scrollY >= 110 &&
+            "med-small:fixed med-small:top-0 med-small:left-0 med-small:w-full med-small:shadow-[0_-2px_10px_#000000bf] med-small:text-sm"
+        )}
+      >
         <header className="small:transition-[z-index] small:duration-0 small:delay-300 small:px-5 med-small:p-0  z-[105] w-full block bg-white">
           <div className="med-small:block med-small:p-0 items-center flex justify-between relative max-w-[1600px] m-[0px_auto] ">
             <div className="flex-grow w-full">
@@ -80,20 +86,23 @@ const NavMain: React.FC<NavMainProps> = ({ data }) => {
                 </div>
                 <div
                   className={cn(
-                    "med-small:justify-between med-small:relative med-small:w-full med-small:p-[10px_20px] justify-center med-small:items-center flex flex-grow relative",
+                    "med-small:justify-between med-small:relative med-small:w-full med-small:p-[10px_20px] justify-center med-small:items-center flex flex-grow relative med-small:ml-2",
                     navSearch.isOpen && "z-0"
                   )}
                 >
                   <NavMobile data={data} />
                   <h1
                     className={cn(
-                      "med-small:block med-small:ml-[10px] med-small:p-0 med-small:mr-auto med-small:flex-grow med-small:text-left text-logo max-w-[280px]",
+                      "med-small:block med-small:p-0 med-small:mr-auto med-small:flex-grow med-small:text-left med-small:ml-2 text-logo max-w-[280px]",
                       logoFont.className
                     )}
                   >
                     <Link
                       href={"/"}
-                      className="flex items-center med-small:flex-row flex-col med-small:text-xl text-2xl pt-[15px]"
+                      className={cn(
+                        "flex items-center med-small:flex-row flex-col med-small:text-xl text-2xl pt-[15px]",
+                        scrollY >= 110 && "med-small:text-xl med-small:pt-0"
+                      )}
                     >
                       <Image
                         src={"/images/logo.png"}
@@ -102,7 +111,10 @@ const NavMain: React.FC<NavMainProps> = ({ data }) => {
                         width={0}
                         sizes="100vw"
                         priority
-                        className="med-small:h-14 med-small:w-14 w-20 h-20 med-small:mr-2 mb-2"
+                        className={cn(
+                          "med-small:h-14 med-small:w-14 w-20 h-20 med-small:mr-2 mb-2",
+                          scrollY >= 110 && "med-small:h-10 med-small:w-10"
+                        )}
                       />
                       Clurr's Studio
                     </Link>

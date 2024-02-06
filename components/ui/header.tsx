@@ -13,7 +13,7 @@ const PageHeader: React.FC<PageHeaderProps> = ({
 }) => {
   return (
     <>
-      <div className="med-small:ml-[9px] ml-3 text-xs">
+      <div className="med-small:ml-3 ml-3 text-xs">
         <Breadcrumb second={second} title={title} />
       </div>
       <div className="w-full mb-10 flex justify-center flex-nowrap mt-7">
