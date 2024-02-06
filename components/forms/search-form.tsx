@@ -8,6 +8,7 @@ import { Search } from "lucide-react";
 import { useRouter } from "next/navigation";
 import { cn } from "@/lib/utils";
 import useNavSearch from "@/hooks/use-nav-search";
+import { useEffect } from "react";
 
 interface SearchFormProps {
   className?: string;
@@ -22,6 +23,7 @@ const SearchForm: React.FC<SearchFormProps> = ({
 }) => {
   const router = useRouter();
   const navSearch = useNavSearch();
+
   const formSchema = z.object({
     searchQuery: z.string().optional(),
   });
@@ -43,9 +45,18 @@ const SearchForm: React.FC<SearchFormProps> = ({
     }
   };
 
+  useEffect(() => {
+    if (navSearch.isOpen) {
+      form.setFocus("searchQuery");
+    }
+  }, [navSearch.isOpen]);
+
   return (
     <Form {...form}>
       <form
+        method="get"
+        role="search"
+        autoComplete="off"
         onSubmit={form.handleSubmit(onSubmit)}
         className={cn("flex", formClass)}
       >
@@ -64,7 +75,7 @@ const SearchForm: React.FC<SearchFormProps> = ({
                   <Input
                     type="text"
                     autoComplete="off"
-                    autoCorrect="off"
+                    autoCapitalize="none"
                     className={cn(
                       "focus:ring-0 focus-within:ring-0 border-none text-lg py-6 placeholder:text-black",
                       className
