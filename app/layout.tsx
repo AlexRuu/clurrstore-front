@@ -3,6 +3,7 @@ import "./globals.css";
 import type { Metadata } from "next";
 import PreviewModalProvider from "@/providers/preview-modal-provider";
 import { poppins } from "./font";
+import Footer from "@/components/footer/footer";
 
 export const metadata: Metadata = {
   title: "Clurr's Studio",
@@ -21,6 +22,9 @@ export default async function RootLayout({
           <Navbar />
           <PreviewModalProvider />
           {children}
+        </div>
+        <div>
+          <Footer />
         </div>
       </body>
     </html>
