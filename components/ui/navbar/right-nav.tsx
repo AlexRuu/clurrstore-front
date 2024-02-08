@@ -53,13 +53,13 @@ const RightNav: React.FC<RightNavProps> = ({ mobileOpen, scrollY }) => {
       <button onClick={navSearch.onOpen} className="mr-3">
         <Search color="#f199b3" strokeWidth={2} className={iconStyle} />
       </button>
-      <button className="mr-3">
+      <Link href={"#"} className="mr-3">
         <User2 color="#f199b3" strokeWidth={2} className={iconStyle} />
-      </button>
+      </Link>
       <Link href={"/cart"}>
         <ShoppingBag color="#f199b3" strokeWidth={2} className={iconStyle} />
         <span className="absolute -top-1 -right-1 box-content min-w-[1em] p-[2px] text-[11px] font-medium leading-[1em] text-center tracking-[initial] rounded-full bg-black text-white border-[1.5px_solid_white]">
-          {cartAmount !== 0 && cartAmount}
+          {cartAmount !== 0 ? cartAmount : "0"}
         </span>
       </Link>
     </div>
