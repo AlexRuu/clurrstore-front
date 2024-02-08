@@ -27,7 +27,7 @@ const HomePage = async () => {
   });
 
   return (
-    <main className="min-h-[500px] mt-10 pb-[30px] small:mt-4 xsmall:mt-0">
+    <main className="min-h-[500px] mt-10 pb-[30px] small:mt-0 xsmall:mt-0">
       <span
         className="h-[251px] small:max-h-[25vh] absolute w-full left-0 top-0 xsmall:hidden md:h-[330px] content-none"
         style={{
@@ -35,7 +35,7 @@ const HomePage = async () => {
             "linear-gradient(180deg,rgba(255,192,203,1),rgba(255,255,255,1) 98%)",
         }}
       ></span>
-      <section className="xsmall:mt-0 relative mt-[60px] block box-border"></section>
+      <section className="xsmall:mt-0 relative medium-min:mt-[60px] block box-border"></section>
       <section className="block">
         <HomeCarousel homeImages={homeImages} />
       </section>
