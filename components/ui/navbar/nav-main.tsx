@@ -2,7 +2,7 @@
 
 import { cn } from "@/lib/utils";
 import Link from "next/link";
-import { Yeseva_One } from "next/font/google";
+import { yeseva_one } from "@/app/font";
 import NavLinks from "./nav-links";
 import RightNav from "./right-nav";
 import { Category } from "@/types";
@@ -12,8 +12,6 @@ import NavMobile from "./nav-mobile";
 import SearchForm from "@/components/forms/search-form";
 import useNavSearch from "@/hooks/use-nav-search";
 import useMediaQuery from "@/hooks/use-media-query";
-
-const logoFont = Yeseva_One({ weight: ["400"], subsets: ["latin"] });
 
 interface NavMainProps {
   data: Category[];
@@ -96,7 +94,7 @@ const NavMain: React.FC<NavMainProps> = ({ data }) => {
                   <h1
                     className={cn(
                       "med-small:block med-small:p-0 med-small:mr-auto med-small:flex-grow med-small:text-left med-small:ml-2 text-logo max-w-[280px]",
-                      logoFont.className
+                      yeseva_one.className
                     )}
                   >
                     <Link
