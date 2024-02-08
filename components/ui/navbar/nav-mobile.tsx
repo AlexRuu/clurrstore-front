@@ -24,9 +24,10 @@ import { cn } from "@/lib/utils";
 
 interface NavMobileProps {
   data: Category[];
+  scrollY: number;
 }
 
-const NavMobile: React.FC<NavMobileProps> = ({ data }) => {
+const NavMobile: React.FC<NavMobileProps> = ({ data, scrollY }) => {
   const [mobileNavOpen, setMobileNavOpen] = useState(false);
   const pathname = usePathname();
   const isDesktop = useMediaQuery("(min-width: 939.98px)");

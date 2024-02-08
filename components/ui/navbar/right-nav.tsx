@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import useCart from "@/hooks/use-cart";
 
 import { Search, ShoppingBag, User2 } from "lucide-react";
@@ -10,9 +10,10 @@ import useNavSearch from "@/hooks/use-nav-search";
 
 interface RightNavProps {
   mobileOpen?: boolean;
+  scrollY: number;
 }
 
-const RightNav: React.FC<RightNavProps> = ({ mobileOpen }) => {
+const RightNav: React.FC<RightNavProps> = ({ mobileOpen, scrollY }) => {
   const cart = useCart();
   const navSearch = useNavSearch();
   const [isMounted, setIsMounted] = useState(false);

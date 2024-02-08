@@ -210,19 +210,19 @@ const NavLinks: React.FC<NavLinksProps> = ({ data, scrollY }) => {
             <div
               ref={ref}
               className={cn(
-                "medium-min:h-[90%] medium-min:top-0 medium-min:absolute medium-min:opacity-0 hidden medium-min:left-[0%] medium-min:m-[0_auto] medium-min:w-full medium-min:justify-center medium-min:bg-white",
+                "med-small:opacity-0 med-small:absolute med-small:top-0 med-small:w-full med-small:left-0 medium-min:h-[90%] medium-min:top-0 medium-min:absolute medium-min:opacity-0 hidden medium-min:left-[0%] medium-min:m-[0_auto] medium-min:w-full medium-min:justify-center medium-min:bg-white",
                 navSearch.isOpen
-                  ? "medium-min:opacity-100 z-[102] flex bg-white pointer-events-auto"
+                  ? "medium-min:opacity-100 z-[102] flex bg-white pointer-events-auto med-small:opacity-100"
                   : "medium-min:z-0",
                 scrollY <= 160 && "hidden"
               )}
             >
               <SearchForm
-                className="w-[400px] max-w-[400px]"
+                className="w-[400px] max-w-[400px] med-small:w-full med-small:max-w-full"
                 formClass="w-full justify-center"
               />
             </div>
-            {scrollY >= 160 && <RightNav />}
+            {scrollY >= 160 && <RightNav scrollY={scrollY} />}
           </nav>
         </section>
       </div>
