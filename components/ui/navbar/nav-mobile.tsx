@@ -1,4 +1,4 @@
-import { Instagram, Menu, Search } from "lucide-react";
+import { Instagram, Menu, Search, Twitter } from "lucide-react";
 import {
   Sheet,
   SheetClose,
@@ -139,56 +139,15 @@ const NavMobile: React.FC<NavMobileProps> = ({ data, scrollY }) => {
                 <div className="w-full flex space-x-2">
                   <Link
                     href={"https://www.instagram.com/clurrs.studio/"}
-                    className="text-logo"
+                    className="text-logo hover:text-[#e54070]"
                   >
                     <Instagram />
                   </Link>
                   <Link
                     href={"https://twitter.com/clurrsstudio"}
-                    className="text-logo"
+                    className="text-logo hover:text-[#e54070]"
                   >
-                    <svg
-                      xmlns="http://www.w3.org/2000/svg"
-                      x="0px"
-                      y="0px"
-                      width="25"
-                      height="25"
-                      viewBox="0,0,256,256"
-                    >
-                      <g
-                        fill="none"
-                        fillRule="nonzero"
-                        stroke="none"
-                        strokeWidth="none"
-                        strokeLinecap="butt"
-                        strokeMiterlimit="10"
-                        strokeDasharray=""
-                        strokeDashoffset="0"
-                        fontFamily="none"
-                        fontWeight="none"
-                        fontSize="none"
-                        textAnchor="none"
-                      >
-                        <path
-                          transform="scale(5.12,5.12)"
-                          d="M16.93359,6l9.7832,14.26172l12.31055,-14.26172h3.17578l-14.08008,16.3125l14.87695,21.6875h-10.01367l-10.44141,-15.22266l-13.13867,15.22266h-3.17773l14.9082,-17.27344l-14.2168,-20.72656z"
-                          id="strokeMainSVG"
-                          fill="#dddddd"
-                          stroke="#dddddd"
-                          strokeWidth="2"
-                          strokeLinejoin="round"
-                        ></path>
-                        <g
-                          transform="scale(5.12,5.12)"
-                          fill="#f19ab6"
-                          stroke="none"
-                          strokeWidth="1"
-                          strokeLinejoin="miter"
-                        >
-                          <path d="M6.91992,6l14.2168,20.72656l-14.9082,17.27344h3.17773l13.13867,-15.22266l10.44141,15.22266h10.01367l-14.87695,-21.6875l14.08008,-16.3125h-3.17578l-12.31055,14.26172l-9.7832,-14.26172z"></path>
-                        </g>
-                      </g>
-                    </svg>
+                    <Twitter />
                   </Link>
                 </div>
               </SheetFooter>
