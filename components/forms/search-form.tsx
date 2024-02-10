@@ -28,13 +28,13 @@ const SearchForm: React.FC<SearchFormProps> = ({
     searchQuery: z.string().optional(),
   });
 
-  type ProductFormValues = z.infer<typeof formSchema>;
-  const form = useForm<ProductFormValues>({
+  type SearchFormValues = z.infer<typeof formSchema>;
+  const form = useForm<SearchFormValues>({
     resolver: zodResolver(formSchema),
     defaultValues: { searchQuery: "" },
   });
 
-  const onSubmit = (data: ProductFormValues) => {
+  const onSubmit = (data: SearchFormValues) => {
     if (!data.searchQuery) {
       navSearch.onClose();
       router.push("/search");
