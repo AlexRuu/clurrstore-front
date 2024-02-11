@@ -5,6 +5,7 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { Form, FormControl, FormField, FormItem, FormLabel } from "../ui/form";
 import { Input } from "../ui/input";
 import postNewsletterEmail from "@/actions/post-newsletter-email";
+import Button from "../ui/button";
 
 const NewsletterForm = () => {
   const formSchema = z.object({
@@ -29,28 +30,40 @@ const NewsletterForm = () => {
   return (
     <>
       <Form {...form}>
-        <form onSubmit={form.handleSubmit(onSubmit)}>
+        <form
+          onSubmit={form.handleSubmit(onSubmit)}
+          className="flex w-full md:px-0"
+        >
           <FormField
             control={form.control}
             name="signupEmail"
             render={({ field }) => (
-              <FormItem>
-                <FormLabel>Email</FormLabel>
+              <FormItem className="w-full flex justify-center items-center border-b md:pt-3 pt-5">
                 <FormControl>
-                  <Input
-                    placeholder="Email"
-                    type="email"
-                    className="text-black"
-                    autoCapitalize="none"
-                    autoComplete="none"
-                    {...field}
-                    value={field.value}
-                  />
+                  <div className="w-3/4 relative">
+                    <Input
+                      type="email"
+                      className="pl-0 block text-white bg-transparent placeholder:text-white border-none rounded-none peer"
+                      autoCapitalize="none"
+                      placeholder=" "
+                      autoComplete="none"
+                      {...field}
+                      value={field.value}
+                    />
+                    <FormLabel className="absolute text-sm duration-200 transform -translate-y-4 scale-75 top-3 origin-[0] peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6 pointer-events-none">
+                      Email
+                    </FormLabel>
+                  </div>
                 </FormControl>
+                <Button
+                  type="submit"
+                  className="relative p-[0_0_10px_0] text-sm rounded-none w-1/4 flex justify-end mr-0"
+                >
+                  Sign Up
+                </Button>
               </FormItem>
             )}
           />
-          <button type="submit">Submit</button>
         </form>
       </Form>
     </>
