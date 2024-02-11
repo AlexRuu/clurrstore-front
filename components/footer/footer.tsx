@@ -31,7 +31,7 @@ const socialLinks = [
 
 const Footer = () => {
   return (
-    <footer className="block text-white">
+    <footer className="block text-white mt-10">
       {/* md screen size and above */}
       <section className="hidden bg-[#219190] md:block">
         <section className="mx-auto p-4 md:px-8 justify-center items-center w-1/2">
