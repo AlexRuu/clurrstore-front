@@ -1,6 +1,6 @@
 "use client";
 
-import { Instagram, Twitter } from "lucide-react";
+import { Instagram, Store, Twitter } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
 import { poppins_light } from "@/app/font";
@@ -26,6 +26,11 @@ const socialLinks = [
     label: "Instagram",
     href: "https://www.instagram.com/clurrs.studio/",
     icon: <Instagram className="hover:scale-110" />,
+  },
+  {
+    label: "Etsy",
+    href: "https://www.etsy.com/ca/shop/ClurrsStudio",
+    icon: <Store className="hover:scale-110" />,
   },
 ];
 
