@@ -1,6 +1,6 @@
 "use client";
 import { HomeImage } from "@/types";
-import { useEffect, useRef, useState } from "react";
+import { SyntheticEvent, useEffect, useRef, useState } from "react";
 import { cn } from "@/lib/utils";
 import { ChevronLeft, ChevronRight } from "lucide-react";
 import Link from "next/link";
@@ -27,6 +27,9 @@ const HomeCarousel: React.FC<HomeCarouselProps> = ({ homeImages }) => {
   const [carouselIndex, setCarouselIndex] = useState<number>(0);
   const [pressed, setPressed] = useState<boolean>(false);
   const [xDirection, setXDirection] = useState<number>(0);
+  const touchStart = useRef<number | null>(null);
+  const touchEnd = useRef<number | null>(null);
+  const minimumSwipe = 50;
 
   const paginateNext = () => {
     const nextIndex = carouselIndex + 1;
@@ -44,8 +47,35 @@ const HomeCarousel: React.FC<HomeCarouselProps> = ({ homeImages }) => {
     setCarouselIndex(lastIndex);
   };
 
+  const handleTouchStart = (e: React.TouchEvent<HTMLElement>) => {
+    e.stopPropagation();
+    e.preventDefault();
+    touchEnd.current = null;
+    touchStart.current = e.targetTouches[0].clientX;
+  };
+
+  const handleTouchMove = (e: React.TouchEvent<HTMLElement>) => {
+    e.preventDefault();
+    e.stopPropagation();
+    touchEnd.current = e.targetTouches[0].clientX;
+  };
+
+  const handleTouchEnd = (e: React.TouchEvent<HTMLElement>) => {
+    e.preventDefault();
+    e.stopPropagation();
+
+    if (!touchEnd.current || !touchStart.current) return;
+    const swipeDistance = touchStart.current - touchEnd.current;
+    if (swipeDistance > minimumSwipe) {
+      paginateNext();
+    } else if (swipeDistance < minimumSwipe) {
+      paginateLast();
+    }
+  };
+
   const handleMouseDown = (e: React.MouseEvent<HTMLElement, MouseEvent>) => {
     e.preventDefault();
+    e.stopPropagation();
     setPressed(true);
     const container = e.currentTarget.getBoundingClientRect();
     setXDirection(e.clientX - container.left);
@@ -53,6 +83,7 @@ const HomeCarousel: React.FC<HomeCarouselProps> = ({ homeImages }) => {
 
   const handleMouseMove = (e: React.MouseEvent<HTMLElement, MouseEvent>) => {
     e.preventDefault();
+    e.stopPropagation();
     if (!pressed) {
       return;
     }
@@ -60,6 +91,7 @@ const HomeCarousel: React.FC<HomeCarouselProps> = ({ homeImages }) => {
 
   const handleMouseUp = (e: React.MouseEvent<HTMLElement, MouseEvent>) => {
     e.preventDefault();
+    e.stopPropagation();
     setPressed(false);
 
     const container = e.currentTarget.getBoundingClientRect();
@@ -96,6 +128,9 @@ const HomeCarousel: React.FC<HomeCarouselProps> = ({ homeImages }) => {
         <div className="relative min-w-full block box-border h-full select-none">
           <div
             aria-live="polite"
+            onTouchStart={handleTouchStart}
+            onTouchEnd={handleTouchEnd}
+            onTouchMove={handleTouchMove}
             onMouseDown={handleMouseDown}
             onMouseMove={handleMouseMove}
             onMouseUp={handleMouseUp}
