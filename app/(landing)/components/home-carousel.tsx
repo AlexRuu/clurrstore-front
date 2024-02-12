@@ -49,19 +49,16 @@ const HomeCarousel: React.FC<HomeCarouselProps> = ({ homeImages }) => {
 
   const handleTouchStart = (e: React.TouchEvent<HTMLElement>) => {
     e.stopPropagation();
-    e.preventDefault();
     touchEnd.current = null;
     touchStart.current = e.targetTouches[0].clientX;
   };
 
   const handleTouchMove = (e: React.TouchEvent<HTMLElement>) => {
-    e.preventDefault();
     e.stopPropagation();
     touchEnd.current = e.targetTouches[0].clientX;
   };
 
   const handleTouchEnd = (e: React.TouchEvent<HTMLElement>) => {
-    e.preventDefault();
     e.stopPropagation();
 
     if (!touchEnd.current || !touchStart.current) return;
@@ -73,7 +70,7 @@ const HomeCarousel: React.FC<HomeCarouselProps> = ({ homeImages }) => {
     }
   };
 
-  const handleMouseDown = (e: React.MouseEvent<HTMLElement, MouseEvent>) => {
+  const handleMouseDown = (e: React.MouseEvent<HTMLElement>) => {
     e.preventDefault();
     e.stopPropagation();
     setPressed(true);
@@ -81,7 +78,7 @@ const HomeCarousel: React.FC<HomeCarouselProps> = ({ homeImages }) => {
     setXDirection(e.clientX - container.left);
   };
 
-  const handleMouseMove = (e: React.MouseEvent<HTMLElement, MouseEvent>) => {
+  const handleMouseMove = (e: React.MouseEvent<HTMLElement>) => {
     e.preventDefault();
     e.stopPropagation();
     if (!pressed) {
@@ -89,7 +86,7 @@ const HomeCarousel: React.FC<HomeCarouselProps> = ({ homeImages }) => {
     }
   };
 
-  const handleMouseUp = (e: React.MouseEvent<HTMLElement, MouseEvent>) => {
+  const handleMouseUp = (e: React.MouseEvent<HTMLElement>) => {
     e.preventDefault();
     e.stopPropagation();
     setPressed(false);
@@ -108,7 +105,7 @@ const HomeCarousel: React.FC<HomeCarouselProps> = ({ homeImages }) => {
     setXDirection(0);
   };
 
-  const handleMouseLeave = (e: React.MouseEvent<HTMLElement, MouseEvent>) => {
+  const handleMouseLeave = (e: React.MouseEvent<HTMLElement>) => {
     if (!pressed) {
       return;
     }
@@ -131,7 +128,7 @@ const HomeCarousel: React.FC<HomeCarouselProps> = ({ homeImages }) => {
             onTouchStart={handleTouchStart}
             onTouchEnd={handleTouchEnd}
             onTouchMove={handleTouchMove}
-            onMouseDown={handleMouseDown}
+            onMouseDownCapture={handleMouseDown}
             onMouseMove={handleMouseMove}
             onMouseUp={handleMouseUp}
             onMouseLeave={handleMouseLeave}
