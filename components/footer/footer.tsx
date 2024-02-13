@@ -86,7 +86,7 @@ const Footer = () => {
           </p>
           <NewsletterForm />
         </section>
-        <hr className="w-11/12 opacity-50 h-1 mx-auto" />
+        <hr className="w-11/12 opacity-50 h-1 mx-auto my-3" />
         <div className="grid grid-cols-2">
           <div className="pl-4">
             <p className="text-lg py-2">Help</p>
