@@ -50,7 +50,9 @@ const NavMain: React.FC<NavMainProps> = ({ data }) => {
   }, [navSearch.isOpen]);
 
   return (
-    <div className="z-10 relative flow-root">
+    <div
+      className={cn("z-10 relative flow-root", scrollY >= 32 && "h-[131px]")}
+    >
       <div>
         <section className="text-white bg-[#219190]">
           <div className="text-center py-1">
@@ -61,12 +63,16 @@ const NavMain: React.FC<NavMainProps> = ({ data }) => {
       <div
         className={cn(
           "relative",
-          scrollY >= 130 &&
-            "med-small:fixed med-small:z-[105] med-small:top-0 med-small:left-0 med-small:w-full med-small:shadow-[0_-2px_10px_#000000bf] med-small:text-sm"
+          scrollY >= 32 &&
+            "med-small:fixed med-small:z-[101] med-small:top-0 med-small:left-0 med-small:w-full med-small:shadow-[0_-2px_10px_#000000bf] med-small:text-sm med-small:h-[99px]"
         )}
       >
-        <header className="relative small:transition-[z-index] small:duration-0 small:delay-300 small:px-5 med-small:p-0 z-[105] w-full block bg-white">
-          <div className="med-small:block med-small:p-0 items-center flex justify-between relative max-w-[1600px] m-[0px_auto] ">
+        <header
+          className={cn(
+            "relative small:transition-[z-index] small:duration-0 small:delay-300 small:px-5 med-small:p-0 z-[105] w-full block bg-white"
+          )}
+        >
+          <div className="med-small:block med-small:p-0 items-center flex justify-between relative max-w-[1600px] m-[0px_auto]">
             <div className="flex-grow w-full">
               <div className="bg-white flex">
                 <div
@@ -100,8 +106,7 @@ const NavMain: React.FC<NavMainProps> = ({ data }) => {
                     <Link
                       href={"/"}
                       className={cn(
-                        "flex items-center med-small:flex-row flex-col med-small:text-xl text-2xl pt-[15px]",
-                        scrollY >= 130 && "med-small:text-xl med-small:pt-0"
+                        "flex items-center med-small:flex-row flex-col med-small:text-xl text-2xl pt-[15px]"
                       )}
                     >
                       <Image
@@ -112,8 +117,7 @@ const NavMain: React.FC<NavMainProps> = ({ data }) => {
                         sizes="100vw"
                         priority
                         className={cn(
-                          "med-small:h-14 med-small:w-14 w-20 h-20 med-small:mr-2 mb-2",
-                          scrollY >= 130 && "med-small:h-10 med-small:w-10"
+                          "med-small:h-14 med-small:w-14 w-20 h-20 med-small:mr-2 mb-2"
                         )}
                       />
                       {notPhone && "Clurr's Studio"}
@@ -133,7 +137,7 @@ const NavMain: React.FC<NavMainProps> = ({ data }) => {
         className={cn(
           "content-none fixed top-0 left-0 w-full h-full bg-[rgba(0,0,0,0.3)] opacity-0 pointer-events-none invisible transition-[opacity_0.35s,visibility_0.35s]",
           navSearch.isOpen && "opacity-100 pointer-events-auto visible z-[100]",
-          scrollY >= 130 && "med-small:z-[50]"
+          scrollY >= 32 && "med-small:z-[50]"
         )}
       />
     </div>

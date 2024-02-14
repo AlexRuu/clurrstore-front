@@ -21,8 +21,7 @@ const RightNav: React.FC<RightNavProps> = ({ mobileOpen, scrollY }) => {
 
   const iconStyle = cn(
     "z-0 hover:opacity-80 w-[30px] h-[30px]",
-    scrollY >= 110 && "med-small:w-[24px] med-small:h-[24px]",
-    scrollY >= 160 && "w-[24px] h-[24px]"
+    scrollY >= 160 && "medium-min:w-[24px] medium-min:h-[24px]"
   );
 
   useEffect(() => {
@@ -46,7 +45,6 @@ const RightNav: React.FC<RightNavProps> = ({ mobileOpen, scrollY }) => {
       className={cn(
         "absolute justify-end flex items-center med-small:right-7 med-small:top-10 right-16 top-12 lg:right-16 lg:top-12 xl:right-24",
         scrollY! >= 160 && "lg:top-2 top-3 mr-0",
-        scrollY! >= 110 && "med-small:top-5",
         mobileOpen && "hidden"
       )}
     >

@@ -72,14 +72,7 @@ const NavMobile: React.FC<NavMobileProps> = ({ data, scrollY }) => {
         <div className="med-small:flex hidden">
           <Sheet open={mobileNavOpen} onOpenChange={setMobileNavOpen}>
             <SheetTrigger>
-              <Menu
-                size={30}
-                className={cn(
-                  "mt-3",
-                  scrollY >= 110 &&
-                    "med-small:w-[24px] med-small:h-[24px] med-small:mt-0"
-                )}
-              />
+              <Menu size={30} className={cn("mt-3")} />
             </SheetTrigger>
             <SheetContent
               side="top"

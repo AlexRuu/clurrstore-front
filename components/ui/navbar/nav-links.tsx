@@ -115,7 +115,7 @@ const NavLinks: React.FC<NavLinksProps> = ({ data, scrollY }) => {
   }, [navSearch.isOpen]);
 
   return (
-    <div className={cn(scrollY >= 160 && "med-small:h-0 h-[46.5px]")}>
+    <div className={cn(scrollY >= 160 && "med-small:h-[99px] h-[46.5px]")}>
       <div
         className={cn(
           scrollY >= 160 &&
