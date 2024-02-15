@@ -20,7 +20,7 @@ import {
   SelectTrigger,
   SelectValue,
 } from "../ui/select";
-import Button from "../ui/button";
+import Button from "../ui/myButton";
 import useCart from "@/hooks/use-cart";
 import getDesign from "@/actions/get-design";
 import getStyle from "@/actions/get-style";

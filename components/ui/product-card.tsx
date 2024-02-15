@@ -2,7 +2,7 @@
 
 import { Product } from "@/types";
 import Image from "next/image";
-import Button from "./button";
+import Button from "./myButton";
 import usePreviewModal from "@/hooks/use-preview-modal";
 import { MouseEventHandler } from "react";
 import Link from "next/link";

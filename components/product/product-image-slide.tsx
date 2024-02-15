@@ -2,7 +2,7 @@ import { cn } from "@/lib/utils";
 import { Image as ImageType } from "@/types";
 import Image from "next/image";
 import { Dispatch, SetStateAction } from "react";
-import Button from "../ui/button";
+import Button from "../ui/myButton";
 import { ChevronDown, ChevronUp } from "lucide-react";
 
 interface ProductImageSlideProps {

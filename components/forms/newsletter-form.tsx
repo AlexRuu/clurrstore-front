@@ -5,7 +5,7 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { Form, FormControl, FormField, FormItem, FormLabel } from "../ui/form";
 import { Input } from "../ui/input";
 import postNewsletterEmail from "@/actions/post-newsletter-email";
-import Button from "../ui/button";
+import Button from "../ui/myButton";
 
 const NewsletterForm = () => {
   const formSchema = z.object({

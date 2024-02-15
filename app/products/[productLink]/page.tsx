@@ -3,6 +3,7 @@ import ProductGallery from "@/components/product/product-gallery";
 import ProductInfo from "@/components/product/product-info";
 import { notFound } from "next/navigation";
 import { Metadata } from "next";
+import MobileGallery from "@/components/product/product-gallery-mobile";
 
 type Props = {
   params: { productLink: string };
@@ -33,11 +34,14 @@ const ItemPage: React.FC<ItemPageProps> = async ({ params }) => {
 
   return (
     <main className="min-h-[500px]">
-      <section className="mt-10">
-        <div className="lg:pt-2 lg:px-14 lg:pb-10 flex items-start md:flex-row md:flex-nowrap md:justify-center md:pt-2 md:px-4 md:pb-10 justify-start flex-col flex-nowrap pt-0 px-0 pb-10 w-full gap-10">
-          <ProductGallery images={product.image} />
-          <div className="md:max-w-[500px] md:pt-0 flex flex-col flex-nowrap flex-shrink px-4 py-0 w-full">
-            <ProductInfo product={product} />
+      <section className="mt-10 small:mt-0">
+        <div className="md:flex-row md:flex-nowrap md:justify-center md:p-[8px_16px_40px] items-start flex flex-col flex-nowrap justify-start p-[0_0_40px] w-full">
+          <div className="small:p-5 w-full">
+            <MobileGallery images={product.image} />
+            <ProductGallery images={product.image} />
+            <div className="md:max-w-[500px] md:pt-0 flex flex-col flex-nowrap flex-shrink px-4 py-0 w-full">
+              <ProductInfo product={product} />
+            </div>
           </div>
         </div>
       </section>

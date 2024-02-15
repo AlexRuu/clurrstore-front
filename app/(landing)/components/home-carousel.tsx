@@ -4,7 +4,7 @@ import { useEffect, useRef, useState } from "react";
 import { cn } from "@/lib/utils";
 import { ChevronLeft, ChevronRight } from "lucide-react";
 import Link from "next/link";
-import Button from "@/components/ui/button";
+import Button from "@/components/ui/myButton";
 import Image from "next/image";
 import { InView } from "react-intersection-observer";
 
@@ -225,7 +225,7 @@ const HomeCarousel: React.FC<HomeCarouselProps> = ({ homeImages }) => {
           </div>
           <ul className="static w-[calc(100%-100px)] m-[0px_auto] block list-none text-center p-0">
             {homeImages.map((img, index) => (
-              <ul
+              <li
                 key={index}
                 className="inline-block my-0 mx-2 list-none text-center"
               >
@@ -243,7 +243,7 @@ const HomeCarousel: React.FC<HomeCarouselProps> = ({ homeImages }) => {
                 >
                   {index}
                 </button>
-              </ul>
+              </li>
             ))}
           </ul>
         </div>
