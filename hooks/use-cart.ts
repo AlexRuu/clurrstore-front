@@ -27,8 +27,8 @@ interface CartStore {
   ) => void;
   removeItem: (
     id: string,
-    selectedDesign: string,
-    selectedStyle: string
+    selectedDesign?: string,
+    selectedStyle?: string
   ) => void;
 }
 
@@ -100,8 +100,8 @@ const useCart = create(
               ...currentItems.filter(
                 (item) =>
                   item.id !== id &&
-                  item.selectedDesign == selectedDesign &&
-                  item.selectedStyle == selectedStyle
+                  item.selectedDesign != selectedDesign &&
+                  item.selectedStyle != selectedStyle
               ),
             ],
           });
