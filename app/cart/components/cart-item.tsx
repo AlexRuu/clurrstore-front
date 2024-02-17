@@ -59,7 +59,22 @@ const CartItem: React.FC<CartItemProps> = ({
       </Link>
       <div className="small:p-0 small:mt-0 small:flex-col small:w-auto small:h-full py-[45px] flex-nowrap flex justify-between">
         {/* Item image for bigger than md */}
-        <div className="small:hidden md-max:w-[100px] w-[160px] flex-[0_0_auto] block"></div>
+        <div className="small:hidden md-max:w-[100px] w-[160px] flex-[0_0_auto] block">
+          <Link
+            href={`/products/${name}-${id}`}
+            className="rounded-[30px] overflow-hidden relative z-[1] block "
+          >
+            <AspectRatio ratio={4 / 5}>
+              <Image
+                src={image}
+                alt=""
+                fill
+                style={{ objectFit: "cover" }}
+                className="block h-auto w-full"
+              />
+            </AspectRatio>
+          </Link>
+        </div>
         {/* description */}
         <div className="small:pt-0 small:pl-16 flex-grow pl-[30px] pt-[15px] block">
           <Link
@@ -80,7 +95,13 @@ const CartItem: React.FC<CartItemProps> = ({
           )}
         </div>
         {/* price for bigger than small */}
-        <div className="small:pb-5 small:text-left small:w-auto small:pl-[60px] small:text-lg small:hidden pt-[15px] md-max:w-[120px] md-max:min-w-[120px] w-[16.66667%] min-w-[145px] flex-[0_0_auto] text-center"></div>
+        <div className="small:pb-5 small:text-left small:w-auto small:pl-[60px] small:text-lg small:hidden pt-[15px] md-max:w-[120px] md-max:min-w-[120px] w-[16.66667%] min-w-[145px] flex-[0_0_auto] text-center">
+          <div>
+            {styleName == "B Grade (-C$2.00)"
+              ? (price - 2).toFixed(2)
+              : price.toFixed(2)}
+          </div>
+        </div>
         {/* Quantity */}
         <div className="small:flex small:flex-wrap small:items-center small:text-left small:w-auto small:pl-[60px] small:text-lg pt-[5px] w-16.666667%] min-w-[145px] flex-[0_0_auto] text-center block">
           {/* add and minus button layout */}
