@@ -1,5 +1,6 @@
 import PageHeader from "@/components/ui/header";
 import CartSummary from "./components/cart-summary";
+import CartTotal from "./components/cart-total";
 
 const CartPage = () => {
   return (
@@ -7,6 +8,7 @@ const CartPage = () => {
       <section className="xl:!p-[0px_85px] p-[0px_55px] med-small:p-0">
         <PageHeader second="cart" headerTitle="Shopping Cart" />
         <CartSummary />
+        <CartTotal />
       </section>
     </main>
   );
