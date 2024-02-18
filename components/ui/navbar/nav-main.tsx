@@ -51,7 +51,10 @@ const NavMain: React.FC<NavMainProps> = ({ data }) => {
 
   return (
     <div
-      className={cn("z-10 relative flow-root", scrollY >= 32 && "h-[131px]")}
+      className={cn(
+        "z-10 relative flow-root",
+        scrollY >= 32 && "small:h-[131px]"
+      )}
     >
       <div>
         <section className="text-white bg-[#219190]">
