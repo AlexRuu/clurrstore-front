@@ -1,6 +1,13 @@
 import PageHeader from "@/components/ui/header";
 import CartSummary from "./components/cart-summary";
 import CartTotal from "./components/cart-total";
+import { Metadata } from "next";
+
+export const generateMetadata = (): Metadata => {
+  return {
+    title: `Shopping Cart`,
+  };
+};
 
 const CartPage = () => {
   return (

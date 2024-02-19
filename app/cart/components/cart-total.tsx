@@ -1,5 +1,6 @@
 "use client";
 
+import Button from "@/components/ui/myButton";
 import useCart from "@/hooks/use-cart";
 import { useEffect, useState } from "react";
 
@@ -44,6 +45,13 @@ const CartTotal = () => {
               </span>
             </div>
           </div>
+        </div>
+      </div>
+      <div className="text-right small:my-5 my-[30px] small:mx-3 block">
+        <div className="block my-5">
+          <Button className="text-black small:w-full small:text-center w-[30%] my-5 small:px-0 border bg-[#e2ecf2] hover:shadow-home-button hover:-translate-y-[3px] hover:brightness-95 uppercase">
+            Check Out
+          </Button>
         </div>
       </div>
     </>
