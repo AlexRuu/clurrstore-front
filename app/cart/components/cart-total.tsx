@@ -26,34 +26,38 @@ const CartTotal = () => {
 
   return (
     <>
-      <div className="-ml-[30px]">
-        <div className="small:w-full small:pl-5 float-left block pl-[30px] w-1/2">
-          <div className="small:text-center small:pt-0 small:mt-5 block mt-[30px] pt-[1.2em] text-sm">
-            Taxes and shipping calculated at checkout
-          </div>
-        </div>
-        <div className="small:w-full small:pl-5 float-left !text-right block pl-[30px] w-1/2">
-          <div className="small:text-center small:mt-5 mt-[30px] block">
-            <div className="inline-block mr-[2em] small:text-center !text-right ">
-              <h2 className="small:text-[19.768px] text-[19.768px] m-0">
-                Subtotal:
-              </h2>
+      {cart.items.length !== 0 && (
+        <>
+          <div className="-ml-[30px]">
+            <div className="small:w-full small:pl-5 float-left block pl-[30px] w-1/2">
+              <div className="small:text-center small:pt-0 small:mt-5 block mt-[30px] pt-[1.2em] text-sm">
+                Taxes and shipping calculated at checkout
+              </div>
             </div>
-            <div className="inline-block small:text-[19.768px] text-[calc(28px*.825)]">
-              <span className="small:text-[19.768px] text-[calc(28px*.825)] small:text-center !text-right">
-                CAD ${totalPrice.toFixed(2)}
-              </span>
+            <div className="small:w-full small:pl-5 float-left !text-right block pl-[30px] w-1/2">
+              <div className="small:text-center small:mt-5 mt-[30px] block">
+                <div className="inline-block mr-[2em] small:text-center !text-right ">
+                  <h2 className="small:text-[19.768px] text-[19.768px] m-0">
+                    Subtotal:
+                  </h2>
+                </div>
+                <div className="inline-block small:text-[19.768px] text-[calc(28px*.825)]">
+                  <span className="small:text-[19.768px] text-[calc(28px*.825)] small:text-center !text-right">
+                    CAD ${totalPrice.toFixed(2)}
+                  </span>
+                </div>
+              </div>
             </div>
           </div>
-        </div>
-      </div>
-      <div className="text-right small:my-5 my-[30px] small:mx-3 block">
-        <div className="block my-5">
-          <Button className="text-black small:w-full small:text-center w-[30%] my-5 small:px-0 border bg-[#e2ecf2] hover:shadow-home-button hover:-translate-y-[3px] hover:brightness-95 uppercase">
-            Check Out
-          </Button>
-        </div>
-      </div>
+          <div className="text-right small:my-5 my-[30px] small:mx-3 block">
+            <div className="block my-5">
+              <Button className="text-black small:w-full small:text-center w-[30%] my-5 small:px-0 border bg-[#e2ecf2] hover:shadow-home-button hover:-translate-y-[3px] hover:brightness-95 uppercase">
+                Check Out
+              </Button>
+            </div>
+          </div>
+        </>
+      )}
     </>
   );
 };
