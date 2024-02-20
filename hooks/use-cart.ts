@@ -98,10 +98,7 @@ const useCart = create(
           set({
             items: [
               ...currentItems.filter(
-                (item) =>
-                  item.id !== id &&
-                  item.selectedDesign != selectedDesign &&
-                  item.selectedStyle != selectedStyle
+                (item) => currentItems.indexOf(item) !== itemIndex
               ),
             ],
           });
