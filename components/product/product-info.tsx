@@ -13,8 +13,10 @@ const ProductInfo: React.FC<ProductInfoProps> = ({ product }) => {
     <div className="overflow-y-hidden w-full">
       <div>
         <h1 className="text-3xl font-semibold">{product.title}</h1>
-        <Breadcrumb second="products" title={product.title} />
-        <p className="text-xl">${product.price.toFixed(2)}</p>
+        <div className="text-xs mb-2">
+          <Breadcrumb second="products" title={product.title} />
+        </div>
+        <p className="text-2xl mt-5">${product.price.toFixed(2)}</p>
         <br />
       </div>
       <div>
@@ -31,10 +33,10 @@ const ProductInfo: React.FC<ProductInfoProps> = ({ product }) => {
       </div>
       <div>
         <br />
-        <p className="font-medium">Details</p>
+        <p className="font-bold text-lg mb-2">Details</p>
         <p>{product.description}</p>
         <br />
-        <p className="font-medium">About This Item</p>
+        <p className="font-bold text-lg mb-2">About This Item</p>
         <ul>
           {product.detail.map((point, index) => (
             <li className="list-disc ml-4" key={index}>

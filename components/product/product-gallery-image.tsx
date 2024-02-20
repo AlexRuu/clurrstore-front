@@ -2,6 +2,7 @@
 
 import { cn } from "@/lib/utils";
 import { Image as ImageType } from "@/types";
+import { AspectRatio } from "@radix-ui/react-aspect-ratio";
 import Image from "next/image";
 
 import { useState } from "react";
@@ -44,19 +45,21 @@ const ProductGalleryImage: React.FC<PreviewGalleryProps> = ({
 
   return (
     <div className="h-full left-0 overflow-hidden relative top-0 w-full">
-      <Image
-        height={500}
-        width={500}
-        alt=""
-        src={images[0].url}
-        loading="lazy"
-        className="invisible"
-      />
+      <AspectRatio ratio={6 / 6}>
+        <Image
+          height={500}
+          width={500}
+          alt=""
+          loading="lazy"
+          src={images[0].url}
+          className="invisible"
+        />
+      </AspectRatio>
       {images.map((img, index) => (
         <div
           key={img.id}
           className={cn(
-            "h-full left-0 absolute top-0 w-full opacity-0 z-0 overflow-hidden [transition:transform_0.5s,opacity_0.1s] ease-in",
+            "left-0 absolute top-0 w-full opacity-0 z-0 overflow-hidden [transition:transform_0.5s,opacity_0.1s] ease-in",
             index > selectedIndex ? "translate-x-full" : "-translate-x-full",
             index === selectedIndex ? "opacity-100 z-[5] translate-x-0" : ""
           )}
