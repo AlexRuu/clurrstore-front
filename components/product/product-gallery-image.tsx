@@ -47,29 +47,29 @@ const ProductGalleryImage: React.FC<PreviewGalleryProps> = ({
     <div className="h-full left-0 overflow-hidden relative top-0 w-full">
       <AspectRatio ratio={6 / 6}>
         <Image
-          height={600}
-          width={600}
+          height={700}
+          width={700}
           alt=""
           loading="lazy"
           src={images[0].url}
-          className="invisible rounded-[30px]"
+          className="invisible "
         />
       </AspectRatio>
       {images.map((img, index) => (
         <div
           key={img.id}
           className={cn(
-            "left-0 absolute top-0 w-full opacity-0 z-0 overflow-hidden [transition:transform_0.5s,opacity_0.1s] ease-in rounded-[30px]",
+            "left-0 absolute top-0 w-full opacity-0 z-0 overflow-hidden [transition:transform_0.5s,opacity_0.1s] ease-in ",
             index > selectedIndex ? "translate-x-full" : "-translate-x-full",
             index === selectedIndex ? "opacity-100 z-[5] translate-x-0" : ""
           )}
         >
           <Image
-            height={600}
-            width={600}
+            height={700}
+            width={700}
             onMouseMove={handleMouseMove}
             onMouseLeave={handleMouseLeave}
-            className="absolute left-0 opacity-0 top-0 hover:opacity-100 rounded-[30px]"
+            className="absolute left-0 opacity-0 top-0 hover:opacity-100 "
             style={translateStyle}
             src={img.url}
             sizes="(max-width: 500px) 100vw, (max-width: 1200px) 50vw, 33vw"
@@ -77,9 +77,9 @@ const ProductGalleryImage: React.FC<PreviewGalleryProps> = ({
             alt={`${index} out of ${images.length} images`}
           />
           <Image
-            height={600}
-            width={600}
-            className="m-0 p-0 relative flex justify-center z-0 hover:opacity-0 rounded-[30px]"
+            height={700}
+            width={700}
+            className="m-0 p-0 relative flex justify-center z-0 hover:opacity-0 "
             src={img.url}
             sizes="(max-width: 500px) 100vw, (max-width: 1200px) 50vw, 33vw"
             loading="lazy"

@@ -33,7 +33,7 @@ const ItemPage: React.FC<ItemPageProps> = async ({ params }) => {
   const product = await getProduct(productId![0]);
 
   return (
-    <main className="min-h-[500px]">
+    <main className="min-h-[500px] lg:mt-24">
       <section className="mt-10 small:mt-0">
         <div className="md:flex-row md:flex-nowrap md:justify-center md:p-[8px_16px_40px] items-start flex flex-col flex-nowrap justify-start p-[0_0_40px] w-full">
           <div className="small:p-5 w-full md:flex-row md:flex lg:justify-center">
