@@ -4,12 +4,10 @@ import usePreviewModal from "@/hooks/use-preview-modal";
 import Modal from "../ui/modal";
 import PreviewGallery from "./preview-gallery";
 import PreviewInfo from "../info";
-import useCart from "@/hooks/use-cart";
 
 const PreviewModal = () => {
   const previewModal = usePreviewModal();
   const product = usePreviewModal((state) => state.data);
-  const cart = useCart();
 
   if (!product) {
     return null;

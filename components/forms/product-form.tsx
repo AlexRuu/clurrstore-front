@@ -31,6 +31,7 @@ import getStyle from "@/actions/get-style";
 import { toast, ToastContainer, ToastContentProps, Zoom } from "react-toastify";
 import ToastInfo from "../toast-info";
 import { X } from "lucide-react";
+import usePreviewModal from "@/hooks/use-preview-modal";
 
 interface initialData {
   id: Product["id"];
@@ -57,13 +58,18 @@ const ProductForm: React.FC<ProductFormProps> = ({
   style,
 }) => {
   const cart = useCart();
+  const previewModal = usePreviewModal();
 
   const dismissToast = () => {
     toast.dismiss();
   };
-  
+
   const CloseButton = ({ closeToast }: ToastContentProps) => (
-    <X size={28} className="hover:text-black hover:cursor-pointer"  onClick={closeToast} />
+    <X
+      size={28}
+      className="hover:text-black hover:cursor-pointer"
+      onClick={closeToast}
+    />
   );
 
   const notify = (id: string, designId?: string, styleId?: string) => {
@@ -133,6 +139,7 @@ const ProductForm: React.FC<ProductFormProps> = ({
       data.styleId,
       styleName?.title
     );
+    previewModal.onClose();
     dismissToast();
     notify(id, designName?.id, styleName?.id);
   };
