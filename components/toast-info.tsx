@@ -21,6 +21,7 @@ const ToastInfo: React.FC<ToastInforProps> = ({ id, styleId, designId }) => {
   );
 
   const item = cart.items[itemIndex];
+
   return (
     <>
       <div className="w-full flex mt-5">
@@ -48,9 +49,9 @@ const ToastInfo: React.FC<ToastInforProps> = ({ id, styleId, designId }) => {
           <div className="w-1/2 text-right px-1 text-black">
             <p className="text-xs">{item.quantity}</p>
             {item.styleName?.includes("B Grade (-C$2.00)") ? (
-              <p>{(item.price - 2).toFixed(2)}</p>
+              <p>{((item.price - 2) * item.quantity).toFixed(2)}</p>
             ) : (
-              <p>{item.price.toFixed(2)}</p>
+              <p>{(item.price * item.quantity).toFixed(2)}</p>
             )}
           </div>
         </div>
