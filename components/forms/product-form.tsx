@@ -3,6 +3,7 @@ import { useForm } from "react-hook-form";
 
 import { Design, Product, Style } from "@/types";
 import { zodResolver } from "@hookform/resolvers/zod";
+import "react-toastify/dist/ReactToastify.css";
 
 import {
   Form,
@@ -24,6 +25,10 @@ import Button from "../ui/myButton";
 import useCart from "@/hooks/use-cart";
 import getDesign from "@/actions/get-design";
 import getStyle from "@/actions/get-style";
+import { toast, ToastContainer, Zoom } from "react-toastify";
+import ToastInfo from "../toast-info";
+import { useRef } from "react";
+import { X } from "lucide-react";
 
 interface initialData {
   id: Product["id"];
@@ -50,6 +55,25 @@ const ProductForm: React.FC<ProductFormProps> = ({
   style,
 }) => {
   const cart = useCart();
+
+  const dismissToast = () => {
+    toast.dismiss();
+  };
+
+  const notify = (id: string, designId?: string, styleId?: string) => {
+    toast(<ToastInfo id={id} designId={designId} styleId={styleId} />, {
+      closeButton: (
+        <X size={28} className="hover:text-black hover:cursor-pointer" />
+      ),
+      position: "top-right",
+      autoClose: false,
+      hideProgressBar: true,
+      closeOnClick: false,
+      draggable: true,
+      pauseOnHover: true,
+      transition: Zoom,
+    });
+  };
 
   const formSchema = z
     .object({
@@ -105,6 +129,8 @@ const ProductForm: React.FC<ProductFormProps> = ({
       data.styleId,
       styleName?.title
     );
+    dismissToast();
+    notify(id, designName?.id, styleName?.id);
   };
 
   return (
@@ -165,6 +191,16 @@ const ProductForm: React.FC<ProductFormProps> = ({
         <Button type="submit" className="bg-black mt-6">
           Add to Cart
         </Button>
+        <ToastContainer
+          stacked
+          style={{
+            position: "fixed",
+            top: "50px",
+            right: "90px",
+            width: "400px",
+            borderRadius: "30px",
+          }}
+        />
       </form>
     </Form>
   );
