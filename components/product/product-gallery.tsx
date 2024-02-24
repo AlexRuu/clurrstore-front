@@ -15,7 +15,7 @@ const ProductGallery: React.FC<ProductGalleryProps> = ({ images }) => {
   const [translateAmount, setTranslateAmount] = useState(0);
 
   return (
-    <div className="md:max-w-[600px] flex flex-nowrap flex-row flex-shrink overflow-hidden w-full ml-20 mr-10">
+    <div className="md:max-w-[700px] flex flex-nowrap flex-row flex-shrink overflow-hidden w-full ml-20 mr-10 lg:mx-10">
       <ProductImageSlide
         images={images}
         translateAmount={translateAmount}

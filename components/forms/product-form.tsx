@@ -142,7 +142,7 @@ const ProductForm: React.FC<ProductFormProps> = ({
             name="designId"
             render={({ field }) => (
               <FormItem>
-                <FormLabel>Design: </FormLabel>
+                <FormLabel>Design:</FormLabel>
                 <Select onValueChange={field.onChange} value={field.value}>
                   <FormControl>
                     <SelectTrigger className="focus:ring-0 focus-visible:ring-0">

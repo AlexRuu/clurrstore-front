@@ -39,7 +39,7 @@ const ProductInfo: React.FC<ProductInfoProps> = ({ product }) => {
         <p className="font-bold text-lg mb-2">About This Item</p>
         <ul>
           {product.detail.map((point, index) => (
-            <li className="list-disc ml-4" key={index}>
+            <li className="list-disc ml-5" key={index}>
               {point.text}
             </li>
           ))}

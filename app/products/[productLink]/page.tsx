@@ -36,10 +36,10 @@ const ItemPage: React.FC<ItemPageProps> = async ({ params }) => {
     <main className="min-h-[500px]">
       <section className="mt-10 small:mt-0">
         <div className="md:flex-row md:flex-nowrap md:justify-center md:p-[8px_16px_40px] items-start flex flex-col flex-nowrap justify-start p-[0_0_40px] w-full">
-          <div className="small:p-5 w-full md:flex-row md:flex">
+          <div className="small:p-5 w-full md:flex-row md:flex lg:justify-center">
             <MobileGallery images={product.image} />
             <ProductGallery images={product.image} />
-            <div className="md:max-w-[500px] md:pt-0 flex flex-col flex-nowrap flex-shrink px-4 py-0 w-full">
+            <div className="md:max-w-[500px] md:pt-0 flex flex-col flex-nowrap flex-shrink px-4 py-0 w-full lg:mx-7">
               <ProductInfo product={product} />
             </div>
           </div>
