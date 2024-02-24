@@ -1,6 +1,6 @@
 import { poppins } from "@/app/font";
 import useCart from "@/hooks/use-cart";
-import { cn } from "@/lib/utils";
+import { cn } from "@/libs/utlils";
 import { AspectRatio } from "@radix-ui/react-aspect-ratio";
 import Image from "next/image";
 import Link from "next/link";

@@ -3,7 +3,7 @@
 import { Product } from "@/types";
 import { InView } from "react-intersection-observer";
 import FeaturedTitle from "./featured-title";
-import { cn } from "@/lib/utils";
+import { cn } from "@/libs/utlils";
 import Link from "next/link";
 import Image from "next/image";
 

@@ -1,4 +1,4 @@
-import { Instagram, Menu, Search, Twitter } from "lucide-react";
+import { Instagram, Menu, Twitter } from "lucide-react";
 import {
   Sheet,
   SheetClose,
@@ -20,7 +20,7 @@ import Link from "next/link";
 import { useState } from "react";
 import useMediaQuery from "@/hooks/use-media-query";
 import SearchForm from "@/components/forms/search-form";
-import { cn } from "@/lib/utils";
+import { cn } from "@/libs/utlils";
 
 interface NavMobileProps {
   data: Category[];

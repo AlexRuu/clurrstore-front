@@ -1,4 +1,4 @@
-import { cn } from "@/lib/utils";
+import { cn } from "@/libs/utlils";
 import { Image as ImageType } from "@/types";
 import Image from "next/image";
 import { Dispatch, SetStateAction } from "react";

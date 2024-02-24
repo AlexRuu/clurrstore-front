@@ -1,6 +1,6 @@
 "use client";
 
-import { cn } from "@/lib/utils";
+import { cn } from "@/libs/utlils";
 import Link from "next/link";
 import { yeseva_one } from "@/app/font";
 import NavLinks from "./nav-links";

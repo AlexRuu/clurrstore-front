@@ -1,6 +1,6 @@
 "use client";
 
-import { cn } from "@/lib/utils";
+import { cn } from "@/libs/utlils";
 import { Image as ImageType } from "@/types";
 import { AspectRatio } from "@radix-ui/react-aspect-ratio";
 import Image from "next/image";

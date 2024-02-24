@@ -4,7 +4,7 @@ import { Product } from "@/types";
 import Link from "next/link";
 import Image from "next/image";
 import { InView } from "react-intersection-observer";
-import { cn } from "@/lib/utils";
+import { cn } from "@/libs/utlils";
 import FeaturedTitle from "./featured-title";
 
 interface FeaturedCategoriesProps {

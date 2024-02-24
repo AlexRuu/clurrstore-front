@@ -6,7 +6,7 @@ import { Form, FormControl, FormField, FormItem } from "../ui/form";
 import { Input } from "../ui/input";
 import { Search } from "lucide-react";
 import { useRouter } from "next/navigation";
-import { cn } from "@/lib/utils";
+import { cn } from "@/libs/utlils";
 import useNavSearch from "@/hooks/use-nav-search";
 import { useEffect } from "react";
 

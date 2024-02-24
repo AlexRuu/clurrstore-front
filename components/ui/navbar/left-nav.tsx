@@ -1,4 +1,4 @@
-import { cn } from "@/lib/utils";
+import { cn } from "@/libs/utlils";
 import Image from "next/image";
 import Link from "next/link";
 import { Yeseva_One } from "next/font/google";

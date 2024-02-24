@@ -1,7 +1,7 @@
 "use client";
 
 import Button from "@/components/ui/myButton";
-import { cn } from "@/lib/utils";
+import { cn } from "@/libs/utlils";
 import { Product } from "@/types";
 import Image from "next/image";
 import Link from "next/link";

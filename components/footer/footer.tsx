@@ -1,10 +1,9 @@
 "use client";
 
 import { Instagram, Store, Twitter } from "lucide-react";
-import Image from "next/image";
 import Link from "next/link";
 import { poppins_light } from "@/app/font";
-import { cn } from "@/lib/utils";
+import { cn } from "@/libs/utlils";
 import NewsletterForm from "../forms/newsletter-form";
 
 const footerLinks = [
