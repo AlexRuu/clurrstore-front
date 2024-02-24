@@ -17,7 +17,7 @@ export default async function RootLayout({
 }) {
   return (
     <html lang="en-us" className={poppins.className}>
-      <body>
+      <body className="w-full">
         <div className="max-w-[100vw] overflow-x-hidden w-full">
           <Navbar />
           <PreviewModalProvider />
