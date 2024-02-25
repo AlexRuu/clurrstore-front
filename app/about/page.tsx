@@ -1,5 +1,12 @@
 import { AspectRatio } from "@/components/ui/aspect-ratio";
 import Image from "next/image";
+import { Metadata } from "next";
+
+export const generateMetadata = (): Metadata => {
+  return {
+    title: `About Me`,
+  };
+};
 
 const AboutPage = () => {
   return (
