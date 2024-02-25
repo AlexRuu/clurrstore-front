@@ -41,7 +41,7 @@ const ProductCard: React.FC<ProductCardProps> = ({ data }) => {
       <div className="text-center">
         <Button
           onClick={onPreview}
-          className="bg-white text-black border border-black hover:bg-black hover:text-white rounded-lg pt-2 pb-2 hover:opacity-100"
+          className="bg-white text-black border border-black hover:bg-black hover:text-white rounded-lg pt-2 pb-2 hover:opacity-100 med-small:hidden"
         >
           Quick Preview
         </Button>
