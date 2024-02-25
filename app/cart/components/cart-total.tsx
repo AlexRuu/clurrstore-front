@@ -3,6 +3,7 @@
 import Button from "@/components/ui/myButton";
 import useCart from "@/hooks/use-cart";
 import { useEffect, useState } from "react";
+import axios from "axios";
 
 const CartTotal = () => {
   const [isMounted, setIsMounted] = useState(false);
@@ -23,6 +24,10 @@ const CartTotal = () => {
     }
     return acc + Number(current.price * current.quantity);
   }, 0);
+
+  const onCheckout = async () => {
+    await axios.post(`${process.env.NEXT_PUBLIC_API_URL}/checkout`, cart.items);
+  };
 
   return (
     <>
@@ -51,7 +56,10 @@ const CartTotal = () => {
           </div>
           <div className="text-right small:my-5 my-[30px] small:mx-3 block">
             <div className="block my-5">
-              <Button className="text-black small:w-full small:text-center w-[30%] my-5 small:px-0 border bg-[#e2ecf2] hover:shadow-home-button hover:-translate-y-[3px] hover:brightness-95 uppercase">
+              <Button
+                onClick={onCheckout}
+                className="text-black small:w-full small:text-center w-[30%] my-5 small:px-0 border bg-[#e2ecf2] hover:shadow-home-button hover:-translate-y-[3px] hover:brightness-95 uppercase"
+              >
                 Check Out
               </Button>
             </div>
