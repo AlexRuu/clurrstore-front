@@ -30,6 +30,7 @@ interface CartStore {
     selectedDesign?: string,
     selectedStyle?: string
   ) => void;
+  removeAll: () => void;
 }
 
 const useCart = create(
@@ -105,6 +106,9 @@ const useCart = create(
         } else {
           set({ items: currentItems });
         }
+      },
+      removeAll: () => {
+        set({ items: [] });
       },
     }),
     {
