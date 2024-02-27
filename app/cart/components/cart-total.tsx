@@ -4,10 +4,23 @@ import Button from "@/components/ui/myButton";
 import useCart from "@/hooks/use-cart";
 import { useEffect, useState } from "react";
 import axios from "axios";
+import { useSearchParams } from "next/navigation";
 
 const CartTotal = () => {
   const [isMounted, setIsMounted] = useState(false);
+  const searchParams = useSearchParams();
   const cart = useCart();
+  const removeAll = useCart((state) => state.removeAll);
+
+  useEffect(() => {
+    if (searchParams.get("success")) {
+      console.log("success");
+      removeAll();
+    }
+    if (searchParams.get("canceled")) {
+      console.log("something went wrong");
+    }
+  }, [searchParams, removeAll]);
 
   useEffect(() => {
     setIsMounted(true);
@@ -26,7 +39,11 @@ const CartTotal = () => {
   }, 0);
 
   const onCheckout = async () => {
-    await axios.post(`${process.env.NEXT_PUBLIC_API_URL}/checkout`, cart.items);
+    const response = await axios.post(
+      `${process.env.NEXT_PUBLIC_API_URL}/checkout`,
+      cart.items
+    );
+    window.location = response.data.url;
   };
 
   return (
