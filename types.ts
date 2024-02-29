@@ -45,3 +45,19 @@ export interface HomeImage {
   description: string;
   url: string;
 }
+
+export interface Order {
+  id: string;
+  orderNumber: string;
+  orderItem: OrderItem[];
+  isPaid: boolean;
+  address: string;
+  phone: string;
+}
+
+export interface OrderItem {
+  id: string;
+  product: Product;
+  design: Design;
+  style: Style;
+}
