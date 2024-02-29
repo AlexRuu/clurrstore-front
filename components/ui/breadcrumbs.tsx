@@ -7,9 +7,10 @@ import { usePathname } from "next/navigation";
 interface BreadcrumbProps {
   second?: string;
   title?: string;
+  disabled?: boolean;
 }
 
-const Breadcrumb: React.FC<BreadcrumbProps> = ({ second, title }) => {
+const Breadcrumb: React.FC<BreadcrumbProps> = ({ second, title, disabled }) => {
   const pathname = usePathname();
 
   const links = [
@@ -22,6 +23,7 @@ const Breadcrumb: React.FC<BreadcrumbProps> = ({ second, title }) => {
       href: `/${second}`,
       label: `${second}`,
       active: pathname === `${second}`,
+      disabled: disabled,
     },
   ];
   return (
@@ -30,9 +32,12 @@ const Breadcrumb: React.FC<BreadcrumbProps> = ({ second, title }) => {
         <Link
           href={link.href}
           key={index}
+          aria-disabled={link.disabled ? link.disabled : false}
+          tabIndex={link.disabled ? -1 : undefined}
           className={cn(
             " text-gray-500 transition ease-out duration-150 hover:text-neutral-400 uppercase",
-            link.active ? "text-black" : ""
+            link.active && "text-black",
+            link.disabled && "pointer-events-none"
           )}
         >
           {link.label}
