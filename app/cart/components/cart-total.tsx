@@ -4,7 +4,11 @@ import Button from "@/components/ui/myButton";
 import useCart from "@/hooks/use-cart";
 import { useEffect, useState } from "react";
 import axios from "axios";
-import { useSearchParams } from "next/navigation";
+import { redirect, useSearchParams } from "next/navigation";
+import { ToastContainer, Zoom, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+import { cn } from "@/libs/utlils";
+import { poppins } from "@/app/font";
 
 const CartTotal = () => {
   const [isMounted, setIsMounted] = useState(false);
@@ -12,13 +16,22 @@ const CartTotal = () => {
   const cart = useCart();
   const removeAll = useCart((state) => state.removeAll);
 
+  const failNotify = () => {
+    toast.error("Something went wrong...", {
+      bodyClassName: cn("text-black", poppins),
+      position: "top-center",
+      autoClose: 5000,
+      hideProgressBar: true,
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: true,
+      transition: Zoom,
+    });
+  };
+
   useEffect(() => {
-    if (searchParams.get("success")) {
-      console.log("success");
-      removeAll();
-    }
     if (searchParams.get("canceled")) {
-      console.log("something went wrong");
+      failNotify();
     }
   }, [searchParams, removeAll]);
 
@@ -81,6 +94,7 @@ const CartTotal = () => {
               </Button>
             </div>
           </div>
+          <ToastContainer stacked style={{ borderRadius: "30px" }} />
         </>
       )}
     </>
