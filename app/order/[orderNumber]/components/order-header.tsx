@@ -21,7 +21,7 @@ const OrderHeader: React.FC<OrderHeaderProps> = ({ orderNumber }) => {
   return (
     <>
       <div>
-        <CheckCircle2 size={64} />
+        <CheckCircle2 size={64} color="#f19ab3" />
       </div>
       <div className="flex flex-col justify-center items-center flex-nowrap">
         <h1 className="text-4xl mt-5 my-3">Order Confirmed!</h1>
