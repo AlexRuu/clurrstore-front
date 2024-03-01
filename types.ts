@@ -60,4 +60,5 @@ export interface OrderItem {
   product: Product;
   design: Design;
   style: Style;
+  quantity: number;
 }
