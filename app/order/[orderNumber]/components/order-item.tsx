@@ -20,7 +20,7 @@ const OrderItem: React.FC<OrderItemProps> = ({
   const [totalPrice, setTotalPrice] = useState(product.price * quantity);
 
   useEffect(() => {
-    if (style.title == "B Grade (-C$2.00)") {
+    if (style && style.title == "B Grade (-C$2.00)") {
       const newPrice = product.price - 2;
       setTotalPrice(newPrice * quantity);
     } else {
@@ -84,7 +84,7 @@ const OrderItem: React.FC<OrderItemProps> = ({
         {/* price for bigger than small */}
         <div className="small:pb-5 small:text-left small:w-auto small:pl-[60px] small:text-lg small:hidden pt-[15px] md-max:w-[120px] md-max:min-w-[120px] w-[16.66667%] min-w-[145px] flex-[0_0_auto] text-center">
           <div>
-            {style.title == "B Grade (-C$2.00)"
+            {style?.title == "B Grade (-C$2.00)"
               ? (product.price - 2).toFixed(2)
               : product.price.toFixed(2)}
           </div>

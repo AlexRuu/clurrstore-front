@@ -12,7 +12,7 @@ const OrderTotal: React.FC<OrderTotalProps> = ({ order }) => {
 
   useEffect(() => {
     setIsMounted(true);
-  });
+  }, []);
 
   if (!isMounted) {
     return null;
@@ -29,7 +29,9 @@ const OrderTotal: React.FC<OrderTotalProps> = ({ order }) => {
 
   return (
     <div className="w-full flex flex-row-reverse">
-      <div className="">Subtotal: ${totalPrice.toFixed(2)}</div>
+      <div>
+        <p className="text-xl">Subtotal: ${totalPrice.toFixed(2)}</p>
+      </div>
     </div>
   );
 };
