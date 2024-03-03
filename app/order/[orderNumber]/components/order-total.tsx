@@ -27,10 +27,20 @@ const OrderTotal: React.FC<OrderTotalProps> = ({ order }) => {
   }, 0);
 
   return (
-    <div className="w-full flex flex-row-reverse">
-      <div>
-        <p className="text-xl">Subtotal: ${totalPrice.toFixed(2)}</p>
-        <p></p>
+    <div className="w-full flex flex-row-reverse med-small:mr-20">
+      <div className="flex">
+        <div className="mr-5">
+          <p className="text-lg">Subtotal: </p>
+          <p className="text-lg">Shipping: </p>
+          <p className="text-lg">Tax: </p>
+          <p className="text-xl">Total: </p>
+        </div>
+        <div>
+          <p className="text-lg text-right">${totalPrice.toFixed(2)}</p>
+          <p className="text-lg text-right">${order.shipping.toFixed(2)}</p>
+          <p className="text-lg text-right">${order.tax.toFixed(2)}</p>
+          <p className="text-xl text-right">${order.total.toFixed(2)}</p>
+        </div>
       </div>
     </div>
   );

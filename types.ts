@@ -53,6 +53,9 @@ export interface Order {
   isPaid: boolean;
   address: string;
   phone: string;
+  tax: number;
+  shipping: number;
+  total: number;
 }
 
 export interface OrderItem {
