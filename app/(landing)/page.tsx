@@ -10,19 +10,20 @@ export const revalidate = 0;
 
 const HomePage = async () => {
   const homeImages = await getHomeImage();
-  const featuredItem = await getProduct("b357cf37-68c3-4500-ba44-031e15787713");
+  const featuredItem = await getProduct("4b2e5573-4605-457d-a6e2-cb617d1f64c0");
   const categoryProduct = await getProducts({
     categoryId: [
-      "b400cb83-5d9b-4747-9794-719f1c9cca62",
-      "38844945-b2d7-4780-bfd0-e3c17db717df",
-      "c67fc98d-7de8-45b8-b010-671fa34251c9",
+      "1ef771da-fbe9-4553-819c-f427d3f76f6f",
+      "2569adc2-ca07-45fb-87ec-59e98ce00f7f",
+      "2bb6a311-a64b-4c96-817b-e4f078b5bbbd",
     ],
   });
+
   const featuredProducts = await getProducts({
     productId: [
-      "266969d8-cf47-4567-8a31-4407745976cc",
-      "517f6b8e-c6e7-4142-ab83-32b33120f5c0",
-      "1592c7ac-2a82-4597-bd23-1729330a3896",
+      "1bb25562-8f25-4073-9198-6de59b85b844",
+      "5ffeefcc-b918-4300-9f6b-805e7f5fc93a",
+      "b03a81b0-6683-4d05-84d1-069cbdc6666e",
     ],
   });
 
