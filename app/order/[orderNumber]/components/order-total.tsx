@@ -27,7 +27,7 @@ const OrderTotal: React.FC<OrderTotalProps> = ({ order }) => {
   }, 0);
 
   return (
-    <div className="w-full flex flex-row-reverse med-small:mr-20 medium-min:px-20">
+    <div className="w-full flex flex-row-reverse med-small:mr-20">
       <div className="flex med-small:justify-between med-small:w-full med-small:pl-20">
         <div className="mr-5">
           <p className="text-base">Subtotal: </p>
