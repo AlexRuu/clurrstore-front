@@ -26,18 +26,27 @@ const OrderPersonalDetails: React.FC<OrderPersonalDetailsProps> = ({
   }
 
   return (
-    <div>
-      Customer Details
-      <div>
-        <p>{order.name}</p>
-        <p>{order.email}</p>
-        {order.phone && <p>{order.phone}</p>}
-        <p>{address1}</p>
-        {address2 && <p>{address2}</p>}
-        <p>
-          {city}, {state}, {country}
-        </p>
-        <p>{postalCode}</p>
+    <div className="w-full mt-10 med-small:px-10">
+      <div className="mb-10 w-full justify-center text-center flex flex-col items-center">
+        <h3 className="text-lg mb-4">Order Details</h3>
+        <div className="text-sm flex flex-nowrap justify-between medium-min:w-1/4 med-small:w-full">
+          <div className="mr-8 text-left">
+            <h6 className="text-base">Customer Details</h6>
+            <p>Name: {order.name}</p>
+            <p>Email: {order.email}</p>
+            {order.phone && <p>Phone: {order.phone}</p>}
+          </div>
+          <div className="text-right">
+            <h6 className="text-base">Ship To</h6>
+            <p>{order.name}</p>
+            <p>{address1}</p>
+            {address2 && <p>{address2}</p>}
+            <p>
+              {city}, {state}, {country}
+            </p>
+            <p>{postalCode}</p>
+          </div>
+        </div>
       </div>
     </div>
   );
