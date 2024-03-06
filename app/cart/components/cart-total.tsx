@@ -4,7 +4,7 @@ import Button from "@/components/ui/myButton";
 import useCart from "@/hooks/use-cart";
 import { useEffect, useState } from "react";
 import axios from "axios";
-import { redirect, useSearchParams } from "next/navigation";
+import { useSearchParams } from "next/navigation";
 import { ToastContainer, Zoom, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { cn } from "@/libs/utlils";
