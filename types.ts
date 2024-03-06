@@ -67,3 +67,12 @@ export interface OrderItem {
   style: Style;
   quantity: number;
 }
+
+export interface Profile {
+  id: string;
+  userId: string;
+  firstName: string;
+  lastName: string;
+  email: string;
+  order: Order[];
+}
