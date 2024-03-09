@@ -70,9 +70,15 @@ export interface OrderItem {
 
 export interface Profile {
   id: string;
-  userId: string;
   firstName: string;
   lastName: string;
   email: string;
+  phone: string;
+  postalCode: string;
+  address1: string;
+  address2: string;
+  city: string;
+  province: string;
+  country: string;
   order: Order[];
 }
