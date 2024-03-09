@@ -5,7 +5,6 @@ import { redirect } from "next/navigation";
 
 import { createClient } from "@/libs/supabase/server";
 import getProfile from "./get-profile";
-import axios from "axios";
 
 export async function login(email: string, password: string) {
   const supabase = createClient();
@@ -19,8 +18,10 @@ export async function login(email: string, password: string) {
 
   if (error) {
     return false;
+  } else {
+    revalidatePath("/", "layout");
+    redirect("/");
   }
-  return true;
 }
 
 export async function signup(
@@ -36,20 +37,18 @@ export async function signup(
     password: password,
     options: {
       data: {
-        first_name: firstName,
-        last_name: lastName,
+        firstName: firstName,
+        lastName: lastName,
       },
     },
   });
 
   if (error) {
-    return console.log(error.cause, error.message);
+    return console.log(error);
   } else {
-    await axios.post(`${process.env.NEXT_PUBLIC_API_URL}/profile`, data);
+    revalidatePath("/", "layout");
+    redirect("/");
   }
-
-  revalidatePath("/account/login", "layout");
-  redirect("/account/login");
 }
 
 export async function resetPassword(email: string) {
@@ -63,5 +62,20 @@ export async function resetPassword(email: string) {
     return 1;
   } else {
     return 2;
+  }
+}
+
+export async function updateUser(updateInfo: any) {
+  const supabase = createClient();
+
+  const { data, error } = await supabase.auth.updateUser({
+    data: updateInfo,
+  });
+
+  if (error) {
+    return console.log(error);
+  } else {
+    revalidatePath("/profile", "layout");
+    redirect("/profile");
   }
 }
