@@ -16,7 +16,7 @@ const RefundPage = () => {
       <section className="xl:!p-[0px_85px] p-[0px_55px] med-small:p-0">
         <PageHeader headerTitle="Refund Policy" second="refund" />
         <div className="flex justify-center items-center text-left w-full">
-          <p className={cn("mx-32 w-1/3", poppins_light)}>
+          <p className={cn("mx-32 w-1/2", poppins_light)}>
             If you are unsatisfied with your order, I am happy to discuss refund
             and return options within 30 days of your initial order! Feel free
             to send me an email at&nbsp;
