@@ -11,7 +11,6 @@ const PageHeader: React.FC<PageHeaderProps> = ({
   second,
   title,
   headerTitle,
-  disabled,
 }) => {
   return (
     <>
