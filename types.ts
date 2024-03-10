@@ -58,6 +58,7 @@ export interface Order {
   tax: number;
   shipping: number;
   total: number;
+  createdAt: string;
 }
 
 export interface OrderItem {
