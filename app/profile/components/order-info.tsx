@@ -1,27 +1,49 @@
-const ProfileOrderInfo = () => {
+import { Profile } from "@/types";
+import OrderItemInfo from "./order-item-info";
+import { poppins_bold } from "@/app/font";
+import { cn } from "@/libs/utlils";
+
+interface ProfileOrderInfoProps {
+  orders: Profile["order"];
+}
+
+const ProfileOrderInfo: React.FC<ProfileOrderInfoProps> = ({ orders }) => {
   return (
     <div>
       <h1 className="text-2xl">Orders</h1>
       {/* Need order number, payment status, total payment, date of order, a view order tab */}
-      <div className="small:my-5 max-w-[1600px] m-[0_auto] block">
-        <ul className="small:mt-[30px] m-0 p-0">
-          <li className="small:hidden border-t border-solid border-[#f3f3f3] mt-[30px] pb-[15px] pt-0 flex justify-between border-b flex-nowrap">
-            <span className="mt-[15px] pl-0 flex-grow">Order Number</span>
-            <span className="pt-[15px] pl-0 md-max:w-[120px] md-max:min-w-[120px] flex-[0_0_auto] text-center w-[16.67%] min-w-[145px]">
+      {orders.length > 0 ? (
+        <div className="grid grid-cols-[25%_25%_20%_20%_10%] small:hidden">
+          <div>
+            <h4 className={cn("text-lg", poppins_bold.className)}>
+              Order Number
+            </h4>
+          </div>
+          <div className="text-center">
+            <h4 className={cn("text-lg", poppins_bold.className)}>
               Order Date
-            </span>
-            <span className="pt-[15px] pl-0 w-[12.5%] min-w-[145px] flex-[0_0_auto] text-center">
-              Payment Status
-            </span>
-            <span className="pt-[15px] pl-0 text-right md-max:w-[100px] md-max:min-w-[100px] flex-[0_0_auto] min-w-[145px]">
+            </h4>
+          </div>
+          <div className="text-center">
+            <h4 className={cn("text-lg", poppins_bold.className)}>
               Order Total
-            </span>
-            <span className="pt-[15px] pl-0 text-right md-max:w-[100px] md-max:min-w-[100px] flex-[0_0_auto] min-w-[145px]">
-              View Order
-            </span>
-          </li>
-        </ul>
-      </div>
+            </h4>
+          </div>
+          <div className="text-center">
+            <h4 className={cn("text-lg", poppins_bold.className)}>
+              Payment Status
+            </h4>
+          </div>
+          <div className="text-center">
+            <h4 className={cn("text-lg", poppins_bold.className)}>Details</h4>
+          </div>
+          {orders.map((order) => (
+            <OrderItemInfo order={order} key={order.id} />
+          ))}
+        </div>
+      ) : (
+        <div>You haven't placed any orders yet.</div>
+      )}
     </div>
   );
 };
