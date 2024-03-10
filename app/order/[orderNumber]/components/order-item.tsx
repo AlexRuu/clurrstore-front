@@ -91,8 +91,10 @@ const OrderItem: React.FC<OrderItemProps> = ({
         </div>
         {/* Quantity */}
         <div className="small:flex small:flex-wrap small:items-center small:text-left small:w-auto small:pl-[60px] small:text-lg pt-[5px] w-16.666667%] min-w-[145px] flex-[0_0_auto] text-center block">
-          {/* add and minus button layout */}
           <div className="small:justify-start small:mr-[30px] small::mb-5 justify-center flex flex-wrap items-center">
+            <span className="medium-min:hidden opacity-50 text-sm mb-[2px]">
+              Quantity:
+            </span>
             <p className="m-0 px-0 small:pt-1 md:pt-2 text-center h-[38px] w-[38px]">
               {quantity}
             </p>
