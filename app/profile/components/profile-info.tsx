@@ -18,7 +18,7 @@ const ProfileInfo: React.FC<EditProfileProps> = ({ profile }) => {
   return (
     <div className="mb-10">
       <h1 className="text-2xl mb-3">Profile</h1>
-      <div className="flex w-1/2 bg-gray-100 rounded-[10px] med-small:w-full md-max:w-7/12">
+      <div className="flex w-1/2 bg-gray-100 rounded-[10px] small:w-full md-max:w-7/12">
         {/* Left Column for personal */}
         <div className="mr-20 ml-5 my-2 med-small:hidden">
           {/* Name */}
