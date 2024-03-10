@@ -1,3 +1,5 @@
+"use client";
+
 import * as z from "zod";
 import { useForm } from "react-hook-form";
 
@@ -72,7 +74,7 @@ const UpdateProfileForm: React.FC<UpdateProfileFormProps> = ({
       firstName: data.firstName,
       lastName: data.lastName,
       phone: data.phone,
-      postalCode: data.postalCode,
+      postalCode: data.postalCode?.toUpperCase(),
       address1: data.address1,
       address2: data.address2,
       city: data.city,
@@ -88,14 +90,14 @@ const UpdateProfileForm: React.FC<UpdateProfileFormProps> = ({
         onSubmit={form.handleSubmit(onUpdate)}
         method="post"
         autoComplete="off"
-        className="w-full justify-center items-center"
+        className="w-1/2 mx-auto justify-center items-center"
       >
-        <div>
+        <div className="flex w-full">
           <FormField
             control={form.control}
             name="firstName"
             render={({ field }) => (
-              <FormItem>
+              <FormItem className="w-1/2 mr-2">
                 <FormLabel>First Name</FormLabel>
                 <FormControl>
                   <Input
@@ -113,7 +115,7 @@ const UpdateProfileForm: React.FC<UpdateProfileFormProps> = ({
             control={form.control}
             name="lastName"
             render={({ field }) => (
-              <FormItem>
+              <FormItem className="w-1/2 ml-2">
                 <FormLabel>Last Name</FormLabel>
                 <FormControl>
                   <Input
@@ -132,21 +134,19 @@ const UpdateProfileForm: React.FC<UpdateProfileFormProps> = ({
           control={form.control}
           name="phone"
           render={({ field }) => (
-            <FormItem>
+            <FormItem className="mt-1">
               <FormLabel>Phone</FormLabel>
               <FormControl>
                 <Input
                   {...field}
                   type="number"
                   maxLength={10}
+                  placeholder="Please enter your phone number without spaces"
                   autoCapitalize="off"
                   autoComplete="off"
                   value={field.value}
                 />
               </FormControl>
-              <FormDescription>
-                Please enter your phone number without spaces
-              </FormDescription>
               <FormMessage />
             </FormItem>
           )}
@@ -155,7 +155,7 @@ const UpdateProfileForm: React.FC<UpdateProfileFormProps> = ({
           control={form.control}
           name="address1"
           render={({ field }) => (
-            <FormItem>
+            <FormItem className="mt-1">
               <FormLabel>Street Address</FormLabel>
               <FormControl>
                 <Input
@@ -173,7 +173,7 @@ const UpdateProfileForm: React.FC<UpdateProfileFormProps> = ({
           control={form.control}
           name="address2"
           render={({ field }) => (
-            <FormItem>
+            <FormItem className="mt-1">
               <FormLabel>Address Details</FormLabel>
               <FormControl>
                 <Input
@@ -187,86 +187,90 @@ const UpdateProfileForm: React.FC<UpdateProfileFormProps> = ({
             </FormItem>
           )}
         />
-        <FormField
-          control={form.control}
-          name="postalCode"
-          render={({ field }) => (
-            <FormItem>
-              <FormLabel>Postal Code</FormLabel>
-              <FormControl>
-                <Input
-                  {...field}
-                  type="text"
-                  maxLength={6}
-                  autoCapitalize="off"
-                  autoComplete="off"
-                  value={field.value}
-                />
-              </FormControl>
-              <FormDescription>
-                Please enter a postal code without spaces
-              </FormDescription>
-              <FormMessage />
-            </FormItem>
-          )}
-        />
-        <FormField
-          control={form.control}
-          name="city"
-          render={({ field }) => (
-            <FormItem>
-              <FormLabel>City</FormLabel>
-              <FormControl>
-                <Input
-                  {...field}
-                  type="text"
-                  autoCapitalize="off"
-                  autoComplete="off"
-                  value={field.value}
-                />
-              </FormControl>
-            </FormItem>
-          )}
-        />{" "}
-        <FormField
-          control={form.control}
-          name="province"
-          render={({ field }) => (
-            <FormItem>
-              <FormLabel>Province/Territory</FormLabel>
-              <FormControl>
-                <Input
-                  {...field}
-                  maxLength={2}
-                  type="text"
-                  autoCapitalize="off"
-                  autoComplete="off"
-                  value={field.value}
-                />
-              </FormControl>
-            </FormItem>
-          )}
-        />
-        <FormField
-          control={form.control}
-          name="country"
-          render={({ field }) => (
-            <FormItem>
-              <FormLabel>Country</FormLabel>
-              <FormControl>
-                <Input
-                  {...field}
-                  type="text"
-                  disabled
-                  autoCapitalize="off"
-                  autoComplete="off"
-                  value={field.value}
-                />
-              </FormControl>
-            </FormItem>
-          )}
-        />
-        <Button className="text-black">Save Changes</Button>
+        <div className="flex w-full">
+          <FormField
+            control={form.control}
+            name="postalCode"
+            render={({ field }) => (
+              <FormItem className="mt-1 w-1/2 mr-2">
+                <FormLabel>Postal Code</FormLabel>
+                <FormControl>
+                  <Input
+                    {...field}
+                    type="text"
+                    maxLength={6}
+                    autoCapitalize="off"
+                    placeholder="Please enter a postal code without spaces"
+                    autoComplete="off"
+                    value={field.value}
+                  />
+                </FormControl>
+                <FormMessage />
+              </FormItem>
+            )}
+          />
+          <FormField
+            control={form.control}
+            name="city"
+            render={({ field }) => (
+              <FormItem className="mt-1 w-1/2 ml-2">
+                <FormLabel>City</FormLabel>
+                <FormControl>
+                  <Input
+                    {...field}
+                    type="text"
+                    autoCapitalize="off"
+                    autoComplete="off"
+                    value={field.value}
+                  />
+                </FormControl>
+              </FormItem>
+            )}
+          />
+        </div>
+        <div className="flex w-full">
+          <FormField
+            control={form.control}
+            name="province"
+            render={({ field }) => (
+              <FormItem className="mt-1 w-1/2 mr-2">
+                <FormLabel>Province/Territory</FormLabel>
+                <FormControl>
+                  <Input
+                    {...field}
+                    maxLength={2}
+                    type="text"
+                    autoCapitalize="off"
+                    autoComplete="off"
+                    value={field.value}
+                  />
+                </FormControl>
+              </FormItem>
+            )}
+          />
+          <FormField
+            control={form.control}
+            name="country"
+            render={({ field }) => (
+              <FormItem className="mt-1 w-1/2 ml-2">
+                <FormLabel>Country</FormLabel>
+                <FormControl>
+                  <Input
+                    {...field}
+                    type="text"
+                    disabled
+                    autoCapitalize="off"
+                    autoComplete="off"
+                    value={field.value}
+                  />
+                </FormControl>
+              </FormItem>
+            )}
+          />
+        </div>
+        <Button className="text-black small:w-full small:text-center w-full my-5 small:px-0 border bg-[#e2ecf2] hover:shadow-home-button hover:-translate-y-[3px] hover:brightness-95 uppercase">
+          Save Changes
+        </Button>
       </form>
     </Form>
   );
