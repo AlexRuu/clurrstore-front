@@ -2,7 +2,6 @@
 
 import { Order } from "@/types";
 import ProfileOrderItem from "./profile-order-item";
-// import OrderItem from "./order-item";
 
 interface OrderSummaryProps {
   order: Order;
