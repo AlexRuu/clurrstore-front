@@ -10,6 +10,7 @@ interface OrderSummaryProps {
 const OrderSummary: React.FC<OrderSummaryProps> = ({ order }) => {
   return (
     <div className="w-full mt-10 med-small:px-10">
+      {/* Order summary headings */}
       <h2 className="text-center text-2xl">Order Summary</h2>
       <div className="small:my-5 max-w-[1600px] m-[0_auto] block">
         <ul className="small:mt-[30px] m-0 p-0">
@@ -25,6 +26,7 @@ const OrderSummary: React.FC<OrderSummaryProps> = ({ order }) => {
               Total
             </span>
           </li>
+          {/* Display items in order */}
           {order.orderItem.map((item) => (
             <OrderItem
               key={item.id}

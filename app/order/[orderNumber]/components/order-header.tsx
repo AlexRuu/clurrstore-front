@@ -12,6 +12,7 @@ const OrderHeader: React.FC<OrderHeaderProps> = ({ orderNumber }) => {
   const searchParams = useSearchParams();
   const removeAll = useCart((state) => state.removeAll);
 
+  // Remove everything from cart if payment is successful
   useEffect(() => {
     if (searchParams.get("success")) {
       removeAll();

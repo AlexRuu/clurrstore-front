@@ -20,6 +20,7 @@ const RefundPage = () => {
             If you are unsatisfied with your order, I am happy to discuss refund
             and return options within 30 days of your initial order! Feel free
             to send me an email at&nbsp;
+            {/* Open up mail app to send an email to creator */}
             <span className="text-blue-400 hover:underline">
               <Link href={"mailto:clurrs.studio@hotmail.com"}>
                 clurrs.studio@hotmail.com

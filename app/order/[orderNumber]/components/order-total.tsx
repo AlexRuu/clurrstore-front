@@ -18,6 +18,7 @@ const OrderTotal: React.FC<OrderTotalProps> = ({ order }) => {
     return null;
   }
 
+  // Calculate the total of the order
   const totalPrice = order.orderItem.reduce((acc, current) => {
     if (current.style?.title == "B Grade (-C$2.00)") {
       const newPrice = Number(current.product.price) - 2;
@@ -29,12 +30,14 @@ const OrderTotal: React.FC<OrderTotalProps> = ({ order }) => {
   return (
     <div className="w-full flex flex-row-reverse med-small:mr-20">
       <div className="flex med-small:justify-between med-small:w-full med-small:pl-20">
+        {/* Left side of order summary to display what title of what is to be shown */}
         <div className="mr-5">
           <p className="text-base">Subtotal: </p>
           <p className="text-base">Shipping: </p>
           <p className="text-base">Tax: </p>
           <p className="text-xl">Total: </p>
         </div>
+        {/* Right side to display information about the order */}
         <div>
           <p className="text-base text-right">${totalPrice.toFixed(2)}</p>
           <p className="text-base text-right">${order.shipping.toFixed(2)}</p>

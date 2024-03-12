@@ -19,6 +19,7 @@ const OrderItem: React.FC<OrderItemProps> = ({
 }) => {
   const [totalPrice, setTotalPrice] = useState(product.price * quantity);
 
+  // Update price to reduce by 2 if style of item is B grade
   useEffect(() => {
     if (style && style.title == "B Grade (-C$2.00)") {
       const newPrice = product.price - 2;
@@ -30,6 +31,7 @@ const OrderItem: React.FC<OrderItemProps> = ({
 
   return (
     <li className="small:border-b small:border-b-[#f3f3f3] small:border-solid small:pb-5 small:mb-[30px] small:flex list-none">
+      {/* Image of the item  */}
       <Link
         href={`/products/${product.title}-${product.id}`}
         className="small:block w-[30%] max-w-[200px] flex-[0_0_auto] md:hidden"

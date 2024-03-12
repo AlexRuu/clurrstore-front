@@ -7,6 +7,7 @@ interface OrderPersonalDetailsProps {
 const OrderPersonalDetails: React.FC<OrderPersonalDetailsProps> = ({
   order,
 }) => {
+  // Break down address information retrieved
   const address = order.address.split(",");
   let address1, address2, city, state, postalCode, country;
   if (address.length == 5) {
@@ -27,6 +28,7 @@ const OrderPersonalDetails: React.FC<OrderPersonalDetailsProps> = ({
 
   return (
     <div className="w-full mt-10 med-small:px-10">
+      {/* Display customers order details */}
       <div className="mb-10 w-full justify-center text-center flex flex-col items-center">
         <h3 className="text-lg mb-4">Order Details</h3>
         <div className="text-sm flex flex-nowrap justify-between medium-min:w-1/3 med-small:w-full">
