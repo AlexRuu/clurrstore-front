@@ -137,7 +137,6 @@ const ProductForm: React.FC<ProductFormProps> = ({
       data.styleId,
       styleName?.title
     );
-    previewModal.onClose();
     dismissToast();
     notify(id, designName?.id, styleName?.id);
   };
