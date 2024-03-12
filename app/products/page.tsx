@@ -1,7 +1,7 @@
 import getProducts from "@/actions/get-products";
 import Filter from "@/components/ui/filter";
 import PageHeader from "@/components/ui/header";
-import ProductCard from "@/components/ui/product-card";
+import ProductCard from "@/components/product/product-card";
 import { Metadata } from "next";
 
 export const generateMetadata = (): Metadata => {
