@@ -2,9 +2,6 @@
 
 import { Product } from "@/types";
 import Image from "next/image";
-import Button from "./myButton";
-import usePreviewModal from "@/hooks/use-preview-modal";
-import { MouseEventHandler } from "react";
 import Link from "next/link";
 
 interface ProductCardProps {
@@ -12,14 +9,7 @@ interface ProductCardProps {
 }
 
 const ProductCard: React.FC<ProductCardProps> = ({ data }) => {
-  const previewModal = usePreviewModal();
-
   const title = data.title.replaceAll(" ", "-");
-
-  const onPreview: MouseEventHandler<HTMLButtonElement> = (event) => {
-    event.stopPropagation();
-    previewModal.onOpen(data);
-  };
 
   return (
     <div className="bg-white group cursor-pointer rounded-md p-3 space-y-4 flex flex-col justify-between group">
@@ -38,14 +28,6 @@ const ProductCard: React.FC<ProductCardProps> = ({ data }) => {
           ${data.price.toFixed(2)}
         </div>
       </Link>
-      <div className="text-center">
-        <Button
-          onClick={onPreview}
-          className="bg-white text-black border border-black hover:bg-black hover:text-white rounded-lg pt-2 pb-2 hover:opacity-100 med-small:hidden"
-        >
-          Quick Preview
-        </Button>
-      </div>
     </div>
   );
 };
