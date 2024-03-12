@@ -12,7 +12,7 @@ const OrderItemInfo: React.FC<OrderItemProps> = ({ order }) => {
   return (
     <>
       <div className="mb-3">
-        <p>{order.orderNumber}</p>
+        <p>#{order.orderNumber}</p>
       </div>
       <div className="text-center mb-3">
         <p>{orderDate}</p>

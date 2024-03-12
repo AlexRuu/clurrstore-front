@@ -18,7 +18,7 @@ const ProfileInfo: React.FC<EditProfileProps> = ({ profile }) => {
   return (
     <div className="mb-10">
       <h1 className="text-2xl mb-3">Profile</h1>
-      <div className="flex w-1/2 bg-gray-100 rounded-[10px] small:w-full md-max:w-7/12">
+      <div className="flex w-1/2 bg-gray-100 rounded-[10px] small:w-3/5 md-max:w-7/12 sm-max:!w-full">
         {/* Left Column for personal */}
         <div className="mr-20 ml-5 my-2 med-small:hidden">
           {/* Name */}
@@ -103,7 +103,7 @@ const ProfileInfo: React.FC<EditProfileProps> = ({ profile }) => {
             )}
           </div>
         </div>
-        <div className="mt-2 h-[24px] flex justify-end w-3/12 md-max:mr-2">
+        <div className="mt-2 h-[24px] flex justify-end w-3/12 md-max:mr-2 mr-1">
           <Link href="/profile/edit">
             <Edit className="hover:opacity-50" />
           </Link>

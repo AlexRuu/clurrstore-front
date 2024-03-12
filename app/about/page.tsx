@@ -10,10 +10,10 @@ export const generateMetadata = (): Metadata => {
 
 const AboutPage = () => {
   return (
-    <main className="min-h-[500px] mt-10 pb-[30px] small:mt-0 xsmall:mt-0">
+    <main className="min-h-[500px] med-small:min-h-[650px] mt-10 pb-[30px] small:mt-0 xsmall:mt-0">
       <section className="xl:!p-[0px_85px] p-[0px_55px] med-small:p-0">
         <div className="flex items-center md:w-full md:p-0 small:m-0 small:p-0">
-          <div className="md:w-1/2 mx-5 small:hidden">
+          <div className="md:w-1/2 mx-5 small:hidden medium-max:mt-10">
             <AspectRatio ratio={6 / 6}>
               <Image
                 src="/images/clurrAbout.png"
@@ -23,7 +23,7 @@ const AboutPage = () => {
               />
             </AspectRatio>
           </div>
-          <div className="small:mx-10 small:pt-10 md:w-1/2 md:ml-5 md:mr-16 md:mb-10 small:mt-10">
+          <div className="small:mx-10 small:pt-10 md:w-1/2 md:ml-5 md:mr-16 md:mb-10 small:mt-10 medium-max:mt-10">
             <h2 className="text-center small:text-3xl text-4xl md:mb-10">
               About Me
             </h2>

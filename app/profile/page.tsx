@@ -23,7 +23,7 @@ const ProfilePage = async () => {
   const profile = await getProfile(data.user.id);
 
   return (
-    <main className="min-h-[500px] mt-10 med-small:mx-5">
+    <main className="min-h-[650px] med-small:min-h-[650px] h-full mt-10 med-small:mx-5">
       <section className="xl:!p-[0px_85px] p-[0px_55px] med-small:p-0">
         <h1 className="text-center mb-5 text-3xl">My Account</h1>
         <ProfileInfo profile={profile} />
