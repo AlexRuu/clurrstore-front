@@ -3,6 +3,17 @@ import ProfileOrderHeader from "./components/profile-order-header";
 import ProfileOrderPersonalDetails from "./components/profile-order-personal";
 import ProfileOrderSummary from "./components/profile-order-summary";
 import ProfileOrderTotal from "./components/profile-order-total";
+import { Metadata } from "next";
+
+type Props = {
+  params: { orderNumber: string };
+};
+
+export const generateMetadata = (): Metadata => {
+  return {
+    title: ``,
+  };
+};
 
 interface ProfileOrderDetailsProps {
   params: {

@@ -2,6 +2,13 @@ import getProfile from "@/actions/get-profile";
 import UpdateProfileForm from "@/components/forms/profile-form";
 import { createClient } from "@/libs/supabase/server";
 import { redirect } from "next/navigation";
+import { Metadata } from "next";
+
+export const generateMetadata = (): Metadata => {
+  return {
+    title: `Edit Profile`,
+  };
+};
 
 const EditProfile = async () => {
   const supabase = createClient();

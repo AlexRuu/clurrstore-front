@@ -3,9 +3,16 @@ import OrderHeader from "./components/order-header";
 import OrderSummary from "./components/order-summary";
 import OrderTotal from "./components/order-total";
 import OrderPersonalDetails from "./components/order-personal-detail";
+import { Metadata } from "next";
 
 type OrderCompletedPageProps = {
   params: { orderNumber: string };
+};
+
+export const generateMetadata = (): Metadata => {
+  return {
+    title: `Order Confirmed`,
+  };
 };
 
 const OrderCompletedPage: React.FC<OrderCompletedPageProps> = async ({
