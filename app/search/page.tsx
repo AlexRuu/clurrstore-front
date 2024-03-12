@@ -1,7 +1,7 @@
 import getSearchProducts from "@/actions/get-search";
 import SearchPageBar from "./components/searchBar";
 import PageHeader from "@/components/ui/header";
-import ProductCard from "@/components/ui/product-card";
+import ProductCard from "@/components/product/product-card";
 import { Metadata } from "next";
 
 export const generateMetadata = (): Metadata => {
