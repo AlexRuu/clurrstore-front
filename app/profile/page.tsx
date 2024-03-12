@@ -13,6 +13,7 @@ export const generateMetadata = (): Metadata => {
 };
 
 const ProfilePage = async () => {
+  // Check for user
   const supabase = createClient();
 
   const { data, error } = await supabase.auth.getUser();
@@ -26,7 +27,9 @@ const ProfilePage = async () => {
     <main className="min-h-[650px] med-small:min-h-[650px] h-full mt-10 med-small:mx-5">
       <section className="xl:!p-[0px_85px] p-[0px_55px] med-small:p-0">
         <h1 className="text-center mb-5 text-3xl">My Account</h1>
+        {/* User's profile information */}
         <ProfileInfo profile={profile} />
+        {/* Order history information */}
         <ProfileOrderInfo orders={profile.order} />
       </section>
     </main>

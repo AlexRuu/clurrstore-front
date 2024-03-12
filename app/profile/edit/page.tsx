@@ -11,6 +11,7 @@ export const generateMetadata = (): Metadata => {
 };
 
 const EditProfile = async () => {
+  // Check for user
   const supabase = createClient();
 
   const { data, error } = await supabase.auth.getUser();
@@ -24,6 +25,7 @@ const EditProfile = async () => {
     <main className="min-h-[500px] mt-10 med-small:mx-5">
       <section className="xl:!p-[0px_85px] p-[0px_55px] med-small:p-0">
         <h1 className="text-center mb-5 text-3xl">Edit Profile</h1>
+        {/* Display form to update profile information */}
         <UpdateProfileForm initialData={profile} />
       </section>
     </main>
