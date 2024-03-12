@@ -14,6 +14,7 @@ interface featuredItemProps {
 const FeaturedItems: React.FC<featuredItemProps> = ({ items }) => {
   return (
     <div className="small:my-5 small:px-5 relative my-[30px] m-[0_auto] px-[30px] w-full">
+      {/* Title section for featured items component */}
       <InView triggerOnce>
         {({ inView, ref }) => (
           <div
@@ -30,6 +31,7 @@ const FeaturedItems: React.FC<featuredItemProps> = ({ items }) => {
       <div className="max-w-[1600px] m-[0_auto]">
         <div className="small:-mx-5 small:px-5 relative small:overflow-hidden">
           <div className="small:-ml-5 flex flex-wrap -ml-[30px] -mb-[30px]">
+            {/* Featuring Red String of Fate Necklace */}
             <InView triggerOnce>
               {({ inView, ref }) => (
                 <div
@@ -101,6 +103,7 @@ const FeaturedItems: React.FC<featuredItemProps> = ({ items }) => {
                 </div>
               )}
             </InView>
+            {/* Featuring Smol Animal in Bows*/}
             <InView triggerOnce>
               {({ inView, ref }) => (
                 <div
@@ -172,6 +175,7 @@ const FeaturedItems: React.FC<featuredItemProps> = ({ items }) => {
                 </div>
               )}
             </InView>
+            {/* Featuring Red String of Fate Matching Pins */}
             <InView triggerOnce>
               {({ inView, ref }) => (
                 <div

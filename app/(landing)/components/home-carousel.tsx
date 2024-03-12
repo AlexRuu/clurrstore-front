@@ -31,6 +31,7 @@ const HomeCarousel: React.FC<HomeCarouselProps> = ({ homeImages }) => {
   const touchEnd = useRef<number | null>(null);
   const minimumSwipe = 50;
 
+  // Paginating carousel functions
   const paginateNext = () => {
     const nextIndex = carouselIndex + 1;
     if (nextIndex > homeImages.length - 1) {
@@ -47,6 +48,7 @@ const HomeCarousel: React.FC<HomeCarouselProps> = ({ homeImages }) => {
     setCarouselIndex(lastIndex);
   };
 
+  // Handling touch screen actions on mobile devices for carousel to accept pagination on swiping
   const handleTouchStart = (e: React.TouchEvent<HTMLElement>) => {
     e.stopPropagation();
     touchEnd.current = null;
@@ -70,6 +72,7 @@ const HomeCarousel: React.FC<HomeCarouselProps> = ({ homeImages }) => {
     }
   };
 
+  // Handling mouse actions on carousel accept pagination on swiping
   const handleMouseDown = (e: React.MouseEvent<HTMLElement>) => {
     e.preventDefault();
     e.stopPropagation();
@@ -112,6 +115,7 @@ const HomeCarousel: React.FC<HomeCarouselProps> = ({ homeImages }) => {
     handleMouseUp(e);
   };
 
+  // Timer to change the page for carousel
   useEffect(() => {
     const interval = setInterval(() => {
       paginateNext();
@@ -134,6 +138,7 @@ const HomeCarousel: React.FC<HomeCarouselProps> = ({ homeImages }) => {
             onMouseLeave={handleMouseLeave}
             className="block relative m-0 p-0 select-none"
           >
+            {/* Images for carousel */}
             <div
               style={{
                 transform: "translateZ(0)",
@@ -181,6 +186,8 @@ const HomeCarousel: React.FC<HomeCarouselProps> = ({ homeImages }) => {
                       </div>
                     )}
                   </InView>
+
+                  {/* Information block on top of carousel image */}
                   <div
                     className={cn(
                       "top-1/2 left-1/2 text-center absolute w-[calc(50%-120px)] pointer-events-none p-[30px_30px_35px] overflow-hidden z-10 -mt-[35%] md:-mt-[18%] medium-min:-mt-[17%] lg:!-mt-[10%] xl:!-mt-[10%] -ml-[20%] small:bottom-[10px] small:!left-1/2 small:min-w-[auto] small:!top-auto small:-translate-x-1/2 small:w-[calc(100%-40px)] small:p-[45px_30px] small:!m-0 medium-max:p-[20px_20px_24px] medium-max:min-w-0 medium-max:w-[calc(50%-40px)]",
@@ -223,6 +230,8 @@ const HomeCarousel: React.FC<HomeCarouselProps> = ({ homeImages }) => {
               ))}
             </div>
           </div>
+
+          {/* Small buttons at the bottom of carousel to indicate which page carousel is on, also allows for pagination */}
           <ul className="static w-[calc(100%-100px)] m-[0px_auto] block list-none text-center p-0">
             {homeImages.map((img, index) => (
               <li
@@ -247,6 +256,8 @@ const HomeCarousel: React.FC<HomeCarouselProps> = ({ homeImages }) => {
             ))}
           </ul>
         </div>
+
+        {/* Arrows at the base of the carousel */}
         <div className="small:left-5 absolute left-0 -bottom-1 cursor-pointer">
           <ChevronLeft onClick={paginateLast} />
         </div>

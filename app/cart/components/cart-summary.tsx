@@ -19,6 +19,7 @@ const CartSummary = () => {
 
   return (
     <div className="small:px-5 m-[0_auto] px-[30px] w-full block">
+      {/* Display only if cart has items */}
       {cart.items.length == 0 ? (
         <div className="flex justify-center items-center flex-col">
           <p className="py-3">Cart is currently empty.</p>
@@ -30,6 +31,7 @@ const CartSummary = () => {
           </Link>
         </div>
       ) : (
+        // The headers for the summary table
         <div className="small:my-5 max-w-[1600px] m-[0_auto] block">
           <ul className="small:mt-[30px] m-0 p-0">
             <li className="small:hidden border-t border-solid border-[#f3f3f3] mt-[30px] pb-[15px] pt-0 flex justify-between border-b flex-nowrap">
@@ -44,6 +46,7 @@ const CartSummary = () => {
                 Total
               </span>
             </li>
+            {/* Display individual items with corresponding information */}
             {cart.items.map(
               (
                 {

@@ -9,6 +9,7 @@ import FeaturedItems from "./components/featured-items";
 export const revalidate = 0;
 
 const HomePage = async () => {
+  // Retrieve all required images, item, and category images from database
   const homeImages = await getHomeImage();
   const featuredItem = await getProduct("4b2e5573-4605-457d-a6e2-cb617d1f64c0");
   const categoryProduct = await getProducts({
@@ -29,6 +30,7 @@ const HomePage = async () => {
 
   return (
     <main className="min-h-[500px] mt-10 pb-[30px] small:mt-0 xsmall:mt-0">
+      {/* Gradient above carousel */}
       <span
         className="h-[251px] small:max-h-[25vh] absolute w-full left-0 top-0 xsmall:hidden md:h-[330px] content-none"
         style={{
@@ -37,15 +39,23 @@ const HomePage = async () => {
         }}
       ></span>
       <section className="xsmall:mt-0 relative medium-min:mt-[60px] block box-border"></section>
+
+      {/* Carousel component */}
       <section className="block">
         <HomeCarousel homeImages={homeImages} />
       </section>
+
+      {/* Featured categories component */}
       <section className="block">
         <FeaturedCategories categories={categoryProduct} />
       </section>
+
+      {/* Featured items component */}
       <section className="block">
         <FeaturedItems items={featuredProducts} />
       </section>
+
+      {/* Featured item (canvas art) item */}
       <section className="block pt-3">
         <FeaturedSection featured={featuredItem} />
       </section>

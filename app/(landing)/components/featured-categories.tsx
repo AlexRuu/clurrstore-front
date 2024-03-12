@@ -25,6 +25,7 @@ const FeaturedCategories: React.FC<FeaturedCategoriesProps> = ({
   );
   return (
     <div className="small:my-5 small:px-5 relative my-[30px] m-[0_auto] px-[30px] w-full">
+      {/* Title */}
       <InView triggerOnce>
         {({ inView, ref }) => (
           <div
@@ -41,6 +42,7 @@ const FeaturedCategories: React.FC<FeaturedCategoriesProps> = ({
       <div className="max-w-[1600px] m-[0_auto]">
         <div className="small:-mx-5 small:px-5 relative small:overflow-hidden">
           <div className="small:-ml-5 flex flex-wrap -ml-[30px] -mb-[30px]">
+            {/* Pins Section */}
             <InView triggerOnce>
               {({ inView, ref }) => (
                 <div
@@ -108,6 +110,7 @@ const FeaturedCategories: React.FC<FeaturedCategoriesProps> = ({
                 </div>
               )}
             </InView>
+            {/* Jewelry Section */}
             <InView triggerOnce>
               {({ inView, ref }) => (
                 <div
@@ -175,6 +178,7 @@ const FeaturedCategories: React.FC<FeaturedCategoriesProps> = ({
                 </div>
               )}
             </InView>
+            {/* Stickers and Washi Tape Section */}
             <InView triggerOnce>
               {({ inView, ref }) => (
                 <div

@@ -32,6 +32,7 @@ const CartItem: React.FC<CartItemProps> = ({
   const cart = useCart();
   const [totalPrice, setTotalPrice] = useState(price * quantity);
 
+  // Change price of item depending if selected style is B grade
   useEffect(() => {
     if (styleName == "B Grade (-C$2.00)") {
       const newPrice = price - 2;
@@ -43,6 +44,7 @@ const CartItem: React.FC<CartItemProps> = ({
 
   return (
     <li className="small:border-b small:border-b-[#f3f3f3] small:border-solid small:pb-5 small:mb-[30px] small:flex list-none">
+      {/* Small screen size image */}
       <Link
         href={`/products/${name}-${id}`}
         className="small:block w-[30%] max-w-[200px] flex-[0_0_auto] md:hidden"

@@ -16,6 +16,7 @@ const CartTotal = () => {
   const cart = useCart();
   const removeAll = useCart((state) => state.removeAll);
 
+  // Something went wrong function
   const failNotify = () => {
     toast.error("Something went wrong...", {
       bodyClassName: cn("text-black", poppins),
@@ -29,6 +30,7 @@ const CartTotal = () => {
     });
   };
 
+  // Check for failed state in params
   useEffect(() => {
     if (searchParams.get("canceled")) {
       failNotify();
@@ -43,6 +45,7 @@ const CartTotal = () => {
     return null;
   }
 
+  // Calculate the total amount of the cart
   const totalPrice = cart.items.reduce((acc, current) => {
     if (current.styleName == "B Grade (-C$2.00)") {
       const newPrice = Number(current.price) - 2;
@@ -51,6 +54,7 @@ const CartTotal = () => {
     return acc + Number(current.price * current.quantity);
   }, 0);
 
+  // Checkout function
   const onCheckout = async () => {
     const response = await axios.post(
       `${process.env.NEXT_PUBLIC_API_URL}/checkout`,
@@ -61,6 +65,7 @@ const CartTotal = () => {
 
   return (
     <>
+      {/* Check to see that cart is not empty and display cart total summary */}
       {cart.items.length !== 0 && (
         <>
           <div className="-ml-[30px]">
