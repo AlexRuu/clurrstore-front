@@ -1,7 +1,7 @@
 import Navbar from "@/components/ui/navbar/navbar";
 import "./globals.css";
 import type { Metadata } from "next";
-import PreviewModalProvider from "@/providers/preview-modal-provider";
+
 import { poppins } from "./font";
 import Footer from "@/components/footer/footer";
 
@@ -20,7 +20,6 @@ export default async function RootLayout({
       <body className="w-full">
         <div className="max-w-[100vw] overflow-x-hidden w-full">
           <Navbar />
-          <PreviewModalProvider />
           {children}
         </div>
         <div>
