@@ -5,7 +5,6 @@ import {
   SheetContent,
   SheetFooter,
   SheetHeader,
-  SheetTitle,
   SheetTrigger,
 } from "../sheet";
 import { usePathname } from "next/navigation";
