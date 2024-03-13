@@ -3,6 +3,7 @@ import CartSummary from "./components/cart-summary";
 import CartTotal from "./components/cart-total";
 import { Metadata } from "next";
 import { createClient } from "@/libs/supabase/server";
+import CartToast from "./components/cart-toast";
 
 export const generateMetadata = (): Metadata => {
   return {
@@ -24,6 +25,7 @@ const CartPage = async () => {
         <CartSummary />
         {/* Summary of cart total */}
         <CartTotal profile={data.user?.id} />
+        <CartToast />
       </section>
     </main>
   );

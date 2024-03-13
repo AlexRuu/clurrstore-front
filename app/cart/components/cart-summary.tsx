@@ -6,8 +6,8 @@ import { useEffect, useState } from "react";
 import CartItem from "./cart-item";
 
 const CartSummary = () => {
-  const [isMounted, setIsMounted] = useState(false);
   const cart = useCart();
+  const [isMounted, setIsMounted] = useState(false);
 
   useEffect(() => {
     setIsMounted(true);
