@@ -89,7 +89,7 @@ const UpdateProfileForm: React.FC<UpdateProfileFormProps> = ({
         onSubmit={form.handleSubmit(onUpdate)}
         method="post"
         autoComplete="off"
-        className="w-1/2 mx-auto justify-center items-center"
+        className="w-1/2 mx-auto justify-center items-center small:w-full"
       >
         <div className="flex w-full">
           <FormField
