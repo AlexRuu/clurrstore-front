@@ -10,14 +10,21 @@ import "react-toastify/dist/ReactToastify.css";
 import { cn } from "@/libs/utlils";
 import { poppins } from "@/app/font";
 
-const CartTotal = () => {
+interface CartTotalProps {
+  profile?: string;
+}
+
+const CartTotal: React.FC<CartTotalProps> = ({ profile }) => {
   const [isMounted, setIsMounted] = useState(false);
   const searchParams = useSearchParams();
   const cart = useCart();
-  const removeAll = useCart((state) => state.removeAll);
+
+  useEffect(() => {
+    setIsMounted(true);
+  }, []);
 
   // Something went wrong function
-  const failNotify = () => {
+  const notify = () => {
     toast.error("Something went wrong...", {
       bodyClassName: cn("text-black", poppins),
       position: "top-center",
@@ -33,17 +40,9 @@ const CartTotal = () => {
   // Check for failed state in params
   useEffect(() => {
     if (searchParams.get("canceled")) {
-      failNotify();
+      notify();
     }
-  }, [searchParams, removeAll]);
-
-  useEffect(() => {
-    setIsMounted(true);
-  }, []);
-
-  if (!isMounted) {
-    return null;
-  }
+  }, [searchParams, isMounted]);
 
   // Calculate the total amount of the cart
   const totalPrice = cart.items.reduce((acc, current) => {
@@ -58,10 +57,14 @@ const CartTotal = () => {
   const onCheckout = async () => {
     const response = await axios.post(
       `${process.env.NEXT_PUBLIC_API_URL}/checkout`,
-      cart.items
+      { cart: cart.items, profile: profile }
     );
     window.location = response.data.url;
   };
+
+  if (!isMounted) {
+    return null;
+  }
 
   return (
     <>
@@ -99,9 +102,9 @@ const CartTotal = () => {
               </Button>
             </div>
           </div>
-          <ToastContainer stacked style={{ borderRadius: "30px" }} />
         </>
       )}
+      <ToastContainer stacked style={{ borderRadius: "30px" }} />
     </>
   );
 };
