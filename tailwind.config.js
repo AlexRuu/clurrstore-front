@@ -21,6 +21,7 @@ module.exports = {
       },
       screens: {
         'medium-max': {"max": '1080px'},
+        'medium-min': {'min': '1080px'},
         'medium-min': {"min": "939.98px"},
         "md-max": {"max": "1024px"},
         "sm-max": {"max": "640px"},
@@ -98,6 +99,10 @@ module.exports = {
           "0%": {opacity: "0"},
           '100%': {opacity: "100"}
         },
+        "fade-out": { 
+          "0%": {opacity: "100"},
+          '100%': {opacity: "0"}
+        },
         "fade-in-up": {
           "0%": {transform: "translateY(20px)", opacity: "0"},
           "100%": {transform: "translateY(0)", opacity: "100"}
@@ -105,7 +110,15 @@ module.exports = {
         "fade-left": {
           "0%": {transform: "translateX(-20px)", opacity: "0"},
           "100%": {transform: "translateX(0)", opacity: "100"}
-        }
+        },
+        "fade-in-down": {
+          "0%": {transform: "translateY(-20px)", opacity: "0"},
+          "100%": {transform: "translateY(0)", opacity: "100"}
+        },
+        "fade-out-up": {
+          "0%": {transform: "translateY(0)", opacity: "100"},
+          "100%": {transform: "translateY(-20px)", opacity: "0"}
+        },
       },
       animation: {
         "accordion-down": "accordion-down 0.2s ease-out",
@@ -113,8 +126,11 @@ module.exports = {
         "zoom-out": "zoom-out calc(0.6s * 1.2) cubic-bezier(.65,.05,.36,1) both",
         "zoom-out-fade-in": "zoom-out-fade-in calc(0.6s * 1.3) cubic-bezier(.25,.46,.45,.94) both",
         "fade-in": "fade-in calc(0.6s * 0.8) cubic-bezier(.39,.575,.565,1) both",
+        "fade-out": "fade-out calc(0.6s * 0.8) cubic-bezier(.39,.575,.565,1) both",
         "fade-in-up": "fade-in-up calc(0.6s * 0.6) cubic-bezier(.39,.575,.565,1) both",
-        "fade-left": "fade-left calc(0.6s * 0.6) cubic-bezier(.39,.575,.565,1) both"
+        "fade-left": "fade-left calc(0.6s * 0.6) cubic-bezier(.39,.575,.565,1) both",
+        "fade-in-down": "fade-in-down 200ms cubic-bezier(.25,.46,.45,.94) both",
+        "fade-out-up": "fade-out-up 200ms cubic-bezier(.25,.46,.45,.94) both",
       },
     },
   },
