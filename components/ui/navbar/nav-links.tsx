@@ -1,38 +1,28 @@
 "use client";
 
-import { Fragment, useEffect, useRef, useState } from "react";
-
 import { usePathname } from "next/navigation";
 import Link from "next/link";
-
-import { Menu, Transition } from "@headlessui/react";
-import { useAnimate } from "framer-motion";
 
 import { cn } from "@/libs/utlils";
 import { Category } from "@/types";
 
-import { ChevronDown } from "lucide-react";
+import * as NavigationMenu from "@radix-ui/react-navigation-menu";
+
 import RightNav from "./right-nav";
 import useNavSearch from "@/hooks/use-nav-search";
 import SearchForm from "@/components/forms/search-form";
 import LeftNav from "./left-nav";
+import { ChevronDown } from "lucide-react";
 
 interface NavLinksProps {
   data: Category[];
   scrollY: number;
+  profile: boolean;
 }
 
-const NavLinks: React.FC<NavLinksProps> = ({ data, scrollY }) => {
-  const [scope, animate] = useAnimate();
-  const [isOpen, setIsOpen] = useState(false);
+const NavLinks: React.FC<NavLinksProps> = ({ data, scrollY, profile }) => {
   const navSearch = useNavSearch();
   const pathname = usePathname();
-  const useHover = true;
-  const buttonRef = useRef<HTMLButtonElement>(null);
-  const dropdownRef = useRef<HTMLDivElement>(null);
-  const timeoutDuration = 0;
-  let timeout: any;
-  const ref = useRef<HTMLDivElement>(null);
 
   const routes = data.map((route) => ({
     href: `/categories/${route.title
@@ -52,67 +42,23 @@ const NavLinks: React.FC<NavLinksProps> = ({ data, scrollY }) => {
     },
     {
       href: "/products",
-      label: "Items",
+      label: "Shop",
       active: pathname === "/products",
       submenu: routes,
     },
     {
-      href: "/contact",
-      label: "Contact",
-      active: pathname === "/contact",
+      href: "/delivery",
+      label: "Delivery Info",
+      active: pathname === "/delivery",
     },
     {
-      href: "/FAQ",
-      label: "FAQ",
-      active: pathname === "FAQ",
+      href: "/products/Ocean-Lights-4b2e5573-4605-457d-a6e2-cb617d1f64c0",
+      label: "Ocean Lights",
+      active:
+        pathname ===
+        "/products/Ocean-Lights-4b2e5573-4605-457d-a6e2-cb617d1f64c0",
     },
   ];
-
-  const openMenu = () => {
-    setIsOpen(true);
-    buttonRef && buttonRef.current?.click();
-  };
-
-  const closeMenu = () => {
-    setIsOpen(false);
-    dropdownRef &&
-      dropdownRef.current?.dispatchEvent(
-        new KeyboardEvent("keydown", {
-          key: "Escape",
-          bubbles: true,
-          cancelable: true,
-        })
-      );
-  };
-
-  const onMouseEnter = (closed: boolean) => {
-    setIsOpen(true);
-    clearTimeout(timeout);
-    closed && openMenu();
-  };
-
-  const onMouseLeave = (open: boolean) => {
-    setIsOpen(false);
-    open && (timeout = setTimeout(() => closeMenu(), timeoutDuration));
-  };
-
-  useEffect(() => {
-    animate(scope.current, { rotate: isOpen ? -180 : 0 }, { duration: 0.2 });
-  }, [isOpen]);
-
-  useEffect(() => {
-    const clickedOutside = (e: any) => {
-      if (scrollY > 160) {
-        if (navSearch.isOpen && !ref.current?.contains(e.target)) {
-          navSearch.onClose();
-        }
-      }
-    };
-    document.addEventListener("mousedown", clickedOutside);
-    return () => {
-      document.removeEventListener("mousedown", clickedOutside);
-    };
-  }, [navSearch.isOpen]);
 
   return (
     <div className={cn(scrollY >= 160 && "med-small:h-[99px] h-[46.5px]")}>
@@ -129,86 +75,51 @@ const NavLinks: React.FC<NavLinksProps> = ({ data, scrollY }) => {
               "med-small:opacity-0 med-small:block med-small:fixed med-small:top-0 med-small:left-0 med-small:w-full med-small:bg-white"
             )}
           >
-            <div className="inline-flex items-center justify-center w-full med-small:hidden">
+            <div className="inline-flex items-center justify-center w-full med-small:hidden h-12">
               {scrollY >= 160 && <LeftNav />}
-              {navRoutes.map((route) =>
-                route.submenu ? (
-                  <Menu as="div" key={route.href}>
-                    {({ open }) => (
-                      <>
-                        <div
-                          onClick={openMenu}
-                          onMouseEnter={() => useHover && onMouseEnter(!open)}
-                          onMouseLeave={() => useHover && onMouseLeave(open)}
-                        >
-                          <Menu.Button
-                            ref={buttonRef}
-                            as={Link}
-                            href={route.href}
-                            className={cn(
-                              "inline-flex py-2 text-lg transition-colors hover:text-black focus:outline-none focus-visible:ring-2 focus-visible:ring-white/75 px-[40px]",
-                              route.active ? "text-black" : "text-neutral-500"
-                            )}
-                          >
-                            Items
-                            <ChevronDown
-                              ref={scope}
-                              size={18}
-                              className="ml-auto mt-1.5"
-                            />
-                          </Menu.Button>
-                        </div>
-
-                        <Transition
-                          as={Fragment}
-                          enter="transition ease-out duration-100"
-                          enterFrom="transform opacity-0 scale-95"
-                          enterTo="transform opacity-100 scale-100"
-                          leave="transition ease-in duration-75"
-                          leaveFrom="transform opacity-100 scale-100"
-                          leaveTo="transform opacity-0 scale-95"
-                        >
-                          <Menu.Items
-                            ref={dropdownRef}
-                            onMouseEnter={() => useHover && onMouseEnter(!open)}
-                            onMouseLeave={() => useHover && onMouseLeave(open)}
-                            static
-                            className="absolute top-[100%] ml-12 w-56 origin-top-left divide-gray-100 rounded-md bg-white shadow-lg ring-1 ring-black/5 focus:outline-none"
-                          >
+              <NavigationMenu.Root>
+                <NavigationMenu.List className="center shadow-blackA4 m-[0_0_1px_0] p-1 flex list-none rounded-[6px] bg-white h-10">
+                  {navRoutes.map((route) =>
+                    route.submenu ? (
+                      <NavigationMenu.Item className="mx-4" key={route.label}>
+                        <NavigationMenu.Trigger className="group inline-flex h-10 w-max items-center justify-center bg-background border-b-4 border-transparent hover:border-b-4 hover:border-b-black py-1 px-5">
+                          <NavigationMenu.Link asChild>
+                            <Link href={route.href}>{route.label}</Link>
+                          </NavigationMenu.Link>
+                          <ChevronDown
+                            className="relative ml-1 h-3 w-3 transition duration-200 group-data-[state=open]:-rotate-180"
+                            aria-hidden="true"
+                          />
+                        </NavigationMenu.Trigger>
+                        <NavigationMenu.Content className="absolute top-[113%] left-[26.5%] w-full data-[state=open]:animate-[fade-in_200ms_ease-in] data-[state=closed]:animate-[fade-out_200ms_ease-out] sm:w-auto bg-white border-b-4 border-b-black p-2">
+                          <ul>
                             {route.submenu.map((link) => (
-                              <Menu.Item
-                                onClick={closeMenu}
-                                as={Link}
-                                href={link.href}
-                                key={link.href}
-                                className={cn(
-                                  "flex flex-col text-lg font-medium transition-colors hover:text-black hover:underline w-full rounded-md px-2 py-3 text-neutral-500"
-                                )}
-                              >
-                                {link.label}
-                              </Menu.Item>
+                              <li key={link.label}>
+                                <NavigationMenu.Link
+                                  asChild
+                                  className="flex select-none rounded-[4px] mx-3 my-2 text-[15px] pb-2 leading-none"
+                                >
+                                  <Link href={link.href}>{link.label}</Link>
+                                </NavigationMenu.Link>
+                              </li>
                             ))}
-                          </Menu.Items>
-                        </Transition>
-                      </>
-                    )}
-                  </Menu>
-                ) : (
-                  <Link
-                    href={route.href}
-                    key={route.href}
-                    className={cn(
-                      "text-lg transition-colors hover:text-black py-2 px-[40px]",
-                      route.active ? "text-black" : "text-neutral-500"
-                    )}
-                  >
-                    {route.label}
-                  </Link>
-                )
-              )}
+                          </ul>
+                        </NavigationMenu.Content>
+                      </NavigationMenu.Item>
+                    ) : (
+                      <NavigationMenu.Item className="mx-4" key={route.label}>
+                        <NavigationMenu.Trigger className="inline-flex h-10 w-max items-center justify-center bg-background border-b-4 border-b-transparent hover:border-b-4 hover:border-b-black py-1 px-5">
+                          <NavigationMenu.Link asChild>
+                            <Link href={route.href}>{route.label}</Link>
+                          </NavigationMenu.Link>
+                        </NavigationMenu.Trigger>
+                      </NavigationMenu.Item>
+                    )
+                  )}
+                </NavigationMenu.List>
+              </NavigationMenu.Root>
             </div>
             <div
-              ref={ref}
               className={cn(
                 "med-small:opacity-0 med-small:absolute med-small:top-0 med-small:w-full med-small:left-0 medium-min:h-[90%] medium-min:top-0 medium-min:absolute medium-min:opacity-0 hidden medium-min:left-[0%] medium-min:m-[0_auto] medium-min:w-full medium-min:justify-center medium-min:bg-white",
                 navSearch.isOpen
@@ -222,7 +133,7 @@ const NavLinks: React.FC<NavLinksProps> = ({ data, scrollY }) => {
                 formClass="w-full justify-center"
               />
             </div>
-            {scrollY >= 160 && <RightNav scrollY={scrollY} />}
+            {scrollY >= 160 && <RightNav profile={profile} scrollY={scrollY} />}
           </nav>
         </section>
       </div>

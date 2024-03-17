@@ -5,7 +5,7 @@ import Link from "next/link";
 import { yeseva_one } from "@/app/font";
 import NavLinks from "./nav-links";
 import RightNav from "./right-nav";
-import { Category } from "@/types";
+import { Category, Profile } from "@/types";
 import { useState, useEffect, useRef } from "react";
 import Image from "next/image";
 import NavMobile from "./nav-mobile";
@@ -15,9 +15,10 @@ import useMediaQuery from "@/hooks/use-media-query";
 
 interface NavMainProps {
   data: Category[];
+  profile: boolean;
 }
 
-const NavMain: React.FC<NavMainProps> = ({ data }) => {
+const NavMain: React.FC<NavMainProps> = ({ data, profile }) => {
   const [scrollY, setScrollY] = useState(0);
   const navSearch = useNavSearch();
   const ref = useRef<HTMLDivElement | null>(null);
@@ -127,12 +128,12 @@ const NavMain: React.FC<NavMainProps> = ({ data }) => {
                     </Link>
                   </h1>
                 </div>
-                <RightNav scrollY={scrollY} />
+                <RightNav scrollY={scrollY} profile={profile} />
               </div>
             </div>
           </div>
         </header>
-        <NavLinks data={data} scrollY={scrollY} />
+        <NavLinks profile={profile} data={data} scrollY={scrollY} />
       </div>
       <div
         aria-hidden={navSearch.isOpen}
