@@ -60,7 +60,7 @@ const NavMain: React.FC<NavMainProps> = ({ data, profile }) => {
       <div>
         <section className="text-white bg-[#219190]">
           <div className="text-center py-1">
-            Delivery fee will be calculated at checkout
+            Shipping fee will be calculated at checkout
           </div>
         </section>
       </div>
