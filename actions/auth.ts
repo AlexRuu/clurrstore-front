@@ -79,3 +79,9 @@ export async function updateUser(updateInfo: any) {
     redirect("/profile");
   }
 }
+
+export async function signOut() {
+  const supabase = createClient();
+
+  const { error } = await supabase.auth.signOut();
+}
