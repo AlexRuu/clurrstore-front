@@ -54,7 +54,7 @@ const NavMain: React.FC<NavMainProps> = ({ data, profile }) => {
     <div
       className={cn(
         "z-10 relative flow-root",
-        scrollY >= 32 && "small:h-[131px]"
+        scrollY >= 32 && "med-small:h-[131px]"
       )}
     >
       <div>
