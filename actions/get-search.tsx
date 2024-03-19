@@ -14,7 +14,8 @@ const getSearchProducts = async (query?: Query): Promise<Product[]> => {
       searchQuery: query?.searchQuery,
     },
   });
-  const res = await fetch(url);
+
+  const res = await fetch(url, { next: { revalidate: 60 } });
 
   return res.json();
 };

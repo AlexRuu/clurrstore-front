@@ -118,6 +118,10 @@ module.exports = {
         "fade-out-up": {
           "0%": {transform: "translateY(0)", opacity: "100"},
           "100%": {transform: "translateY(-20px)", opacity: "0"}
+        }, 
+        "bounce": {
+          "0%, 100%": {transform: "translateY(0)"},
+          "50%": {transform: "translateY(50px)"}
         },
       },
       animation: {
@@ -131,6 +135,7 @@ module.exports = {
         "fade-left": "fade-left calc(0.6s * 0.6) cubic-bezier(.39,.575,.565,1) both",
         "fade-in-down": "fade-in-down 200ms cubic-bezier(.25,.46,.45,.94) both",
         "fade-out-up": "fade-out-up 200ms cubic-bezier(.25,.46,.45,.94) both",
+        "bounce": "bounce 1100ms cubic-bezier(0,.64,1,.26) infinite"
       },
     },
   },
