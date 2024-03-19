@@ -25,7 +25,7 @@ const searchPage: React.FC<SearchPageProps> = ({ searchParams }) => {
         {/* Search form */}
         <SearchPageBar />
         {/* Display if there are any products retrieved from search */}
-        <Suspense fallback={<SearchLoading />}>
+        <Suspense fallback={<SearchLoading />} key={searchParams.q}>
           <LoadedProducts searchParams={searchParams} />
         </Suspense>
       </section>
