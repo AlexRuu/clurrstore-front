@@ -32,9 +32,9 @@ const ProfilePage = async () => {
         <h1 className="text-center mb-5 text-3xl">My Account</h1>
         <Suspense fallback={<ProfileLoading />}>
           {/* User's profile information */}
-          <ProfileInfo id={data.user.id} />
+          <ProfileInfo id={data!.user.id} />
           {/* Order history information */}
-          <ProfileOrderInfo id={data.user.id} />
+          <ProfileOrderInfo id={data!.user.id} />
           <div className="flex justify-end mt-10">
             <Button
               onClick={signOut}

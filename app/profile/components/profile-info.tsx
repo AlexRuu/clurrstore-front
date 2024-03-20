@@ -10,9 +10,9 @@ interface EditProfileProps {
 
 const ProfileInfo: React.FC<EditProfileProps> = async ({ id }) => {
   const profile = await getProfile(id);
-  const firstPostal = profile.postalCode.slice(0, 3);
-  const lastPostal = profile.postalCode.slice(3);
-  const postalCode = firstPostal.concat(" ", lastPostal);
+  const firstPostal = profile.postalCode?.slice(0, 3);
+  const lastPostal = profile.postalCode?.slice(3);
+  const postalCode = firstPostal?.concat(" ", lastPostal);
 
   return (
     <div className="mb-10">
@@ -36,7 +36,7 @@ const ProfileInfo: React.FC<EditProfileProps> = async ({ id }) => {
           <div className="mb-1">
             <h5 className={cn("text-lg", poppins_bold.className)}>Phone</h5>
             <p>
-              {profile.phone !== ""
+              {profile.phone !== null
                 ? `${profile.phone}`
                 : "No phone number saved"}
             </p>
