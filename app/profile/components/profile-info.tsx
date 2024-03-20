@@ -1,16 +1,15 @@
-"use client";
-
+import getProfile from "@/actions/get-profile";
 import { poppins_bold } from "@/app/font";
 import { cn } from "@/libs/utlils";
-import { Profile } from "@/types";
 import { Edit } from "lucide-react";
 import Link from "next/link";
 
 interface EditProfileProps {
-  profile: Profile;
+  id: string;
 }
 
-const ProfileInfo: React.FC<EditProfileProps> = ({ profile }) => {
+const ProfileInfo: React.FC<EditProfileProps> = async ({ id }) => {
+  const profile = await getProfile(id);
   const firstPostal = profile.postalCode.slice(0, 3);
   const lastPostal = profile.postalCode.slice(3);
   const postalCode = firstPostal.concat(" ", lastPostal);

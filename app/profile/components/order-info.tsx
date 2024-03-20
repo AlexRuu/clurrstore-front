@@ -1,14 +1,17 @@
-import { Profile } from "@/types";
 import OrderItemInfo from "./order-item-info";
 import { poppins_bold } from "@/app/font";
 import { cn } from "@/libs/utlils";
 import MobileOrderInfo from "./mobile-order-info";
+import getProfile from "@/actions/get-profile";
 
 interface ProfileOrderInfoProps {
-  orders: Profile["order"];
+  id: string;
 }
 
-const ProfileOrderInfo: React.FC<ProfileOrderInfoProps> = ({ orders }) => {
+const ProfileOrderInfo: React.FC<ProfileOrderInfoProps> = async ({ id }) => {
+  const profile = await getProfile(id);
+  const orders = profile.order;
+
   return (
     <div>
       <h1 className="text-2xl">Orders</h1>
