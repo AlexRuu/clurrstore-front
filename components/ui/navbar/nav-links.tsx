@@ -97,7 +97,7 @@ const NavLinks: React.FC<NavLinksProps> = ({ data, scrollY, profile }) => {
                               <li key={link.label}>
                                 <NavigationMenu.Link
                                   asChild
-                                  className="flex select-none rounded-[4px] mx-3 my-2 text-[15px] pb-2 leading-none"
+                                  className="flex select-none rounded-[4px] mx-3 my-2 text-[15px] pb-2 leading-none hover:text-gray-400"
                                 >
                                   <Link href={link.href}>{link.label}</Link>
                                 </NavigationMenu.Link>

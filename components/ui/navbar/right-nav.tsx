@@ -73,10 +73,10 @@ const RightNav: React.FC<RightNavProps> = ({
             {profile ? (
               <NavigationMenu.Content className="absolute top-[113%] left-0 text-sm w-[150px] data-[state=open]:animate-fade-in-down data-[state=closed]:animate-fade-out-up bg-white border-b-4 border-b-black p-2 shadow-[0_2px_4px_#00000026]">
                 <ul className="list-none">
-                  <li className="pb-2">
+                  <li className="pb-2 hover:text-gray-400">
                     <Link href="/profile">Profile</Link>
                   </li>
-                  <li className="pb-1">
+                  <li className="pb-1 hover:text-gray-400">
                     <Link href="/" onClick={handleSignout}>
                       Sign Out
                     </Link>
@@ -86,10 +86,10 @@ const RightNav: React.FC<RightNavProps> = ({
             ) : (
               <NavigationMenu.Content className="absolute top-[113%] left-0 text-sm w-[150px] data-[state=open]:animate-fade-in-down data-[state=closed]:animate-fade-out-up bg-white border-b-4 border-b-black p-2 shadow-[0_2px_4px_#00000026]">
                 <ul className="list-none">
-                  <li className="pb-2">
+                  <li className="pb-2 hover:text-gray-400">
                     <Link href="/account/login">Login</Link>
                   </li>
-                  <li className="pb-1">
+                  <li className="pb-1 hover:text-gray-400">
                     <Link href="/account/signup">Create an account</Link>
                   </li>
                 </ul>
