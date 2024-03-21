@@ -12,7 +12,7 @@ type Props = {
 export const generateMetadata = ({ params }: Props): Metadata => {
   const category = params.categoryName.replaceAll("-", " ");
   return {
-    title: `${category}`,
+    title: `${category.charAt(0).toUpperCase() + category.slice(1)}`,
   };
 };
 
