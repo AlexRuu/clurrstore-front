@@ -21,6 +21,7 @@ const ProductInfo: React.FC<ProductInfoProps> = ({ product }) => {
       </div>
       <div>
         <ProductForm
+          stock={product.stock}
           id={product.id}
           title={product.title}
           price={product.price}

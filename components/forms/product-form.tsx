@@ -39,6 +39,7 @@ interface initialData {
   image: Product["image"][0];
   designId: Product["designId"];
   styleId: Product["styleId"];
+  stock: Product["stock"];
 }
 
 interface ProductFormProps extends initialData {
@@ -55,6 +56,7 @@ const ProductForm: React.FC<ProductFormProps> = ({
   styleId,
   design,
   style,
+  stock,
 }) => {
   const cart = useCart();
 
@@ -196,9 +198,21 @@ const ProductForm: React.FC<ProductFormProps> = ({
             )}
           />
         )}
-        <Button type="submit" className="bg-black mt-6">
-          Add to Cart
-        </Button>
+        {stock < 1 ? (
+          <Button
+            disabled
+            className="text-black small:text-center w-full !cursor-pointer border bg-[#e2ecf2] hover:shadow-home-button hover:-translate-y-[3px] hover:brightness-95 uppercase"
+          >
+            Sold Out
+          </Button>
+        ) : (
+          <Button
+            type="submit"
+            className="text-black small:text-center border bg-[#e2ecf2] hover:shadow-home-button hover:-translate-y-[3px] hover:brightness-95 uppercase w-full"
+          >
+            Add to Cart
+          </Button>
+        )}
         <ToastContainer
           stacked
           style={{
