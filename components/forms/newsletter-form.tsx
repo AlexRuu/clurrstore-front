@@ -6,6 +6,10 @@ import { Form, FormControl, FormField, FormItem, FormLabel } from "../ui/form";
 import { Input } from "../ui/input";
 import postNewsletterEmail from "@/actions/post-newsletter-email";
 import Button from "../ui/myButton";
+import { ToastContainer, Zoom, toast } from "react-toastify";
+import { poppins } from "@/app/font";
+import { cn } from "@/libs/utlils";
+import "react-toastify/dist/ReactToastify.css";
 
 const NewsletterForm = () => {
   const formSchema = z.object({
@@ -21,10 +25,23 @@ const NewsletterForm = () => {
     },
   });
 
+  const notify = () => {
+    toast("Thank you for subscribing!", {
+      bodyClassName: cn("text-black", poppins.className),
+      position: "top-center",
+      autoClose: 4000,
+      hideProgressBar: true,
+      closeOnClick: true,
+      pauseOnHover: false,
+      draggable: true,
+      transition: Zoom,
+    });
+  };
+
   const onSubmit = async (data: NewsLetterValue) => {
-    try {
-      postNewsletterEmail(data.signupEmail);
-    } catch (error) {}
+    postNewsletterEmail(data.signupEmail);
+    notify();
+    form.reset();
   };
 
   return (
@@ -64,6 +81,7 @@ const NewsletterForm = () => {
               </FormItem>
             )}
           />
+          <ToastContainer stacked style={{ borderRadius: "30px" }} />
         </form>
       </Form>
     </>
