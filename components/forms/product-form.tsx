@@ -207,7 +207,7 @@ const ProductForm: React.FC<ProductFormProps> = ({
         ) : (
           <Button
             type="submit"
-            className="text-black mt-8 small:text-center border bg-[#e2ecf2] hover:shadow-home-button hover:-translate-y-[3px] hover:brightness-95 uppercase w-full"
+            className="text-black mt-8 mx-auto small:text-center border bg-[#e2ecf2] hover:shadow-home-button hover:-translate-y-[3px] hover:brightness-95 uppercase w-[98.5%]"
           >
             Add to Cart
           </Button>

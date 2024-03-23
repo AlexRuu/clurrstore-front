@@ -42,7 +42,7 @@ const ItemPage: React.FC<ItemPageProps> = async ({ params }) => {
             <MobileGallery images={product.image} />
             <ProductGallery images={product.image} />
             {/* Information about the product */}
-            <div className="md:max-w-[500px] md:pt-0 flex flex-col flex-nowrap flex-shrink px-4 py-0 w-full lg:mx-7">
+            <div className="md:max-w-[550px] md:pt-0 flex flex-col flex-nowrap flex-shrink px-4 py-0 w-full lg:mx-7">
               <ProductInfo product={product} />
             </div>
           </div>
