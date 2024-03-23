@@ -4,7 +4,7 @@ A front end e-commerce project.
 
 ## Introduction
 
-Clurr Store is a front end e-commerce project built with [NextJS](https://nextjs.org/) and styled with [Typescript](https://www.typescriptlang.org/) . It was built with the intent of being a replacement online storefront for my friend's art store. This project has supports for authentication and a checkout process.
+Clurr Store is a front end e-commerce project built with [NextJS](https://nextjs.org/) and styled with [Typescript](https://www.typescriptlang.org/) . It was built with the intent of being a replacement online storefront for my friend's art store. This project has supports for authentication and a checkout process. You can view the demo [here](https://clurr-store-front.vercel.app/).
 
 ![](https://github.com/AlexRuu/clurrstore-front/blob/main/demo.gif)
 
