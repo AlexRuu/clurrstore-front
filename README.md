@@ -6,6 +6,8 @@ A front end e-commerce project.
 
 Clurr Store is a front end e-commerce project built with [NextJS](https://nextjs.org/) and styled with [Typescript](https://www.typescriptlang.org/) . It was built with the intent of being a replacement online storefront for my friend's art store. This project has supports for authentication and a checkout process.
 
+![](https://github.com/AlexRuu/clurrstore-front/blob/main/demo.gif)
+
 ## Getting Started
 
 ### Requirements
