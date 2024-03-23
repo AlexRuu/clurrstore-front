@@ -1,8 +1,12 @@
 import PageHeader from "@/components/ui/header";
-import { poppins_light } from "./font";
-import { cn } from "@/libs/utlils";
+import { Metadata } from "next";
 import Link from "next/link";
 
+export const generateMetadata = (): Metadata => {
+  return {
+    title: `Page Not Found`,
+  };
+};
 const NotFoundPage = () => {
   return (
     <main className="min-h-[500px] mt-10 pb-[30px] small:mt-0 xsmall:mt-0">
