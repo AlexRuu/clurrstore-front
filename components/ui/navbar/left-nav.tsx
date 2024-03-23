@@ -29,7 +29,7 @@ const LeftNav: React.FC<LeftNavProps> = ({ mobileOpen }) => {
           className="flex items-center med-small:flex-row med-small:text-xl text-xl"
         >
           <Image
-            src={"/images/logo.png"}
+            src={"/static/images/logo.png"}
             alt=""
             height={0}
             width={0}

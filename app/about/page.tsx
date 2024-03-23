@@ -19,7 +19,7 @@ const AboutPage = () => {
           <div className="md:w-1/2 mx-5 small:hidden medium-max:mt-10">
             <AspectRatio ratio={6 / 6}>
               <Image
-                src="/images/clurrAbout.png"
+                src="/static/images/clurrAbout.png"
                 alt=""
                 height={500}
                 width={500}

@@ -114,7 +114,7 @@ const NavMain: React.FC<NavMainProps> = ({ data, profile }) => {
                       )}
                     >
                       <Image
-                        src={"/images/logo.png"}
+                        src={"/static/images/logo.png"}
                         alt=""
                         height={0}
                         width={0}
