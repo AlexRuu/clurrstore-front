@@ -54,7 +54,7 @@ npm -v # should print `10.2.4`
 ### Installation
 
 ```
-$ git@github.com:AlexRuu/clurrstore-front.git
+$ git clone git@github.com:AlexRuu/clurrstore-front.git
 $ cd clurrstore-front
 $ npm install
 ```
@@ -79,6 +79,6 @@ $ npm run dev
 - Built with [Typescript](https://www.typescriptlang.org/)
 - [Next.js](https://nextjs.org/)
   - [React](https://react.dev/) for the UI
-- [Supabase](<(https://supabase.com/)>) for authentication
+- [Supabase](https://supabase.com/) for authentication
 - Styling with [Tailwind CSS](https://tailwindcss.com/)
 - [Stripe](https://stripe.com/en-ca) for the checkout process
