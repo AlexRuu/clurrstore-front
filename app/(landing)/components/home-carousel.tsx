@@ -156,7 +156,7 @@ const HomeCarousel: React.FC<HomeCarouselProps> = ({ homeImages }) => {
                       index == carouselIndex ? "opacity 500ms ease 0s" : "",
                   }}
                   className={cn(
-                    "small:h-[433.117px] relative left-0 top-0 block h-full overflow-hidden float-left min-h-[1px] w-1/2 rounded-[30px] xsmall:rounded-none",
+                    "small:h-[433.117px] relative left-0 top-0 block h-full overflow-hidden float-left min-h-[1px] w-1/2 rounded-[30px]",
                     carouselIndex == index
                       ? "z-400 opacity-100"
                       : `z-299 opacity-0`,
@@ -176,7 +176,7 @@ const HomeCarousel: React.FC<HomeCarouselProps> = ({ homeImages }) => {
                         <Image
                           src={img.url}
                           alt=""
-                          className="relative min-w-full opacity-100 mx-auto md:!h-[520px] !h-[180px] small:overflow-hidden rounded-[30px] xsmall:rounded-none"
+                          className="relative min-w-full opacity-100 mx-auto md:!h-[520px] !h-[180px] small:overflow-hidden rounded-[30px]"
                           fill
                           sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
                           style={{ objectFit: "cover", transition: "all .25s" }}
