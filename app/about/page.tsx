@@ -27,8 +27,7 @@ const AboutPage = () => {
             </AspectRatio>
           </div>
           {/* Right section of page to display information about Claire */}
-          <div className="small:mx-10 small:pt-10 md:w-1/2 md:ml-5 md:mr-16 md:mb-10 small:mt-10 medium-max:mt-10">
-            <hr className="small:block hidden bg-logo opacity-30 rounded-lg h-1 small:w-[20%] text-center m-auto mb-5" />
+          <div className="small:mx-10 md:w-1/2 md:ml-5 md:mr-16 md:mb-10 small:mt-5 medium-max:mt-5">
             <p className="small:mx-10">
               Hello everyone, I'm Claire! I'm just an artist bringing her ideas
               to life, one art work at a time. I'm super excited to share my
